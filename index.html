@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MyBudget Calculator - A powerful brutalist-designed budget management tool to help you track spending, manage finances, and achieve your financial goals with ease.">
+    <meta name="keywords" content="budget calculator, expense tracker, financial planning, money management, budgeting app, personal finance">
+    <meta name="author" content="MyBudget">
+    <meta property="og:title" content="MyBudget Calculator - Smart Financial Planning">
+    <meta property="og:description" content="Take control of your finances with MyBudget Calculator. Track expenses, set budgets, and achieve your financial goals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://budgetcalculator.github.io/">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>MyBudget Calculator - Smart Budget Management Tool</title>
+    <link rel="canonical" href="https://budgetcalculator.github.io/">
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect fill='%236366f1' width='32' height='32'/><text x='16' y='22' font-size='18' font-weight='bold' fill='white' text-anchor='middle'>$</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%236366f1' width='180' height='180'/><text x='90' y='130' font-size='100' font-weight='bold' fill='white' text-anchor='middle'>$</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0066ff;
+            --primary-green: #00cc44;
+            --primary-red: #ff3333;
+            --primary-yellow: #ffcc00;
+            --primary-purple: #9933ff;
+            --dark-bg: #0a0a0a;
+            --dark-secondary: #1a1a1a;
+            --dark-tertiary: #2a2a2a;
+            --light-text: #ffffff;
+            --gray-text: #cccccc;
+            --border-color: #333333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            border-bottom: 3px solid var(--border-color);
+            background-color: var(--dark-secondary);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-text);
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, transparent 40%),
+                linear-gradient(-135deg, rgba(153, 51, 255, 0.1) 100%, transparent 60%);
+            border-bottom: 4px solid var(--primary-blue);
+            padding: 2rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--gray-text);
+            margin-bottom: 2rem;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 0.8s ease-out 0.6s both;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--dark-bg);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary-blue);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-text);
+            border: 2px solid var(--light-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-text);
+            color: var(--dark-bg);
+            transform: scale(1.05);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: var(--dark-bg);
+            border-radius: 50px;
+        }
+
+        .btn-download:hover {
+            box-shadow: 0 0 30px rgba(0, 204, 68, 0.6), 0 0 30px rgba(0, 102, 255, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background-color: var(--dark-secondary);
+            border: 3px solid var(--primary-red);
+            padding: 3rem;
+            border-radius: 2px;
+            animation: slideInRight 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .calculator-title {
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: var(--primary-yellow);
+            font-size: 0.95rem;
+        }
+
+        .form-group input {
+            padding: 0.75rem;
+            background-color: var(--dark-tertiary);
+            color: var(--light-text);
+            border: 2px solid var(--primary-red);
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+
+        .calculator-output {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .output-item {
+            background-color: var(--dark-tertiary);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .output-label {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .output-value {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            border-bottom: 3px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            text-align: center;
+            letter-spacing: -1px;
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--dark-secondary);
+            border: 3px solid var(--border-color);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; border-color: var(--primary-blue); }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; border-color: var(--primary-green); }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; border-color: var(--primary-yellow); }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; border-color: var(--primary-purple); }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; border-color: var(--primary-red); }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-card:nth-child(1) h3 { color: var(--primary-blue); }
+        .feature-card:nth-child(2) h3 { color: var(--primary-green); }
+        .feature-card:nth-child(3) h3 { color: var(--primary-yellow); }
+        .feature-card:nth-child(4) h3 { color: var(--primary-purple); }
+        .feature-card:nth-child(5) h3 { color: var(--primary-red); }
+
+        .feature-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-color: var(--dark-secondary);
+            padding: 5rem 2rem;
+            border-top: 4px solid var(--primary-green);
+            border-bottom: 4px solid var(--primary-purple);
+        }
+
+        .stats-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: countUp 2s ease-out forwards;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item:nth-child(1) .stat-number { color: var(--primary-blue); }
+        .stat-item:nth-child(2) .stat-number { color: var(--primary-green); }
+        .stat-item:nth-child(3) .stat-number { color: var(--primary-yellow); }
+        .stat-item:nth-child(4) .stat-number { color: var(--primary-purple); }
+
+        .stat-label {
+            color: var(--gray-text);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            border-bottom: 3px solid var(--border-color);
+        }
+
+        .showcase-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .showcase-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .showcase-text p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .showcase-image {
+            background-color: var(--dark-secondary);
+            border: 3px solid var(--primary-yellow);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Pricing Info (No pricing) */
+        .trust {
+            background-color: var(--dark-secondary);
+            padding: 5rem 2rem;
+            border-top: 4px solid var(--primary-red);
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .trust-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trust-item {
+            padding: 2rem;
+            background-color: var(--dark-tertiary);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .trust-item:hover {
+            border-color: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        .trust-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        /* Download Section */
+        .download {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            border-bottom: 3px solid var(--border-color);
+            text-align: center;
+        }
+
+        .download-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .download-content p {
+            font-size: 1.2rem;
+            color: var(--gray-text);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background-color: var(--dark-secondary);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--light-text);
+        }
+
+        .app-badge:hover {
+            border-color: var(--primary-purple);
+            transform: scale(1.05);
+        }
+
+        .app-badge-icon {
+            font-size: 2rem;
+        }
+
+        .app-badge-text {
+            text-align: left;
+        }
+
+        .app-store {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+        }
+
+        .app-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--light-text);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-secondary);
+            border-top: 4px solid var(--primary-purple);
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section:nth-child(1) h3 { color: var(--primary-blue); }
+        .footer-section:nth-child(2) h3 { color: var(--primary-green); }
+        .footer-section:nth-child(3) h3 { color: var(--primary-yellow); }
+        .footer-section:nth-child(4) h3 { color: var(--primary-purple); }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--gray-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-text);
+            padding-left: 10px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--gray-text);
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary-blue);
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .footer-copy {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .calculator-section {
+                padding: 2rem;
+            }
+
+            .showcase-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 1rem;
+                min-height: 80vh;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .calculator-section {
+                padding: 1.5rem;
+                border: 2px solid var(--primary-red);
+            }
+
+            .calculator-title {
+                font-size: 1.3rem;
+            }
+
+            .calculator-output {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .feature-card {
+                padding: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .app-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">$ BUDGET</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#stats">Impact</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Take Control of Your Money</h1>
+                <p>Calculate, track, and manage your budget with our powerful brutalist-designed calculator. Simple. Direct. Effective.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('features').scrollIntoView({ behavior: 'smooth' })">Start Now</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('download').scrollIntoView({ behavior: 'smooth' })">Learn More</button>
+                </div>
+            </div>
+            <div class="calculator-section">
+                <div class="calculator-title">Quick Calc</div>
+                <form class="calculator-form" id="budgetForm">
+                    <div class="form-group">
+                        <label for="income">Monthly Income</label>
+                        <input type="number" id="income" placeholder="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expenses">Total Expenses</label>
+                        <input type="number" id="expenses" placeholder="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="savings">Target Savings</label>
+                        <input type="number" id="savings" placeholder="0" step="0.01" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="calculateBudget()" style="width: 100%; padding: 1rem;">CALCULATE</button>
+                </form>
+                <div class="calculator-output" id="output" style="display: none;">
+                    <div class="output-item">
+                        <div class="output-label">Remaining Balance</div>
+                        <div class="output-value" id="balance">$0.00</div>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-label">Savings Rate</div>
+                        <div class="output-value" id="rate">0%</div>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-label">Budget Status</div>
+                        <div class="output-value" id="status">-</div>
+                    </div>
+                    <div class="output-item">
+                        <div class="output-label">Monthly Surplus</div>
+                        <div class="output-value" id="surplus">$0.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Powerful Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Real-Time Tracking</h3>
+                <p>Monitor your expenses in real-time and get instant feedback on your spending habits with detailed breakdowns.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Smart Analytics</h3>
+                <p>Advanced analytics show you exactly where your money goes and help you identify spending patterns and opportunities.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Goal Setting</h3>
+                <p>Set financial goals and track your progress towards them. Achieve your dreams with clear, measurable objectives.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Bank-Level Security</h3>
+                <p>Your financial data is protected with enterprise-grade encryption and security protocols. Your privacy matters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Multi-Device Sync</h3>
+                <p>Access your budget from any device. Desktop, tablet, mobile - your data syncs seamlessly across all platforms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" id="stats">
+        <div class="stats-content">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$2B+</div>
+                    <div class="stat-label">Budgets Tracked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="showcase">
+        <div class="showcase-content">
+            <div class="showcase-text">
+                <h2>Designed for Simplicity</h2>
+                <p>Our brutalist design philosophy strips away unnecessary complexity. Every feature serves a purpose. Every interaction is intentional.</p>
+                <p>We believe financial tools should be powerful yet simple. That's why MyBudget Calculator was built from the ground up with you in mind.</p>
+                <button class="btn btn-primary" onclick="document.getElementById('download').scrollIntoView({ behavior: 'smooth' })">Get App Now</button>
+            </div>
+            <div class="showcase-image">
+                📈
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust">
+        <div class="trust-content">
+            <h2 class="section-title">Why Choose MyBudget?</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <h3>✓ Free Forever</h3>
+                    <p>No hidden fees. No premium walls. Core features are completely free.</p>
+                </div>
+                <div class="trust-item">
+                    <h3>✓ Open Source</h3>
+                    <p>Transparent development. Community-driven. Audited by security experts.</p>
+                </div>
+                <div class="trust-item">
+                    <h3>✓ Lightning Fast</h3>
+                    <p>Instant calculations. Smooth interactions. Optimized for performance.</p>
+                </div>
+                <div class="trust-item">
+                    <h3>✓ No Tracking</h3>
+                    <p>Your data is yours. We never sell, share, or track your financial information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="download-content">
+            <h2>Download MyBudget App</h2>
+            <p>Take your budget management on the go. Download MyBudget Calculator for iOS and Android.</p>
+            <div class="download-buttons">
+                <a href="#" class="app-badge">
+                    <div class="app-badge-icon">🍎</div>
+                    <div class="app-badge-text">
+                        <div class="app-store">Download on the</div>
+                        <div class="app-name">App Store</div>
+                    </div>
+                </a>
+                <a href="#" class="app-badge">
+                    <div class="app-badge-icon">🤖</div>
+                    <div class="app-badge-text">
+                        <div class="app-store">Get it on</div>
+                        <div class="app-name">Google Play</div>
+                    </div>
+                </a>
+                <a href="#" class="app-badge">
+                    <div class="app-badge-icon">🖥️</div>
+                    <div class="app-badge-text">
+                        <div class="app-store">Download for</div>
+                        <div class="app-name">Web</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#">Changelog</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-brand">MyBudget</div>
+                <div class="footer-socials">
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">𝕏</a>
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">gh</a>
+                </div>
+                <div class="footer-copy">&copy; 2025 MyBudget Calculator. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JSON-LD Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "WebApplication",
+      "name": "MyBudget Calculator",
+      "description": "A powerful brutalist-designed budget management tool to help you track spending and achieve financial goals.",
+      "url": "https://budgetcalculator.github.io/",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "MyBudget",
+        "url": "https://budgetcalculator.github.io/"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "5000"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "MyBudget Calculator",
+      "image": "https://budgetcalculator.github.io/images/product.png",
+      "description": "Smart budget calculator with real-time tracking, advanced analytics, and multi-device sync.",
+      "brand": {
+        "@type": "Brand",
+        "name": "MyBudget"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://budgetcalculator.github.io/",
+        "priceCurrency": "USD",
+        "price": "0",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "5000",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+    <!-- Main JavaScript -->
+    <script>
+        // Budget Calculator
+        function calculateBudget() {
+            const income = parseFloat(document.getElementById('income').value) || 0;
+            const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+            const savings = parseFloat(document.getElementById('savings').value) || 0;
+
+            if (income === 0) {
+                alert('Please enter your monthly income');
+                return;
+            }
+
+            const balance = income - expenses - savings;
+            const rate = ((savings / income) * 100).toFixed(1);
+            const surplus = balance >= 0 ? balance : 0;
+            const status = balance >= 0 ? '✓ HEALTHY' : '⚠ OVER BUDGET';
+
+            document.getElementById('balance').textContent = '$' + balance.toFixed(2);
+            document.getElementById('rate').textContent = rate + '%';
+            document.getElementById('status').textContent = status;
+            document.getElementById('surplus').textContent = '$' + surplus.toFixed(2);
+            document.getElementById('output').style.display = 'grid';
+
+            // Animate output
+            document.getElementById('output').style.animation = 'fadeInUp 0.6s ease-out';
+        }
+
+        // Hamburger Menu
+        document.getElementById('hamburger').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
