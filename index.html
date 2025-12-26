@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6V9KL7N271');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -355,16 +364,37 @@
     </script>
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "MyBudget App",
-      "description": "Mobile budget tracking application for on-the-go financial management.",
-      "brand": {
-        "@type": "Brand",
-        "name": "My Budget"
-      }
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "MyBudget App",
+  "description": "Mobile budget tracking application for on-the-go financial management.",
+  "brand": {
+    "@type": "Brand",
+    "name": "My Budget"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "0.00",
+    "highPrice": "0.00",
+    "offerCount": "1",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Version",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "description": "Basic budgeting features with limited categories",
+        "availability": "https://schema.org/InStock",
+        "url": "https://mybudgetapp.com/"
+      }      
+    ]
+  },
+  "operatingSystem": "Android, iOS",
+  "applicationCategory": "FinanceApplication"  
+  }
+}
+</script>
 </body>
 </html>
