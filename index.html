@@ -3,565 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MyBudget - Smart budgeting calculator to manage finances, track expenses, and plan your financial future with ease.">
-    <meta name="keywords" content="budget calculator, expense tracker, financial planning, budgeting app, money management">
-    <meta name="author" content="MyBudget">
-    <meta name="theme-color" content="#F5F1EB">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://budgetcalculator.github.io/">
-    <meta property="og:title" content="MyBudget - Smart Budget Calculator">
-    <meta property="og:description" content="Take control of your finances with our intelligent budget calculator.">
-    <meta property="og:image" content="https://budgetcalculator.github.io/images/og-image.png">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://budgetcalculator.github.io/">
-    <meta property="twitter:title" content="MyBudget - Smart Budget Calculator">
-    <meta property="twitter:description" content="Take control of your finances with our intelligent budget calculator.">
-    <meta property="twitter:image" content="https://budgetcalculator.github.io/images/og-image.png">
-    
-    <title>MyBudget - Smart Budget Calculator | Financial Planning Made Easy</title>
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-    <link rel="canonical" href="https://budgetcalculator.github.io/">
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Structured Data - WebApplication Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "MyBudget",
-        "description": "Smart budgeting calculator to manage finances and track expenses",
-        "url": "https://budgetcalculator.github.io/",
-        "applicationCategory": "FinanceApplication",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "250"
+    <title>Free Online Budget Calculator | Budget Planner & Expense Tracker</title>
+    <meta name="description" content="Use our free online budget calculator to track income, expenses, and master the 50/30/20 rule. The ultimate monthly budget planner for financial freedom.">
+    <meta name="keywords" content="budget calculator, free online budget planner, monthly budget planner, 50 30 20 budget calculator, expense calculator, finance tool">
+    <link rel="canonical" href="https://budgetcalculator.github.io">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=B">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
         }
-    }
-    </script>
-    
-    <!-- Structured Data - Product Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org/",
-        "@type": "Product",
-        "name": "MyBudget Calculator",
-        "image": "https://budgetcalculator.github.io/images/logo.svg",
-        "description": "Intelligent budget calculator for personal finance management",
-        "brand": {
-            "@type": "Brand",
-            "name": "MyBudget"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": "https://budgetcalculator.github.io/",
-            "priceCurrency": "USD",
-            "price": "0",
-            "availability": "https://schema.org/InStock"
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
         }
-    }
-    </script>
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        /* Navigation */
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        /* Hero */
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--blue);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1.2rem;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--green);
+            display: none;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        /* Article Sections */
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Generic Section */
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--red); color: white; text-align: center; }
+
+        /* Footer */
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <div class="logo-section">
-                <svg class="logo-icon" viewBox="0 0 24 24" width="32" height="32">
-                    <rect x="3" y="3" width="8" height="8" fill="#2563EB" stroke="#1F2937" stroke-width="1.5"/>
-                    <rect x="13" y="3" width="8" height="8" fill="#10B981" stroke="#1F2937" stroke-width="1.5"/>
-                    <rect x="3" y="13" width="8" height="8" fill="#F59E0B" stroke="#1F2937" stroke-width="1.5"/>
-                    <rect x="13" y="13" width="8" height="8" fill="#EF4444" stroke="#1F2937" stroke-width="1.5"/>
-                </svg>
-                <span class="logo-text">MyBudget</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#calculator">Calculator</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#download">Download</a></li>
-            </ul>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+    <nav>
+        <a href="/" class="logo">BUDGET.IO</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#app" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Download App</a>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#features">Features</a>
-        <a href="#calculator">Calculator</a>
-        <a href="#about">About</a>
-        <a href="#download">Download</a>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero" id="calculator">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-word">Take</span>
-                    <span class="title-word">Control</span>
-                    <span class="title-word">Of</span>
-                    <span class="title-word">Your</span>
-                    <span class="title-word">Finances</span>
-                </h1>
-                <p class="hero-subtitle">Calculate, plan, and manage your budget with precision using our intelligent budgeting tool.</p>
-            </div>
-
-            <!-- Calculator Form -->
-            <div class="calculator-box">
-                <div class="calc-header">
-                    <h2>Quick Budget Calculator</h2>
-                </div>
-                
-                <form class="calc-form" id="budgetForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="income">Monthly Income</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="income" 
-                                    placeholder="5000" 
-                                    min="0" 
-                                    step="100"
-                                    required
-                                >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="housing">Housing</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="housing" 
-                                    placeholder="1500" 
-                                    min="0" 
-                                    step="50"
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="food">Food & Groceries</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="food" 
-                                    placeholder="600" 
-                                    min="0" 
-                                    step="50"
-                                >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="utilities">Utilities</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="utilities" 
-                                    placeholder="200" 
-                                    min="0" 
-                                    step="50"
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="transport">Transportation</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="transport" 
-                                    placeholder="300" 
-                                    min="0" 
-                                    step="50"
-                                >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="entertainment">Entertainment</label>
-                            <div class="input-wrapper">
-                                <span class="currency">$</span>
-                                <input 
-                                    type="number" 
-                                    id="entertainment" 
-                                    placeholder="250" 
-                                    min="0" 
-                                    step="50"
-                                >
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="calc-button">Calculate Budget</button>
-                </form>
-
-                <!-- Results -->
-                <div class="calc-results" id="results" style="display: none;">
-                    <div class="results-header">
-                        <h3>Your Budget Breakdown</h3>
-                    </div>
-                    
-                    <div class="result-item">
-                        <div class="result-label">Total Expenses</div>
-                        <div class="result-value income-color" id="totalExpenses">$0</div>
-                    </div>
-
-                    <div class="result-item">
-                        <div class="result-label">Remaining Budget</div>
-                        <div class="result-value" id="remaining">$0</div>
-                    </div>
-
-                    <div class="result-bar">
-                        <div class="budget-meter" id="budgetMeter"></div>
-                    </div>
-
-                    <div class="breakdown">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Housing</span>
-                            <span class="breakdown-value" id="housingPct">0%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Food</span>
-                            <span class="breakdown-value" id="foodPct">0%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Utilities</span>
-                            <span class="breakdown-value" id="utilitiesPct">0%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Transport</span>
-                            <span class="breakdown-value" id="transportPct">0%</span>
-                        </div>
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Entertainment</span>
-                            <span class="breakdown-value" id="entertainmentPct">0%</span>
-                        </div>
-                    </div>
-
-                    <button type="reset" class="calc-button secondary" form="budgetForm">Reset</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Animated shapes -->
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Powerful Features</h2>
-            <p class="section-subtitle">Everything you need to master your finances</p>
-        </div>
-
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon blue-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2v20M2 12h20M4 4h16v16H4z"/>
-                    </svg>
-                </div>
-                <h3>Real-time Calculations</h3>
-                <p>Get instant budget calculations as you enter your financial data</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon green-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="12 2 15.09 6.26 20 6.93 16.88 9.86 17.54 14.97 12 12.61 6.46 14.97 7.12 9.86 4 6.93 8.91 6.26 12 2"/>
-                    </svg>
-                </div>
-                <h3>Smart Insights</h3>
-                <p>Receive personalized recommendations to optimize your spending</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon red-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <line x1="3" y1="9" x2="21" y2="9"/>
-                        <line x1="3" y1="15" x2="21" y2="15"/>
-                    </svg>
-                </div>
-                <h3>Category Tracking</h3>
-                <p>Track expenses across multiple budget categories effortlessly</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon purple-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
-                </div>
-                <h3>Financial Goals</h3>
-                <p>Set and achieve your savings targets with our goal tracking system</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon yellow-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <polyline points="12 6 12 12 16 14"/>
-                    </svg>
-                </div>
-                <h3>Export Reports</h3>
-                <p>Generate and download detailed budget reports for record keeping</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon blue-accent">
-                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                </div>
-                <h3>100% Free</h3>
-                <p>Access all features without hidden fees or premium tiers</p>
-            </div>
-        </div>
-
-        <!-- Animated elements -->
-        <div class="float-shape float-1"></div>
-        <div class="float-shape float-2"></div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="section-header">
-            <h2>How It Works</h2>
-            <p class="section-subtitle">Simple steps to financial clarity</p>
-        </div>
-
-        <div class="steps-container">
-            <div class="step">
-                <div class="step-number">01</div>
-                <h3>Enter Income</h3>
-                <p>Input your monthly income and expenses</p>
-                <div class="step-decoration blue-accent"></div>
-            </div>
-
-            <div class="step-connector"></div>
-
-            <div class="step">
-                <div class="step-number">02</div>
-                <h3>Add Categories</h3>
-                <p>Categorize your expenses efficiently</p>
-                <div class="step-decoration green-accent"></div>
-            </div>
-
-            <div class="step-connector"></div>
-
-            <div class="step">
-                <div class="step-number">03</div>
-                <h3>Analyze Results</h3>
-                <p>View detailed breakdown and insights</p>
-                <div class="step-decoration red-accent"></div>
-            </div>
-
-            <div class="step-connector"></div>
-
-            <div class="step">
-                <div class="step-number">04</div>
-                <h3>Plan Ahead</h3>
-                <p>Make informed financial decisions</p>
-                <div class="step-decoration yellow-accent"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Statistics Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value">
-                    <span class="stat-number" data-count="50">0</span><span class="stat-suffix">K+</span>
-                </div>
-                <div class="stat-label">Users Worldwide</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-value">
-                    <span class="stat-number" data-count="250">0</span><span class="stat-suffix">M</span>
-                </div>
-                <div class="stat-label">Budgets Calculated</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-value">
-                    <span class="stat-number" data-count="98">0</span><span class="stat-suffix">%</span>
-                </div>
-                <div class="stat-label">Satisfaction Rate</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-value">
-                    <span class="stat-number" data-count="10">0</span><span class="stat-suffix">+</span>
-                </div>
-                <div class="stat-label">Years In Service</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Download Section -->
-    <section class="download" id="download">
-        <div class="download-container">
-            <h2>Get MyBudget App</h2>
-            <p>Available on iOS and Android. Download now to manage your budget on the go.</p>
+    <header>
+        <h1 class="hero-title">FREE ONLINE<br>BUDGET CALCULATOR</h1>
+        <div class="calculator-box brutal-border">
+            <label>MONTHLY INCOME ($)</label>
+            <input type="number" id="income" placeholder="5000">
             
-            <div class="download-buttons">
-                <a href="#" class="download-btn app-store">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                        <path d="M17.05 13.5c-.91 0-1.74.46-2.24 1.14.5.5 1.05.92 1.7 1.13.4-.3.66-.75.66-1.27 0-1.04-.84-1.87-1.88-1.87l-.24 0m0-1.5c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3m-9.08 8.5h8.63c1.66 0 3-1.34 3-3v-.5c0-.46-.2-.89-.52-1.19-.5.75-1.35 1.24-2.32 1.24-1.66 0-3-1.34-3-3s1.34-3 3-3c.97 0 1.82.49 2.32 1.24.32-.3.52-.73.52-1.19v-.5c0-1.66-1.34-3-3-3H7.97c-1.66 0-3 1.34-3 3v8c0 1.66 1.34 3 3 3m9.08-8.5c-1.04 0-1.88.84-1.88 1.87s.84 1.88 1.88 1.88 1.87-.84 1.87-1.88-.84-1.87-1.87-1.87"/>
-                    </svg>
-                    Download iOS
-                </a>
-                <a href="#" class="download-btn play-store">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                        <path d="M3.609 1.814L13.792 12 3.609 22.186a.996.996 0 01-.609-.906V2.72c0-.529.378-.978.609-906zM15.812 12.5L5.418 19.514l11.376 5.738c.905.475 2.031-.145 2.031-1.153V2.401c0-1.008-1.126-1.628-2.031-1.153L5.418 6.987l10.394 5.513z"/>
-                    </svg>
-                    Download Android
-                </a>
-            </div>
-
-            <div class="qr-section">
-                <p class="qr-text">Scan to download</p>
-                <div class="qr-code">
-                    <svg viewBox="0 0 100 100" width="120" height="120">
-                        <rect width="100" height="100" fill="white" stroke="#1F2937" stroke-width="2"/>
-                        <rect x="10" y="10" width="30" height="30" fill="#1F2937"/>
-                        <rect x="16" y="16" width="18" height="18" fill="white"/>
-                        <rect x="20" y="20" width="10" height="10" fill="#1F2937"/>
-                        <rect x="60" y="10" width="30" height="30" fill="#1F2937"/>
-                        <rect x="66" y="16" width="18" height="18" fill="white"/>
-                        <rect x="70" y="20" width="10" height="10" fill="#1F2937"/>
-                        <rect x="10" y="60" width="30" height="30" fill="#1F2937"/>
-                        <rect x="16" y="66" width="18" height="18" fill="white"/>
-                        <rect x="20" y="70" width="10" height="10" fill="#1F2937"/>
-                    </svg>
-                </div>
+            <label>MONTHLY EXPENSES ($)</label>
+            <input type="number" id="expenses" placeholder="3000">
+            
+            <button class="btn" style="width: 100%;" onclick="calculate()">Calculate Surplus</button>
+            <div id="result" class="result-display brutal-border">
+                SURPLUS: <span id="surplus-val">$0</span>
             </div>
         </div>
+    </header>
 
-        <!-- Animated download icons -->
-        <div class="download-shape shape-d1"></div>
-        <div class="download-shape shape-d2"></div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>About MyBudget</h2>
-                <p>We believe everyone deserves financial clarity and control. MyBudget was created to simplify budgeting and make financial planning accessible to everyone, regardless of their expertise level.</p>
-                
-                <div class="about-features">
-                    <div class="about-item">
-                        <div class="about-icon blue-accent">📊</div>
-                        <h4>Data-Driven</h4>
-                        <p>Our algorithms use industry best practices for budget optimization</p>
-                    </div>
-                    <div class="about-item">
-                        <div class="about-icon green-accent">🔒</div>
-                        <h4>Secure</h4>
-                        <p>Your financial data is encrypted and never shared with third parties</p>
-                    </div>
-                    <div class="about-item">
-                        <div class="about-icon red-accent">🚀</div>
-                        <h4>Innovative</h4>
-                        <p>We continuously improve with cutting-edge financial technology</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="about-decoration">
-                <div class="decoration-shape d1"></div>
-                <div class="decoration-shape d2"></div>
-                <div class="decoration-shape d3"></div>
-            </div>
+    <main class="article-container">
+        <div class="article-block brutal-border" id="about">
+            <h2>Hey there!</h2>
+            <p>If you're anything like me, managing money can feel like trying to juggle flaming torches while riding a unicycle. But guess what? It doesn't have to be that chaotic. That's where a solid <strong>budget calculator</strong> comes in handy.</p>
+            <p>Whether you're searching for an <strong>online budget planner</strong>, a budget maker, or even a <strong>monthly budget planner</strong>, I've got you covered. At budgetcalculator.github.io, we've built a super simple, totally free tool that's perfect for anyone looking to get their finances in check without the hassle.</p>
         </div>
+
+        <div class="article-block brutal-border" style="background: var(--blue); color: white;">
+            <h2>Why You Need a Budget Calculator</h2>
+            <p>Picture this: It's the end of the month, and you're wondering where all your cash disappeared to. Sound familiar? A <strong>budget calculator free</strong> tool can help you track every penny. Our online budget calculator lets you plug in your income and expenses, spitting out a clear picture of your finances in seconds.</p>
+            <p>Unlike clunky spreadsheets, this expense calculator is user-friendly and web-based—no downloads needed. If you're into templates, think of it as a <strong>budget planner template free</strong> but interactive.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--green);">
+            <h3>Mastering the 50/30/20 Rule</h3>
+            <p>One of the hottest budgeting hacks out there is the <strong>50 30 20 rule calculator</strong>. It's simple: 50% of your income goes to needs, 30% to wants, and 20% to savings or debt. Our tool has a built-in <strong>50 30 20 calculator</strong> that does the math for you.</p>
+            <p>Whether you call it the 50 30 20 budget calculator, 503020 calculator, or even the 50 20 30 rule calculator, it's all here. Fans of Dave Ramsey will love how it aligns with his principles—check out the <strong>dave ramsey budget calculator</strong> vibe we incorporated.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--purple); color: white;">
+            <h3>Specialized Tools for You</h3>
+            <p>Budgeting isn't one-size-fits-all. Our platform includes niche insights for:</p>
+            <ul>
+                <li><strong>Grocery budget calculator:</strong> Estimate food costs.</li>
+                <li><strong>Retirement budget planner:</strong> Project your golden years.</li>
+                <li><strong>Vacation budget calculator:</strong> Save for that getaway.</li>
+                <li><strong>Student budget planner:</strong> Track tuition and ramen.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border">
+            <h3>Supercharge Your Budget</h3>
+            <p>Use our <strong>budget calculator with percentages</strong> to see your spending as pie charts. Try the <strong>paycheck budget calculator</strong> to break down your salary by the <strong>budget my paycheck</strong> feature.</p>
+            <p>Remember, tools like our income and expense calculator make it easy to adjust on the fly. Head to budgetcalculator.github.io now and try our <strong>free online budget planner</strong>. Your future self will thank you!</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">GET THE APP</h2>
+        <p style="margin-bottom: 30px;">Take your budget everywhere. Available for iOS and Android.</p>
+        <a href="#" class="btn" style="background: var(--blue); color: white;">Download MyBudget App</a>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-section">
-                <h4>About</h4>
-                <ul>
-                    <li><a href="#about">Our Story</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#download">Download App</a></li>
-                    <li><a href="#">Team</a></li>
-                </ul>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>Budget.IO is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
             </div>
-
-            <div class="footer-section">
-                <h4>Pages</h4>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
                 <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Blog</a></li>
                 </ul>
             </div>
-
-            <div class="footer-section">
-                <h4>More Calculators</h4>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
                 <ul>
                     <li><a href="#">Tax Calculator</a></li>
-                    <li><a href="#">Loan Calculator</a></li>
-                    <li><a href="#">Savings Calculator</a></li>
-                    <li><a href="#">Investment Calculator</a></li>
+                    <li><a href="#">Investment ROI</a></li>
+                    <li><a href="#">Debt Payoff</a></li>
                 </ul>
             </div>
-
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <div class="social-links">
-                    <a href="#" aria-label="Twitter">𝕏</a>
-                    <a href="#" aria-label="Instagram">📷</a>
-                    <a href="#" aria-label="LinkedIn">in</a>
-                    <a href="#" aria-label="Facebook">f</a>
-                </div>
-                <div class="newsletter">
-                    <input type="email" placeholder="Your email" class="newsletter-input">
-                    <button class="newsletter-btn">Subscribe</button>
-                </div>
-            </div>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2025 MyBudget. All rights reserved.</p>
-            <p>Designed for simplicity. Built for success.</p>
+            &copy; 2025 BUDGET CALCULATOR.
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function calculate() {
+            const income = document.getElementById('income').value;
+            const expenses = document.getElementById('expenses').value;
+            const resultBox = document.getElementById('result');
+            const surplusVal = document.getElementById('surplus-val');
+
+            if (income && expenses) {
+                const surplus = income - expenses;
+                surplusVal.innerText = '$' + surplus.toLocaleString();
+                resultBox.style.display = 'block';
+                resultBox.style.background = surplus >= 0 ? 'var(--green)' : 'var(--red)';
+            }
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Budget Calculator",
+      "url": "https://budgetcalculator.github.io",
+      "operatingSystem": "All",
+      "applicationCategory": "FinanceApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": "Income tracking, Expense calculation, 50/30/20 Rule analysis"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "MyBudget App",
+      "description": "Mobile budget tracking application for on-the-go financial management.",
+      "brand": {
+        "@type": "Brand",
+        "name": "My Budget"
+      }
+    }
+    </script>
 </body>
 </html>
