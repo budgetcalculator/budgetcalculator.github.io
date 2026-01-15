@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator | Free Online Income Tax Estimator</title>
+    <meta name="description" content="Estimate your take-home pay with our free online tax calculator. Calculate federal taxes and net income instantly.">
+    <style>
+        :root {
+            --bg-cream: #fdfaf0; --black: #000000; --blue: #3b82f6; --green: #22c55e;
+            --red: #ef4444; --yellow: #eab308; --purple: #a855f7; --brutal-shadow: 6px 6px 0px #000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Black', 'Arial Black', sans-serif; }
+        body { background-color: var(--bg-cream); color: var(--black); line-height: 1.4; }
+        .brutal-border { border: 4px solid var(--black); box-shadow: var(--brutal-shadow); }
+        .btn { display: inline-block; padding: 15px 30px; text-transform: uppercase; font-weight: 900; text-decoration: none; color: var(--black); background: var(--yellow); border: 4px solid var(--black); box-shadow: 4px 4px 0px var(--black); cursor: pointer; transition: all 0.1s ease; }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px var(--black); }
+        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--black); background: white; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 900; background: var(--purple); padding: 5px 15px; color: white; border: 3px solid var(--black); text-decoration: none; }
+        header { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .hero-title { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 40px; -webkit-text-stroke: 1.5px var(--black); color: var(--red); line-height: 0.9; }
+        .calculator-box { background: white; width: 100%; max-width: 500px; padding: 40px; text-align: left; }
+        input { width: 100%; padding: 15px; border: 4px solid var(--black); font-size: 1.2rem; margin-top: 5px; margin-bottom: 20px; }
+        .result-display { margin-top: 20px; padding: 20px; background: var(--blue); color: white; display: none; font-size: 1.2rem; font-weight: 900; }
+        footer { background: var(--yellow); border-top: 4px solid var(--black); margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); border-bottom: 4px solid var(--black); }
+        .footer-widget { padding: 40px; border-right: 4px solid var(--black); }
+        .footer-bottom { padding: 20px; text-align: center; font-weight: 900; background: white; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/" style="text-decoration: none; color: black; font-weight: 900;">HOME</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">TAX<br>CALCULATOR</h1>
+        <div class="calculator-box brutal-border">
+            <label>ANNUAL GROSS INCOME ($)</label>
+            <input type="number" id="gross-income" placeholder="75000">
+            <label>TAX RATE ESTIMATE (%)</label>
+            <input type="number" id="tax-rate" placeholder="22">
+            <button class="btn" style="width: 100%;" onclick="calculateTax()">Estimate Net Pay</button>
+            <div id="result" class="result-display brutal-border">
+                EST. TAKE HOME: <span id="net-val">$0</span>
+            </div>
+        </div>
+    </header>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="#">Tax Calculator</a></li>
+                    <li><a href="#">Investment ROI</a></li>
+                    <li><a href="#">Debt Payoff</a></li>
+                    <li><a href="#">Retirement Planner</a></li>
+                    <li><a href="#">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
+    <script>
+        function calculateTax() {
+            const gross = document.getElementById('gross-income').value;
+            const rate = document.getElementById('tax-rate').value;
+            if (gross && rate) {
+                const net = gross * (1 - (rate / 100));
+                document.getElementById('net-val').innerText = '$' + Math.round(net).toLocaleString();
+                document.getElementById('result').style.display = 'block';
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tax Calculator",
+      "url": "https://budgetcalculator.github.io/tax-calculator",
+      "operatingSystem": "All",
+      "applicationCategory": "FinanceApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "featureList": "Income tax estimation, Net pay calculation"
+    }
+    </script>
+</body>
+</html>
