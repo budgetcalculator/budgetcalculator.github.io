@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Investment ROI Calculator | Compound Interest & Portfolio Planner</title>
+    <meta name="description" content="Calculate your investment growth with our free ROI calculator. Project compound interest, annual contributions, and future wealth with ease.">
+    <meta name="keywords" content="ROI calculator, investment calculator, compound interest calculator, portfolio planner, wealth projector, return on investment tool">
+    <link rel="canonical" href="https://budgetcalculator.github.io/investment-roi">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=I">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--green);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1.2rem;
+            background: white;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--purple);
+            color: white;
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--green); color: black; text-align: center; }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="#app" class="btn" style="background: var(--blue); color: white; font-size: 0.8rem; padding: 10px 20px;">Download App</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">INVESTMENT ROI<br>CALCULATOR</h1>
+        <div class="calculator-box brutal-border">
+            <div class="input-group">
+                <label>INITIAL INVESTMENT ($)</label>
+                <input type="number" id="principal" placeholder="10000">
+            </div>
+            
+            <div class="input-group">
+                <label>MONTHLY CONTRIBUTION ($)</label>
+                <input type="number" id="contribution" placeholder="500">
+            </div>
+
+            <div class="input-group">
+                <label>ESTIMATED ANNUAL RETURN (%)</label>
+                <input type="number" id="rate" placeholder="7">
+            </div>
+
+            <div class="input-group">
+                <label>INVESTMENT PERIOD (YEARS)</label>
+                <input type="number" id="years" placeholder="20">
+            </div>
+            
+            <button class="btn" style="width: 100%; background: var(--green);" onclick="calculateROI()">Project My Wealth</button>
+            
+            <div id="result" class="result-display brutal-border">
+                <div style="font-size: 1rem; text-transform: uppercase;">Total Future Value:</div>
+                <div id="future-value" style="font-size: 2.5rem; margin-bottom: 10px;">$0</div>
+                <div style="font-size: 1rem;">TOTAL CONTRIBUTIONS: <span id="total-contributions">$0</span></div>
+                <div style="font-size: 1rem;">TOTAL INTEREST EARNED: <span id="total-interest">$0</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <div class="article-block brutal-border">
+            <h2>The Power of Compound Interest</h2>
+            <p>Albert Einstein supposedly called compound interest the "eighth wonder of the world." Our <strong>investment ROI calculator</strong> is designed to show you exactly why. By consistently reinvesting your returns and adding small monthly amounts, you can turn a modest savings account into a significant nest egg.</p>
+            <p>Whether you are using this as a <strong>retirement budget planner</strong> or just curious about stock market returns, seeing the numbers visually makes the journey to financial freedom feel real.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--blue); color: white;">
+            <h2>How to Use This Investment Tool</h2>
+            <p>Ready to see your future? Here is how to navigate the <strong>ROI calculator free</strong> tool:</p>
+            <ul>
+                <li><strong>Principal:</strong> The amount of cash you have ready to invest right now.</li>
+                <li><strong>Monthly Contribution:</strong> How much you plan to "pay yourself first" from your <strong>monthly budget planner</strong>.</li>
+                <li><strong>Expected Return:</strong> Historically, the S&P 500 averages around 7-10% annually, but you can adjust this for more conservative projections.</li>
+                <li><strong>Time Horizon:</strong> The longer you leave the money, the more the "snowball effect" of compound interest takes over.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--purple); color: white;">
+            <h3>Strategic Wealth Building</h3>
+            <p>Smart investors don't just guess; they use an <strong>income and expense calculator</strong> to find extra room for contributions. If you follow the <strong>50 30 20 rule calculator</strong>, your 20% savings portion should be fed directly into this ROI tool.</p>
+            <p>By optimizing your <strong>paycheck budget calculator</strong> results, you can maximize your monthly contributions and shave years off your retirement timeline.</p>
+        </div>
+
+        <div class="article-block brutal-border">
+            <h3>Why Use an Online ROI Planner?</h3>
+            <p>Manual math for compound interest is a nightmare. This <strong>online budget planner</strong> module handles the heavy lifting, including monthly compounding. This is perfect for fans of the <strong>dave ramsey budget calculator</strong> style who want to see their "Baby Steps" in action over several decades.</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">WEALTH TRACKER</h2>
+        <p style="margin-bottom: 30px;">Sync your bank and watch your net worth grow. Available for iOS and Android.</p>
+        <a href="#" class="btn" style="background: var(--purple); color: white;">Download WealthApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
+    <script>
+        function calculateROI() {
+            const P = parseFloat(document.getElementById('principal').value) || 0;
+            const PMT = parseFloat(document.getElementById('contribution').value) || 0;
+            const r = (parseFloat(document.getElementById('rate').value) || 0) / 100 / 12;
+            const t = (parseFloat(document.getElementById('years').value) || 0) * 12;
+
+            let futureValue = 0;
+
+            if (r === 0) {
+                futureValue = P + (PMT * t);
+            } else {
+                // FV = P(1+r)^n + PMT * [((1+r)^n - 1) / r]
+                const compoundInterestPrincipal = P * Math.pow(1 + r, t);
+                const futureValueAnnuity = PMT * ((Math.pow(1 + r, t) - 1) / r);
+                futureValue = compoundInterestPrincipal + futureValueAnnuity;
+            }
+
+            const totalContributed = P + (PMT * t);
+            const totalInterest = futureValue - totalContributed;
+
+            document.getElementById('future-value').innerText = '$' + Math.round(futureValue).toLocaleString();
+            document.getElementById('total-contributions').innerText = '$' + Math.round(totalContributed).toLocaleString();
+            document.getElementById('total-interest').innerText = '$' + Math.round(totalInterest).toLocaleString();
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Investment ROI Calculator",
+  "url": "https://budgetcalculator.github.io/investment-roi",
+  "operatingSystem": "All",
+  "applicationCategory": "FinanceApplication",
+  "description": "An advanced investment return on investment (ROI) calculator to project future wealth, compound interest, and portfolio growth over time.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Compound interest projection, Annual contribution tracking, Inflation adjustment, ROI percentage calculation"
+}
+</script>  
+</body>
+</html>
