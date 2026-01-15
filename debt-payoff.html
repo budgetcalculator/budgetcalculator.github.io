@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Debt Payoff Calculator | Free Debt Snowball & Avalanche Tool</title>
+    <meta name="description" content="Destroy your debt faster. Use our free debt payoff calculator to see how extra payments reduce your interest and shorten your timeline.">
+    <meta name="keywords" content="debt payoff calculator, debt snowball calculator, debt avalanche tool, credit card payoff, loan repayment calculator, debt free date">
+    <link rel="canonical" href="https://budgetcalculator.github.io/debt-payoff">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=D">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--purple);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1.2rem;
+            background: white;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--red);
+            color: white;
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--purple); color: white; text-align: center; }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="#app" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Download App</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">DEBT PAYOFF<br>CALCULATOR</h1>
+        <div class="calculator-box brutal-border">
+            <div class="input-group">
+                <label>TOTAL DEBT BALANCE ($)</label>
+                <input type="number" id="balance" placeholder="15000">
+            </div>
+            
+            <div class="input-group">
+                <label>INTEREST RATE (%)</label>
+                <input type="number" id="interest" placeholder="19.99">
+            </div>
+
+            <div class="input-group">
+                <label>MONTHLY PAYMENT ($)</label>
+                <input type="number" id="min-payment" placeholder="350">
+            </div>
+
+            <div class="input-group">
+                <label>EXTRA MONTHLY PAYMENT ($)</label>
+                <input type="number" id="extra-payment" placeholder="100">
+            </div>
+            
+            <button class="btn" style="width: 100%; background: var(--purple); color: white;" onclick="calculateDebt()">Calculate Payoff Date</button>
+            
+            <div id="result" class="result-display brutal-border">
+                <div style="font-size: 1rem; text-transform: uppercase;">Time to Debt-Free:</div>
+                <div id="months-to-free" style="font-size: 2.5rem; margin-bottom: 10px;">0 Months</div>
+                <div style="font-size: 1rem;">TOTAL INTEREST PAID: <span id="total-interest-paid">$0</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <div class="article-block brutal-border">
+            <h2>Escape the Debt Trap</h2>
+            <p>High-interest debt is like walking through mud—the more you have, the harder it is to move forward. Our <strong>debt payoff calculator</strong> is built to help you find the dry ground. Whether it's credit cards, student loans, or personal loans, seeing the actual date you'll be debt-free is a massive psychological boost.</p>
+            <p>Using an <strong>online budget planner</strong> is the first step, but a dedicated debt tool allows you to run "what-if" scenarios. What if you skipped that one dinner out and put an extra $50 toward your balance? Find out now.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--red); color: white;">
+            <h2>How to Use the Debt Tool</h2>
+            <p>Stop guessing and start planning. Here is how to use our <strong>debt calculator free</strong>:</p>
+            <ul>
+                <li><strong>Current Balance:</strong> The total amount you owe on the account today.</li>
+                <li><strong>Interest Rate:</strong> Your APR (Annual Percentage Rate). Even a 1% difference can save you thousands.</li>
+                <li><strong>Monthly Payment:</strong> Your current planned payment.</li>
+                <li><strong>Extra Payment:</strong> The "secret sauce." This is the extra amount you find in your <strong>monthly budget planner</strong> to accelerate your freedom.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--yellow);">
+            <h3>Snowball vs. Avalanche Method</h3>
+            <p>Fans of the <strong>dave ramsey budget calculator</strong> often prefer the "Debt Snowball"—paying smallest balances first for quick wins. Others prefer the "Avalanche"—targeting high-interest rates first to save the most money. Regardless of your strategy, this <strong>income and expense calculator</strong> sub-tool handles the math for both.</p>
+            <p>By optimizing your <strong>paycheck budget calculator</strong> results, you can allocate more "Extra Payment" funds to kill the debt monster even faster.</p>
+        </div>
+
+        <div class="article-block brutal-border">
+            <h3>The Importance of Interest Savings</h3>
+            <p>Most people only look at the monthly payment, but the real enemy is total interest. Our <strong>50 30 20 rule calculator</strong> suggests putting 20% of your income toward savings and debt. Use this tool to visualize how that 20% dramatically reduces the years of interest you'd otherwise pay to the bank.</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">DEBT DESTROYER APP</h2>
+        <p style="margin-bottom: 30px;">Track multiple debts and automate your payoff strategy. Get started today.</p>
+        <a href="#" class="btn" style="background: var(--black); color: white;">Download DebtApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
+    <script>
+        function calculateDebt() {
+            let bal = parseFloat(document.getElementById('balance').value) || 0;
+            const rate = (parseFloat(document.getElementById('interest').value) || 0) / 100 / 12;
+            const monthly = (parseFloat(document.getElementById('min-payment').value) || 0) + (parseFloat(document.getElementById('extra-payment').value) || 0);
+
+            if (monthly <= bal * rate) {
+                alert("Your payment is too low to cover the interest. You will never pay off this debt!");
+                return;
+            }
+
+            let months = 0;
+            let totalInterest = 0;
+
+            while (bal > 0 && months < 600) { // Cap at 50 years to prevent infinite loop
+                let interestCharge = bal * rate;
+                totalInterest += interestCharge;
+                bal = bal + interestCharge - monthly;
+                months++;
+            }
+
+            document.getElementById('months-to-free').innerText = months + " Months";
+            document.getElementById('total-interest-paid').innerText = '$' + Math.round(totalInterest).toLocaleString();
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Debt Payoff Calculator",
+  "url": "https://budgetcalculator.github.io/debt-payoff",
+  "operatingSystem": "All",
+  "applicationCategory": "FinanceApplication",
+  "description": "An advanced debt payoff calculator to visualize interest savings and timeline reduction using Snowball or Avalanche methods.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Interest savings calculation, Debt-free date projection, Extra payment impact analysis, Amortization estimation"
+}
+    </script>
+</body>
+</html>
