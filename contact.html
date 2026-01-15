@@ -10,48 +10,259 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | My Budget Support</title>
+    
+    <title>Contact Us | My Budget Calculator</title>
+    <meta name="description" content="Have questions about our tax, debt, or budget calculators? Contact the My Budget team for support and inquiries.">
+    <link rel="canonical" href="https://budgetcalculator.github.io/contact">
+
     <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=C">
+
     <style>
         :root {
             --bg-cream: #fdfaf0;
             --black: #000000;
             --blue: #3b82f6;
             --green: #22c55e;
+            --red: #ef4444;
             --yellow: #eab308;
+            --purple: #a855f7;
             --brutal-shadow: 6px 6px 0px #000;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Black', 'Arial Black', sans-serif; }
-        body { background-color: var(--bg-cream); color: var(--black); }
-        .brutal-border { border: 4px solid var(--black); box-shadow: var(--brutal-shadow); }
-        
-        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--black); background: white; }
-        .logo { font-size: 1.5rem; font-weight: 900; background: var(--black); padding: 5px 15px; color: white; border: 3px solid var(--black); text-decoration: none; }
-        
-        .contact-container { max-width: 600px; margin: 80px auto; padding: 20px; text-align: center; }
-        .contact-card { background: white; padding: 60px 40px; }
-        h1 { font-size: 4rem; -webkit-text-stroke: 2px var(--black); color: var(--green); margin-bottom: 20px; line-height: 0.9; }
-        p { font-size: 1.2rem; margin-bottom: 30px; }
-        .email-link { display: inline-block; padding: 20px 40px; background: var(--yellow); color: var(--black); text-decoration: none; font-weight: 900; font-size: 1.5rem; border: 4px solid var(--black); box-shadow: 8px 8px 0px var(--black); transition: 0.1s; }
-        .email-link:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--black); }
 
-        footer { margin-top: 100px; padding: 40px; background: white; border-top: 4px solid var(--black); text-align: center; font-weight: 900; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 20px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--green);
+            line-height: 0.9;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: var(--blue);
+            color: white;
+            padding: 40px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1rem;
+            background: white;
+        }
+
+        .article-section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            background: white;
+            margin-bottom: 40px;
+        }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="/" class="logo">My Budget</a>
-        <a href="/about" style="text-decoration:none; color:black; font-weight:900">BACK TO ABOUT</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="/" class="btn" style="background: var(--yellow); font-size: 0.8rem; padding: 10px 20px;">All Calculators</a>
+        </div>
     </nav>
 
+    <header>
+        <h1 class="hero-title">GET IN<br>TOUCH</h1>
+    </header>
+
     <main class="contact-container">
-        <div class="contact-card brutal-border">
-            <h1>GET IN<br>TOUCH</h1>
-            <p>Have a suggestion for a new calculator? Found a bug? Just want to say hello?</p>
-            <a href="mailto:nolushac@gmail.com" class="email-link">nolushac@gmail.com</a>
-            <p style="margin-top: 40px; font-size: 0.9rem;">We typically respond within 24-48 business hours.</p>
+        <div class="contact-info brutal-border">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; text-transform: uppercase;">Contact Info</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px;">Have a suggestion for a new financial tool? Found a bug? Just want to say hello? Drop us a line.</p>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="color: var(--yellow);">Email Us Directly:</label>
+                <p style="font-size: 1.5rem; font-weight: 900;">nolushac@gmail.com</p>
+            </div>
+
+            <div style="margin-top: 40px; padding: 20px; background: rgba(0,0,0,0.2); border-left: 10px solid var(--yellow);">
+                <p style="margin-bottom: 0;"><strong>Response Time:</strong> We usually reply within 24-48 business hours.</p>
+            </div>
+        </div>
+
+        <div class="contact-form brutal-border">
+            <form action="mailto:nolushac@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" name="subject" required placeholder="Calculator Feedback">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; background: var(--purple); color: white;">Send Message</button>
+            </form>
         </div>
     </main>
+
+    <div class="article-section">
+        <div class="article-block brutal-border">
+            <h2 style="font-size: 2rem; text-transform: uppercase; margin-bottom: 20px; background: var(--black); color: white; display: inline-block; padding: 5px 15px;">Why Contact Us?</h2>
+            <p>At My Budget, we are constantly expanding our suite of <strong>free online financial tools</strong>. Your feedback is what drives our development. Whether you need a specific feature in the <strong>monthly budget planner</strong> or have questions about how our <strong>mortgage interest estimator</strong> works, we want to hear from you.</p>
+            <p>We believe financial literacy should be accessible and bold. If you are a developer or a financial educator looking to collaborate, reach out via the email above.</p>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-grid">
@@ -84,5 +295,6 @@
             &copy; 2025 BUDGET CALCULATOR.
         </div>
     </footer>
+
 </body>
 </html>
