@@ -1,39 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | My Budget</title>
+    <title>Contact Us | My Budget Support</title>
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=C">
     <style>
-        :root { --bg-cream: #fdfaf0; --black: #000; --green: #22c55e; --yellow: #eab308; }
-        body { background: var(--bg-cream); font-family: 'Helvetica Black', Arial, sans-serif; padding: 40px 20px; }
-        .container { max-width: 600px; margin: 0 auto; border: 4px solid var(--black); background: white; padding: 40px; box-shadow: 8px 8px 0px var(--black); }
-        h1 { font-size: 3rem; background: var(--green); border: 4px solid var(--black); padding: 10px; margin-bottom: 30px; }
-        label { display: block; font-weight: 900; margin-bottom: 5px; }
-        input, textarea { width: 100%; padding: 15px; border: 3px solid var(--black); margin-bottom: 20px; font-size: 1rem; }
-        button { background: var(--yellow); padding: 15px 30px; border: 3px solid var(--black); font-weight: 900; cursor: pointer; box-shadow: 4px 4px 0px var(--black); }
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --yellow: #eab308;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Black', 'Arial Black', sans-serif; }
+        body { background-color: var(--bg-cream); color: var(--black); }
+        .brutal-border { border: 4px solid var(--black); box-shadow: var(--brutal-shadow); }
+        
+        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--black); background: white; }
+        .logo { font-size: 1.5rem; font-weight: 900; background: var(--black); padding: 5px 15px; color: white; border: 3px solid var(--black); text-decoration: none; }
+        
+        .contact-container { max-width: 600px; margin: 80px auto; padding: 20px; text-align: center; }
+        .contact-card { background: white; padding: 60px 40px; }
+        h1 { font-size: 4rem; -webkit-text-stroke: 2px var(--black); color: var(--green); margin-bottom: 20px; line-height: 0.9; }
+        p { font-size: 1.2rem; margin-bottom: 30px; }
+        .email-link { display: inline-block; padding: 20px 40px; background: var(--yellow); color: var(--black); text-decoration: none; font-weight: 900; font-size: 1.5rem; border: 4px solid var(--black); box-shadow: 8px 8px 0px var(--black); transition: 0.1s; }
+        .email-link:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--black); }
+
+        footer { margin-top: 100px; padding: 40px; background: white; border-top: 4px solid var(--black); text-align: center; font-weight: 900; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>GET IN TOUCH</h1>
-        <form>
-            <label>YOUR NAME</label>
-            <input type="text" placeholder="JOE BUDGET">
-            <label>YOUR EMAIL</label>
-            <input type="email" placeholder="HELLO@WEBSITE.COM">
-            <label>MESSAGE</label>
-            <textarea rows="5"></textarea>
-            <button type="button">SEND MESSAGE</button>
-        </form>
-    </div>
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <a href="/about" style="text-decoration:none; color:black; font-weight:900">BACK TO ABOUT</a>
+    </nav>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ContactPage",
-      "name": "Contact My Budget"
-    }
-    </script>
+    <main class="contact-container">
+        <div class="contact-card brutal-border">
+            <h1>GET IN<br>TOUCH</h1>
+            <p>Have a suggestion for a new calculator? Found a bug? Just want to say hello?</p>
+            <a href="mailto:nolushac@gmail.com" class="email-link">nolushac@gmail.com</a>
+            <p style="margin-top: 40px; font-size: 0.9rem;">We typically respond within 24-48 business hours.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
 </body>
 </html>
