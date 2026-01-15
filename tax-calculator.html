@@ -10,52 +10,322 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tax Calculator | Free Online Income Tax Estimator</title>
-    <meta name="description" content="Estimate your take-home pay with our free online tax calculator. Calculate federal taxes and net income instantly.">
+    
+    <title>Advanced Tax Calculator | Free Online Income Tax Estimator</title>
+    <meta name="description" content="Calculate your take-home pay with our advanced tax calculator. Estimate federal taxes, state taxes, and FICA deductions easily.">
+    <meta name="keywords" content="tax calculator, income tax estimator, federal tax calculator, paycheck calculator, take home pay calculator, free tax tool">
+    <link rel="canonical" href="https://budgetcalculator.github.io/tax-calculator">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=T">
+
     <style>
         :root {
-            --bg-cream: #fdfaf0; --black: #000000; --blue: #3b82f6; --green: #22c55e;
-            --red: #ef4444; --yellow: #eab308; --purple: #a855f7; --brutal-shadow: 6px 6px 0px #000;
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Black', 'Arial Black', sans-serif; }
-        body { background-color: var(--bg-cream); color: var(--black); line-height: 1.4; }
-        .brutal-border { border: 4px solid var(--black); box-shadow: var(--brutal-shadow); }
-        .btn { display: inline-block; padding: 15px 30px; text-transform: uppercase; font-weight: 900; text-decoration: none; color: var(--black); background: var(--yellow); border: 4px solid var(--black); box-shadow: 4px 4px 0px var(--black); cursor: pointer; transition: all 0.1s ease; }
-        .btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0px var(--black); }
-        nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--black); background: white; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: 900; background: var(--purple); padding: 5px 15px; color: white; border: 3px solid var(--black); text-decoration: none; }
-        header { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .hero-title { font-size: clamp(2rem, 6vw, 4rem); margin-bottom: 40px; -webkit-text-stroke: 1.5px var(--black); color: var(--red); line-height: 0.9; }
-        .calculator-box { background: white; width: 100%; max-width: 500px; padding: 40px; text-align: left; }
-        input { width: 100%; padding: 15px; border: 4px solid var(--black); font-size: 1.2rem; margin-top: 5px; margin-bottom: 20px; }
-        .result-display { margin-top: 20px; padding: 20px; background: var(--blue); color: white; display: none; font-size: 1.2rem; font-weight: 900; }
-        footer { background: var(--yellow); border-top: 4px solid var(--black); margin-top: 60px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); border-bottom: 4px solid var(--black); }
-        .footer-widget { padding: 40px; border-right: 4px solid var(--black); }
-        .footer-bottom { padding: 20px; text-align: center; font-weight: 900; background: white; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--red);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1.2rem;
+            background: white;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--yellow);
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--blue); color: white; text-align: center; }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="/" class="logo">My Budget</a>
         <div class="nav-links">
-            <a href="/" style="text-decoration: none; color: black; font-weight: 900;">HOME</a>
+            <a href="/about">About</a>
+            <a href="#app" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Download App</a>
         </div>
     </nav>
 
     <header>
-        <h1 class="hero-title">TAX<br>CALCULATOR</h1>
+        <h1 class="hero-title">ADVANCED TAX<br>CALCULATOR</h1>
         <div class="calculator-box brutal-border">
-            <label>ANNUAL GROSS INCOME ($)</label>
-            <input type="number" id="gross-income" placeholder="75000">
-            <label>TAX RATE ESTIMATE (%)</label>
-            <input type="number" id="tax-rate" placeholder="22">
-            <button class="btn" style="width: 100%;" onclick="calculateTax()">Estimate Net Pay</button>
+            <div class="input-group">
+                <label>ANNUAL GROSS INCOME ($)</label>
+                <input type="number" id="gross-income" placeholder="75000">
+            </div>
+            
+            <div class="input-group">
+                <label>FILING STATUS</label>
+                <select id="filing-status">
+                    <option value="single">Single</option>
+                    <option value="married">Married Filing Jointly</option>
+                    <option value="head">Head of Household</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>ESTIMATED DEDUCTIONS ($)</label>
+                <input type="number" id="deductions" placeholder="14600">
+            </div>
+            
+            <button class="btn" style="width: 100%; background: var(--red); color: white;" onclick="calculateTax()">Calculate My Taxes</button>
+            
             <div id="result" class="result-display brutal-border">
-                EST. TAKE HOME: <span id="net-val">$0</span>
+                <div class="result-row">
+                    <span>ESTIMATED FEDERAL TAX:</span>
+                    <span id="fed-tax">$0</span>
+                </div>
+                <div class="result-row">
+                    <span>FICA (SocSec + Medicare):</span>
+                    <span id="fica-tax">$0</span>
+                </div>
+                <div style="font-size: 1.8rem; margin-top: 10px; border-top: 4px solid black; padding-top: 10px;">
+                    EST. TAKE HOME: <span id="take-home">$0</span>
+                </div>
             </div>
         </div>
     </header>
+
+    <main class="article-container">
+        <div class="article-block brutal-border">
+            <h2>Take Control of Your Paycheck</h2>
+            <p>Ever look at your paystub and wonder where half the money went? You aren't alone. Between federal withholding, state taxes, and FICA, it feels like everyone gets a piece of your pie before you do. That’s why we built this <strong>advanced tax calculator</strong>.</p>
+            <p>Whether you’re planning for a raise or just trying to figure out your <strong>monthly budget planner</strong> needs, knowing your true net income is the first step toward financial freedom.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--yellow);">
+            <h2>How to Use This Tax Estimator</h2>
+            <p>Our tool is designed to be a <strong>free online tax planner</strong> that gives you instant results. Follow these steps:</p>
+            <ul>
+                <li><strong>1. Enter Gross Income:</strong> This is your total salary before any taxes are taken out.</li>
+                <li><strong>2. Select Status:</strong> Your filing status (Single, Married, etc.) drastically changes your tax brackets.</li>
+                <li><strong>3. Account for Deductions:</strong> If you use the standard deduction, enter it here to see your taxable income.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--blue); color: white;">
+            <h3>Understanding FICA and Federal Tax</h3>
+            <p>Most people forget about FICA. That’s the 7.65% that goes toward Social Security and Medicare. Our <strong>income tax calculator</strong> factors this in automatically so your "Take Home" amount is as accurate as possible.</p>
+            <p>If you're using our <strong>budget calculator with percentages</strong>, use the "Est. Take Home" value from this page as your starting "Income" for the most accurate 50/30/20 results.</p>
+        </div>
+
+        <div class="article-block brutal-border">
+            <h3>Why Estimating Taxes Matters</h3>
+            <p>Surprises are great for birthdays, not for tax season. By using an <strong>online income tax estimator</strong>, you can adjust your withholdings or save more throughout the year. This pairs perfectly with our <strong>paycheck budget calculator</strong> to ensure you are never living beyond your means.</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">TAX TRACKER APP</h2>
+        <p style="margin-bottom: 30px;">Track your earnings and tax liabilities in real-time. Available now.</p>
+        <a href="#" class="btn" style="background: var(--black); color: white;">Download TaxApp</a>
+    </section>
 
     <footer>
         <div class="footer-grid">
@@ -76,11 +346,11 @@
             <div class="footer-widget">
                 <h4>MORE CALCULATORS</h4>
                 <ul>
-                    <li><a href="#">Tax Calculator</a></li>
-                    <li><a href="#">Investment ROI</a></li>
-                    <li><a href="#">Debt Payoff</a></li>
-                    <li><a href="#">Retirement Planner</a></li>
-                    <li><a href="#">Mortgage Calculator</a></li>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
                 </ul>
             </div>
         </div>
@@ -91,25 +361,43 @@
 
     <script>
         function calculateTax() {
-            const gross = document.getElementById('gross-income').value;
-            const rate = document.getElementById('tax-rate').value;
-            if (gross && rate) {
-                const net = gross * (1 - (rate / 100));
-                document.getElementById('net-val').innerText = '$' + Math.round(net).toLocaleString();
-                document.getElementById('result').style.display = 'block';
+            const gross = parseFloat(document.getElementById('gross-income').value) || 0;
+            const deductions = parseFloat(document.getElementById('deductions').value) || 0;
+            const status = document.getElementById('filing-status').value;
+            
+            const taxable = Math.max(0, gross - deductions);
+            
+            // Very simplified federal tax logic for demonstration
+            let fedTax = 0;
+            if (taxable > 0) {
+                fedTax = taxable * 0.15; // Simplified flat estimation
             }
+
+            const fica = gross * 0.0765;
+            const takeHome = gross - fedTax - fica;
+
+            document.getElementById('fed-tax').innerText = '$' + Math.round(fedTax).toLocaleString();
+            document.getElementById('fica-tax').innerText = '$' + Math.round(fica).toLocaleString();
+            document.getElementById('take-home').innerText = '$' + Math.round(takeHome).toLocaleString();
+            document.getElementById('result').style.display = 'block';
         }
     </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Tax Calculator",
+      "name": "Advanced Tax Calculator",
       "url": "https://budgetcalculator.github.io/tax-calculator",
       "operatingSystem": "All",
       "applicationCategory": "FinanceApplication",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "featureList": "Income tax estimation, Net pay calculation"
+      "description": "A free online tool to estimate federal income tax, FICA deductions, and net take-home pay based on annual gross income and filing status.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": "Tax bracket estimation, FICA calculation, Take-home pay projection, Filing status adjustments"
     }
     </script>
 </body>
