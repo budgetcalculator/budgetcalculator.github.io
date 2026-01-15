@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Advanced Retirement Planner | Free Retirement Nest Egg Calculator</title>
+    <meta name="description" content="Plan your future with our advanced retirement calculator. Calculate nest egg requirements, withdrawal rates, and investment growth for a secure retirement.">
+    <meta name="keywords" content="retirement planner, retirement calculator, nest egg calculator, 401k planner, retirement savings tool, financial independence calculator">
+    <link rel="canonical" href="https://budgetcalculator.github.io/retirement-planner">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=R">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--blue);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 4px solid var(--black);
+            font-size: 1.2rem;
+            background: white;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--green);
+            color: black;
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--yellow); color: black; text-align: center; }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="#app" class="btn" style="background: var(--red); color: white; font-size: 0.8rem; padding: 10px 20px;">Download App</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">RETIREMENT<br>PLANNER</h1>
+        <div class="calculator-box brutal-border">
+            <div class="input-group">
+                <label>CURRENT AGE</label>
+                <input type="number" id="current-age" placeholder="30">
+            </div>
+            
+            <div class="input-group">
+                <label>RETIREMENT AGE</label>
+                <input type="number" id="retirement-age" placeholder="65">
+            </div>
+
+            <div class="input-group">
+                <label>CURRENT SAVINGS ($)</label>
+                <input type="number" id="current-savings" placeholder="50000">
+            </div>
+
+            <div class="input-group">
+                <label>MONTHLY CONTRIBUTION ($)</label>
+                <input type="number" id="monthly-savings" placeholder="1000">
+            </div>
+
+            <div class="input-group">
+                <label>ANNUAL RETURN (%)</label>
+                <input type="number" id="annual-return" placeholder="7">
+            </div>
+            
+            <button class="btn" style="width: 100%; background: var(--blue); color: white;" onclick="calculateRetirement()">Analyze My Future</button>
+            
+            <div id="result" class="result-display brutal-border">
+                <div style="font-size: 1rem; text-transform: uppercase;">Est. Nest Egg at Retirement:</div>
+                <div id="total-nest-egg" style="font-size: 2.5rem; margin-bottom: 10px;">$0</div>
+                <div style="font-size: 1rem;">EST. MONTHLY INCOME (4% Rule): <span id="monthly-income">$0</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <div class="article-block brutal-border">
+            <h2>Design Your Golden Years</h2>
+            <p>Retirement isn't an age; it's a number in a bank account. Our <strong>advanced retirement planner</strong> helps you find that number. By factoring in your current age, your goal retirement date, and your investment growth, you can stop crossing your fingers and start following a blueprint.</p>
+            <p>Using this alongside our <strong>monthly budget planner</strong> ensures that you aren't just saving "whatever is left," but rather intentionally building the life you want to lead when you stop working.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--blue); color: white;">
+            <h2>How the Retirement Calculator Works</h2>
+            <p>Math is the only tool that can see the future. Here is how to fill out this <strong>free retirement tool</strong>:</p>
+            <ul>
+                <li><strong>Retirement Age:</strong> When do you want to clock out for the last time? The earlier this is, the harder your money has to work.</li>
+                <li><strong>Current Savings:</strong> Include your 401k, IRA, and brokerage accounts.</li>
+                <li><strong>Monthly Contribution:</strong> This should be a key part of your <strong>paycheck budget calculator</strong> strategy.</li>
+                <li><strong>Annual Return:</strong> 7% is the historical inflation-adjusted average for the stock market.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--purple); color: white;">
+            <h3>The 4% Rule and Your Nest Egg</h3>
+            <p>Once you reach your goal, how much can you spend? Financial experts often point to the "4% Rule"—the idea that you can withdraw 4% of your total nest egg annually without running out of money. Our <strong>income tax calculator</strong> can help you estimate how much of that withdrawal will be eaten by Uncle Sam.</p>
+            <p>If your <strong>50 30 20 rule calculator</strong> results show you're only saving 10%, you might need to adjust your lifestyle to hit these retirement goals faster.</p>
+        </div>
+
+        
+
+        <div class="article-block brutal-border">
+            <h3>Why Early Planning is Vital</h3>
+            <p>Time is the most powerful asset in your <strong>investment ROI calculator</strong>. A 25-year-old saving $500 a month will often end up with significantly more than a 45-year-old saving $1,500 a month. This is the "magic" of compound growth that our <strong>online budget planner</strong> emphasizes across all our financial modules.</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">RETIREMENT READY</h2>
+        <p style="margin-bottom: 30px;">Get personalized advice and portfolio tracking in one app. Free for a limited time.</p>
+        <a href="#" class="btn" style="background: var(--black); color: white;">Get the App</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
+    <script>
+        function calculateRetirement() {
+            const age = parseInt(document.getElementById('current-age').value) || 0;
+            const rAge = parseInt(document.getElementById('retirement-age').value) || 0;
+            const P = parseFloat(document.getElementById('current-savings').value) || 0;
+            const PMT = parseFloat(document.getElementById('monthly-savings').value) || 0;
+            const r = (parseFloat(document.getElementById('annual-return').value) || 0) / 100 / 12;
+            
+            const years = rAge - age;
+            if (years <= 0) {
+                alert("Retirement age must be greater than current age!");
+                return;
+            }
+            
+            const n = years * 12;
+            let fv = 0;
+
+            if (r === 0) {
+                fv = P + (PMT * n);
+            } else {
+                fv = P * Math.pow(1 + r, n) + PMT * ((Math.pow(1 + r, n) - 1) / r);
+            }
+
+            const monthlyIncome = (fv * 0.04) / 12;
+
+            document.getElementById('total-nest-egg').innerText = '$' + Math.round(fv).toLocaleString();
+            document.getElementById('monthly-income').innerText = '$' + Math.round(monthlyIncome).toLocaleString();
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Advanced Retirement Planner",
+  "url": "https://budgetcalculator.github.io/retirement-planner",
+  "operatingSystem": "All",
+  "applicationCategory": "FinanceApplication",
+  "description": "An advanced retirement planning tool to estimate total savings needed, monthly withdrawal amounts, and nest egg longevity based on inflation and return rates.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Retirement age projection, Inflation adjustment, Safe withdrawal rate analysis, Nest egg longevity estimation"
+}
+ </script> 
+</body>
+</html>
