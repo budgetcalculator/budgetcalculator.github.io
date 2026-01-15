@@ -1,35 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | My Budget</title>
+    
+    <title>Privacy Policy | My Budget Calculator</title>
+    <meta name="description" content="Read the My Budget privacy policy. Learn how we protect your data and maintain privacy on our tax, debt, and budget calculators.">
+    <link rel="canonical" href="https://budgetcalculator.github.io/privacy">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=P">
+
     <style>
-        :root { --bg-cream: #fdfaf0; --black: #000; --blue: #3b82f6; }
-        body { background: var(--bg-cream); font-family: 'Helvetica Black', Arial, sans-serif; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; border: 4px solid var(--black); background: white; padding: 40px; box-shadow: 8px 8px 0px var(--black); }
-        h1 { background: var(--blue); color: white; border: 4px solid var(--black); padding: 10px; display: inline-block; margin-bottom: 20px; }
-        h2 { border-bottom: 3px solid var(--black); margin-top: 30px; }
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--yellow);
+            line-height: 0.9;
+        }
+
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .policy-card {
+            background: white;
+            padding: 50px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 30px 0 15px 0;
+            text-transform: uppercase;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .policy-card { padding: 25px; }
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>PRIVACY POLICY</h1>
-        <p><strong>Last Updated: December 2025</strong></p>
-        <h2>1. DATA COLLECTION</h2>
-        <p>We don't want your data. The numbers you enter into the Budget Calculator stay in your browser. We do not store, sell, or look at your financial inputs.</p>
-        <h2>2. COOKIES</h2>
-        <p>We use minimal cookies for site performance. No tracking, no spying.</p>
-        <h2>3. THIRD PARTIES</h2>
-        <p>We do not share your information because we don't have it in the first place.</p>
-    </div>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Privacy Policy"
-    }
-    </script>
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="/" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Use Calculators</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">PRIVACY<br>POLICY</h1>
+        <p style="font-weight: 900; text-transform: uppercase;">Last Updated: January 2026</p>
+    </header>
+
+    <main class="policy-container">
+        <div class="policy-card brutal-border">
+            <h2>1. Introduction</h2>
+            <p>Welcome to My Budget ("we," "our," or "us"). We are committed to protecting your personal information and your right to privacy. This policy explains how we treat the information you enter into our financial calculators.</p>
+
+            <h2>2. Data Collection</h2>
+            <p><strong>Calculated Data:</strong> Any financial information you enter into our calculators (income, debts, tax details, or home prices) is processed locally on your device or via secure temporary sessions. We do NOT store your personal financial numbers in a database.</p>
+            <p><strong>Cookies & Tracking:</strong> We use Google Analytics to monitor site traffic. This helps us understand which calculators are most useful to our visitors. This data is anonymous and does not identify you personally.</p>
+
+            <h2>3. Third-Party Services</h2>
+            <p>We use Google Tag Manager and Google Analytics. These third parties may collect information such as your IP address and browser type to provide us with website performance metrics.</p>
+
+            <h2>4. Security</h2>
+            <p>Because our calculators are "client-side" focused, your sensitive financial data remains in your browser. However, we encourage users to always use a secure connection when performing financial planning.</p>
+
+            <h2>5. Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time. The updated version will be indicated by an updated "Revised" date and will be effective as soon as it is accessible.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>If you have questions or comments about this policy, you may email us at:</p>
+            <p style="background: var(--yellow); padding: 10px; display: inline-block; font-weight: 900; border: 3px solid black;">
+                nolushac@gmail.com
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
 </body>
 </html>
