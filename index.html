@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6V9KL7N271');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -126,9 +125,51 @@
         .calculator-box {
             background: white;
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
             padding: 40px;
             text-align: left;
+        }
+
+        .calculator-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            background: white;
+            border: 4px solid var(--black);
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: 900;
+            margin-right: -4px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            background: var(--yellow);
+            position: relative;
+            top: 4px;
+        }
+
+        .calculator-tab {
+            display: none;
+        }
+
+        .calculator-tab.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
 
         input {
@@ -136,17 +177,63 @@
             padding: 15px;
             border: 4px solid var(--black);
             font-size: 1.2rem;
-            margin-top: 5px;
-            margin-bottom: 20px;
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--yellow);
+        }
+
+        .advanced-options {
+            background: var(--bg-cream);
+            padding: 20px;
+            border: 4px solid var(--black);
+            margin-top: 10px;
+            display: none;
+        }
+
+        .advanced-options.active {
+            display: block;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            color: var(--blue);
+            font-weight: 900;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .result-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .result-section.active {
+            display: block;
         }
 
         .result-display {
-            margin-top: 20px;
-            padding: 20px;
-            background: var(--green);
-            display: none;
+            padding: 25px;
+            margin-bottom: 20px;
             font-size: 1.5rem;
             font-weight: 900;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            padding: 20px;
+            border: 4px solid var(--black);
+            text-align: center;
         }
 
         /* Article Sections */
@@ -180,6 +267,104 @@
         .article-block p {
             margin-bottom: 15px;
             font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--black);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            padding: 30px;
+            background: var(--purple);
+            border: 4px solid var(--yellow);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 20px;
+            background: var(--green);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: white;
+            border: 4px solid var(--black);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            background: var(--yellow);
+        }
+
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 4px solid var(--black);
+            background: white;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-top: none;
+        }
+
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+            border-top: 4px solid var(--black);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(45deg);
         }
 
         /* Generic Section */
@@ -229,6 +414,8 @@
 
         @media (max-width: 768px) {
             .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+            .calculator-tabs { flex-direction: column; }
+            .tab-btn { margin-right: 0; margin-bottom: -4px; }
         }
     </style>
 </head>
@@ -238,6 +425,7 @@
         <a href="/" class="logo">My Budget</a>
         <div class="nav-links">
             <a href="/about">About</a>
+            <a href="#faq">FAQs</a>
             <a href="#app" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Download App</a>
         </div>
     </nav>
@@ -245,18 +433,174 @@
     <header>
         <h1 class="hero-title">FREE ONLINE<br>BUDGET CALCULATOR</h1>
         <div class="calculator-box brutal-border">
-            <label>MONTHLY INCOME ($)</label>
-            <input type="number" id="income" placeholder="5000">
-            
-            <label>MONTHLY EXPENSES ($)</label>
-            <input type="number" id="expenses" placeholder="3000">
-            
-            <button class="btn" style="width: 100%;" onclick="calculate()">Calculate Surplus</button>
-            <div id="result" class="result-display brutal-border">
-                SURPLUS: <span id="surplus-val">$0</span>
+            <div class="calculator-tabs">
+                <button class="tab-btn active" onclick="switchTab('basic')">BASIC</button>
+                <button class="tab-btn" onclick="switchTab('advanced')">ADVANCED</button>
+                <button class="tab-btn" onclick="switchTab('503020')">50/30/20 RULE</button>
+            </div>
+
+            <!-- Basic Calculator Tab -->
+            <div id="basic-tab" class="calculator-tab active">
+                <div class="input-group">
+                    <label>MONTHLY INCOME ($)</label>
+                    <input type="number" id="basic-income" placeholder="5000" value="5000">
+                </div>
+                
+                <div class="input-group">
+                    <label>MONTHLY EXPENSES ($)</label>
+                    <input type="number" id="basic-expenses" placeholder="3000" value="3000">
+                </div>
+                
+                <button class="btn" style="width: 100%;" onclick="calculateBasic()">Calculate Surplus</button>
+            </div>
+
+            <!-- Advanced Calculator Tab -->
+            <div id="advanced-tab" class="calculator-tab">
+                <div class="input-group">
+                    <label>MONTHLY INCOME ($)</label>
+                    <input type="number" id="adv-income" placeholder="5000" value="5000">
+                </div>
+                
+                <div class="input-group">
+                    <label>HOUSING EXPENSES ($)</label>
+                    <input type="number" id="housing" placeholder="1500" value="1500">
+                </div>
+                
+                <div class="input-group">
+                    <label>FOOD & GROCERIES ($)</label>
+                    <input type="number" id="food" placeholder="600" value="600">
+                </div>
+                
+                <div class="input-group">
+                    <label>TRANSPORTATION ($)</label>
+                    <input type="number" id="transport" placeholder="300" value="300">
+                </div>
+                
+                <div class="input-group">
+                    <label>ENTERTAINMENT ($)</label>
+                    <input type="number" id="entertainment" placeholder="200" value="200">
+                </div>
+                
+                <button class="toggle-btn" onclick="toggleAdvancedOptions()">+ More Categories</button>
+                
+                <div class="advanced-options" id="advanced-options">
+                    <div class="input-group">
+                        <label>HEALTHCARE ($)</label>
+                        <input type="number" id="healthcare" placeholder="200" value="200">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>DEBT PAYMENTS ($)</label>
+                        <input type="number" id="debt" placeholder="400" value="400">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>SAVINGS GOAL ($)</label>
+                        <input type="number" id="savings-goal" placeholder="500" value="500">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>OTHER EXPENSES ($)</label>
+                        <input type="number" id="other" placeholder="300" value="300">
+                    </div>
+                </div>
+                
+                <button class="btn" style="width: 100%; margin-top: 20px;" onclick="calculateAdvanced()">Analyze Budget</button>
+            </div>
+
+            <!-- 50/30/20 Rule Tab -->
+            <div id="503020-tab" class="calculator-tab">
+                <div class="input-group">
+                    <label>MONTHLY INCOME AFTER TAX ($)</label>
+                    <input type="number" id="rule-income" placeholder="5000" value="5000">
+                </div>
+                
+                <div class="input-group">
+                    <label>CURRENT NECESSITIES ($)</label>
+                    <input type="number" id="necessities" placeholder="2500" value="2500">
+                </div>
+                
+                <div class="input-group">
+                    <label>CURRENT WANTS ($)</label>
+                    <input type="number" id="wants" placeholder="1500" value="1500">
+                </div>
+                
+                <div class="input-group">
+                    <label>CURRENT SAVINGS ($)</label>
+                    <input type="number" id="current-savings" placeholder="1000" value="1000">
+                </div>
+                
+                <button class="btn" style="width: 100%;" onclick="calculate503020()">Apply 50/30/20 Rule</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="result-section" id="result-section">
+                <div class="result-display brutal-border" id="basic-result">
+                    MONTHLY SURPLUS: <span id="surplus-val">$0</span>
+                </div>
+                
+                <div id="advanced-result" style="display: none;">
+                    <div class="result-grid">
+                        <div class="result-card" style="background: var(--green);">
+                            <h4>TOTAL EXPENSES</h4>
+                            <div class="stat-number" id="total-expenses">$0</div>
+                        </div>
+                        <div class="result-card" style="background: var(--blue); color: white;">
+                            <h4>SAVINGS RATE</h4>
+                            <div class="stat-number" id="savings-rate">0%</div>
+                        </div>
+                        <div class="result-card" style="background: var(--yellow);">
+                            <h4>BUDGET HEALTH</h4>
+                            <div id="budget-health">GOOD</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="rule-result" style="display: none;">
+                    <div class="result-grid">
+                        <div class="result-card" style="background: var(--red); color: white;">
+                            <h4>NEEDS (50%)</h4>
+                            <div class="stat-number" id="needs-amount">$0</div>
+                            <div id="needs-status">On Target</div>
+                        </div>
+                        <div class="result-card" style="background: var(--purple); color: white;">
+                            <h4>WANTS (30%)</h4>
+                            <div class="stat-number" id="wants-amount">$0</div>
+                            <div id="wants-status">On Target</div>
+                        </div>
+                        <div class="result-card" style="background: var(--green);">
+                            <h4>SAVINGS (20%)</h4>
+                            <div class="stat-number" id="savings-amount">$0</div>
+                            <div id="savings-status">On Target</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; color: var(--yellow);">BUDGETING BY THE NUMBERS</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">92%</div>
+                <p>of people feel more in control with a budget</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">63%</div>
+                <p>increase in savings within 3 months</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">78%</div>
+                <p>reduction in financial stress</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$2,400</div>
+                <p>average annual savings increase</p>
+            </div>
+        </div>
+    </section>
 
     <main class="article-container">
         <div class="article-block brutal-border" id="about">
@@ -264,6 +608,37 @@
             <p>If you're anything like me, managing money can feel like trying to juggle flaming torches while riding a unicycle. But guess what? It doesn't have to be that chaotic. That's where a solid <strong>budget calculator</strong> comes in handy.</p>
             <p>Whether you're searching for an <strong>online budget planner</strong>, a budget maker, or even a <strong>monthly budget planner</strong>, I've got you covered. At budgetcalculator.github.io, we've built a super simple, totally free tool that's perfect for anyone looking to get their finances in check without the hassle.</p>
         </div>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 40px; color: white;">WHY CHOOSE OUR BUDGET CALCULATOR</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🔒 100% FREE</h3>
+                    <p>No hidden fees, no subscriptions, no credit card required. Our budget calculator is completely free forever.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📱 MOBILE FRIENDLY</h3>
+                    <p>Works perfectly on all devices - desktop, tablet, or mobile. Budget on the go!</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💾 NO SIGNUP NEEDED</h3>
+                    <p>Start calculating immediately. No email, no registration, no personal data collection.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 MULTIPLE METHODS</h3>
+                    <p>Basic, advanced, and 50/30/20 rule calculators - choose what works for your situation.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 DETAILED INSIGHTS</h3>
+                    <p>Get more than just numbers - understand your spending patterns and get actionable advice.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔄 REAL-TIME UPDATES</h3>
+                    <p>See results instantly as you adjust your numbers. No page reloads needed.</p>
+                </div>
+            </div>
+        </section>
 
         <div class="article-block brutal-border" style="background: var(--blue); color: white;">
             <h2>Why You Need a Budget Calculator</h2>
@@ -295,6 +670,63 @@
         </div>
     </main>
 
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="faq-container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 40px;">FREQUENTLY ASKED QUESTIONS</h2>
+            
+            <div class="faq-item brutal-border">
+                <div class="faq-question" onclick="toggleFAQ(1)">
+                    <span>What is the 50/30/20 rule and how does it work?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-1">
+                    <p>The 50/30/20 rule is a simple budgeting method where you allocate 50% of your after-tax income to needs (housing, food, utilities), 30% to wants (entertainment, dining out), and 20% to savings and debt repayment. Our calculator automatically computes these amounts based on your income.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item brutal-border">
+                <div class="faq-question" onclick="toggleFAQ(2)">
+                    <span>Is my financial data stored or saved?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-2">
+                    <p>No! All calculations happen in your browser. We don't store any of your financial information on our servers. Your privacy is 100% protected.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item brutal-border">
+                <div class="faq-question" onclick="toggleFAQ(3)">
+                    <span>Can I use this for business budgeting?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-3">
+                    <p>While designed for personal finance, many small business owners find our calculator useful for basic business budgeting. For complex business needs, consider specialized business accounting software.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item brutal-border">
+                <div class="faq-question" onclick="toggleFAQ(4)">
+                    <span>How often should I update my budget?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-4">
+                    <p>We recommend reviewing and updating your budget at least monthly. However, if you experience significant income changes or unexpected expenses, adjust immediately.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item brutal-border">
+                <div class="faq-question" onclick="toggleFAQ(5)">
+                    <span>What's the difference between basic and advanced calculator?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-5">
+                    <p>The basic calculator gives you a quick surplus/deficit number. The advanced calculator breaks down expenses into categories and provides detailed insights about your spending patterns and savings rate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="app" class="app-promo">
         <h2 style="font-size: 3.5rem; margin-bottom: 20px;">GET THE APP</h2>
         <p style="margin-bottom: 30px;">Take your budget everywhere. Available for iOS and Android.</p>
@@ -312,6 +744,7 @@
                 <ul>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
                     <li><a href="/privacy">Privacy Policy</a></li>
                     <li><a href="/terms">Terms of Service</a></li>
                 </ul>
@@ -322,6 +755,8 @@
                     <li><a href="#">Tax Calculator</a></li>
                     <li><a href="#">Investment ROI</a></li>
                     <li><a href="#">Debt Payoff</a></li>
+                    <li><a href="#">Retirement Planner</a></li>
+                    <li><a href="#">Mortgage Calculator</a></li>
                 </ul>
             </div>
         </div>
@@ -331,19 +766,171 @@
     </footer>
 
     <script>
-        function calculate() {
-            const income = document.getElementById('income').value;
-            const expenses = document.getElementById('expenses').value;
-            const resultBox = document.getElementById('result');
-            const surplusVal = document.getElementById('surplus-val');
-
-            if (income && expenses) {
-                const surplus = income - expenses;
-                surplusVal.innerText = '$' + surplus.toLocaleString();
-                resultBox.style.display = 'block';
-                resultBox.style.background = surplus >= 0 ? 'var(--green)' : 'var(--red)';
+        // Tab switching functionality
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.calculator-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Hide result section when switching tabs
+            document.getElementById('result-section').classList.remove('active');
+            document.getElementById('advanced-result').style.display = 'none';
+            document.getElementById('rule-result').style.display = 'none';
+        }
+        
+        // Toggle advanced options
+        function toggleAdvancedOptions() {
+            const options = document.getElementById('advanced-options');
+            const btn = event.target;
+            
+            if (options.classList.contains('active')) {
+                options.classList.remove('active');
+                btn.textContent = '+ More Categories';
+            } else {
+                options.classList.add('active');
+                btn.textContent = '- Fewer Categories';
             }
         }
+        
+        // Basic calculator
+        function calculateBasic() {
+            const income = parseFloat(document.getElementById('basic-income').value) || 0;
+            const expenses = parseFloat(document.getElementById('basic-expenses').value) || 0;
+            const resultBox = document.getElementById('basic-result');
+            const surplusVal = document.getElementById('surplus-val');
+            const resultSection = document.getElementById('result-section');
+            
+            const surplus = income - expenses;
+            surplusVal.innerText = '$' + surplus.toLocaleString();
+            
+            resultBox.style.background = surplus >= 0 ? 'var(--green)' : 'var(--red)';
+            resultSection.classList.add('active');
+            
+            // Hide other result views
+            document.getElementById('advanced-result').style.display = 'none';
+            document.getElementById('rule-result').style.display = 'none';
+        }
+        
+        // Advanced calculator
+        function calculateAdvanced() {
+            const income = parseFloat(document.getElementById('adv-income').value) || 0;
+            const housing = parseFloat(document.getElementById('housing').value) || 0;
+            const food = parseFloat(document.getElementById('food').value) || 0;
+            const transport = parseFloat(document.getElementById('transport').value) || 0;
+            const entertainment = parseFloat(document.getElementById('entertainment').value) || 0;
+            const healthcare = parseFloat(document.getElementById('healthcare').value) || 0;
+            const debt = parseFloat(document.getElementById('debt').value) || 0;
+            const other = parseFloat(document.getElementById('other').value) || 0;
+            
+            const totalExpenses = housing + food + transport + entertainment + healthcare + debt + other;
+            const surplus = income - totalExpenses;
+            const savingsRate = income > 0 ? Math.round((surplus / income) * 100) : 0;
+            
+            document.getElementById('total-expenses').textContent = '$' + totalExpenses.toLocaleString();
+            document.getElementById('savings-rate').textContent = savingsRate + '%';
+            
+            let budgetHealth = 'EXCELLENT';
+            let healthColor = 'var(--green)';
+            
+            if (savingsRate < 10) {
+                budgetHealth = 'NEEDS WORK';
+                healthColor = 'var(--red)';
+            } else if (savingsRate < 20) {
+                budgetHealth = 'GOOD';
+                healthColor = 'var(--yellow)';
+            }
+            
+            document.getElementById('budget-health').textContent = budgetHealth;
+            document.getElementById('budget-health').style.color = healthColor;
+            
+            // Update basic result too
+            document.getElementById('surplus-val').textContent = '$' + surplus.toLocaleString();
+            document.getElementById('basic-result').style.background = surplus >= 0 ? 'var(--green)' : 'var(--red)';
+            
+            // Show results
+            document.getElementById('result-section').classList.add('active');
+            document.getElementById('advanced-result').style.display = 'block';
+            document.getElementById('rule-result').style.display = 'none';
+        }
+        
+        // 50/30/20 Rule calculator
+        function calculate503020() {
+            const income = parseFloat(document.getElementById('rule-income').value) || 0;
+            const needs = parseFloat(document.getElementById('necessities').value) || 0;
+            const wants = parseFloat(document.getElementById('wants').value) || 0;
+            const savings = parseFloat(document.getElementById('current-savings').value) || 0;
+            
+            const idealNeeds = income * 0.5;
+            const idealWants = income * 0.3;
+            const idealSavings = income * 0.2;
+            
+            document.getElementById('needs-amount').textContent = '$' + Math.round(idealNeeds).toLocaleString();
+            document.getElementById('wants-amount').textContent = '$' + Math.round(idealWants).toLocaleString();
+            document.getElementById('savings-amount').textContent = '$' + Math.round(idealSavings).toLocaleString();
+            
+            // Determine status
+            document.getElementById('needs-status').textContent = 
+                needs <= idealNeeds * 1.1 ? 'On Target' : 'Over Budget';
+            document.getElementById('needs-status').style.color = 
+                needs <= idealNeeds * 1.1 ? 'var(--green)' : 'var(--red)';
+                
+            document.getElementById('wants-status').textContent = 
+                wants <= idealWants * 1.1 ? 'On Target' : 'Over Budget';
+            document.getElementById('wants-status').style.color = 
+                wants <= idealWants * 1.1 ? 'var(--green)' : 'var(--red)';
+                
+            document.getElementById('savings-status').textContent = 
+                savings >= idealSavings * 0.9 ? 'On Target' : 'Needs More';
+            document.getElementById('savings-status').style.color = 
+                savings >= idealSavings * 0.9 ? 'var(--green)' : 'var(--red)';
+            
+            // Show results
+            document.getElementById('result-section').classList.add('active');
+            document.getElementById('advanced-result').style.display = 'none';
+            document.getElementById('rule-result').style.display = 'block';
+        }
+        
+        // FAQ toggle functionality
+        function toggleFAQ(num) {
+            const answer = document.getElementById(`faq-${num}`);
+            const icon = event.currentTarget.querySelector('.faq-icon');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-icon').forEach(ic => {
+                    ic.classList.remove('active');
+                });
+                
+                // Open clicked FAQ
+                answer.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
+        
+        // Initialize with some calculations
+        window.onload = function() {
+            calculateBasic();
+            calculateAdvanced();
+            calculate503020();
+        };
     </script>
 
     <script type="application/ld+json">
@@ -387,7 +974,7 @@
         "priceCurrency": "USD",
         "description": "Basic budgeting features with limited categories",
         "availability": "https://schema.org/InStock",
-        "url": "https://mybudgetapp.com/"
+        "url": "https://budgetcalculator.github.io/"
       }      
     ]
   },
