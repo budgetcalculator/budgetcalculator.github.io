@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6V9KL7N271"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-6V9KL7N271');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Advanced Mortgage Calculator | Monthly Payment & Interest Estimator</title>
+    <meta name="description" content="Use our advanced mortgage calculator to estimate your monthly house payments. Includes property taxes, home insurance, and private mortgage insurance (PMI).">
+    <meta name="keywords" content="mortgage calculator, home loan calculator, monthly house payment, mortgage interest estimator, amortization schedule tool, free mortgage planner">
+    <link rel="canonical" href="https://budgetcalculator.github.io/mortgage-calculator">
+
+    <link rel="icon" type="image/png" href="https://via.placeholder.com/32/000000/FFFFFF?text=M">
+
+    <style>
+        :root {
+            --bg-cream: #fdfaf0;
+            --black: #000000;
+            --blue: #3b82f6;
+            --green: #22c55e;
+            --red: #ef4444;
+            --yellow: #eab308;
+            --purple: #a855f7;
+            --brutal-shadow: 6px 6px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Black', 'Arial Black', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--black);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .brutal-border {
+            border: 4px solid var(--black);
+            box-shadow: var(--brutal-shadow);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+            background: var(--yellow);
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px var(--black);
+        }
+
+        nav {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--black);
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--purple);
+            padding: 5px 15px;
+            color: white;
+            border: 3px solid var(--black);
+            text-decoration: none;
+        }
+
+        header {
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            margin-bottom: 40px;
+            -webkit-text-stroke: 2px var(--black);
+            color: var(--blue);
+            line-height: 0.9;
+        }
+
+        .calculator-box {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            text-align: left;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 4px solid var(--black);
+            font-size: 1.1rem;
+            background: white;
+        }
+
+        .result-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--green);
+            color: black;
+            display: none;
+            font-size: 1.1rem;
+            font-weight: 900;
+        }
+
+        .article-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .article-block {
+            padding: 40px;
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .article-block h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .article-block h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px 0;
+            background: var(--yellow);
+            display: inline-block;
+            padding: 5px 10px;
+            color: black;
+        }
+
+        .article-block p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 80px 20px;
+            border-bottom: 4px solid var(--black);
+        }
+
+        .app-promo { background: var(--blue); color: white; text-align: center; }
+
+        footer {
+            background: var(--yellow);
+            border-top: 4px solid var(--black);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            border-bottom: 4px solid var(--black);
+        }
+
+        .footer-widget {
+            padding: 40px;
+            border-right: 4px solid var(--black);
+        }
+
+        .footer-widget h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            background: var(--black);
+            color: white;
+            display: inline-block;
+            padding: 5px 10px;
+        }
+
+        .footer-widget ul { list-style: none; }
+        .footer-widget ul li { margin-bottom: 10px; }
+        .footer-widget a { color: var(--black); text-decoration: none; font-weight: bold; }
+
+        .footer-bottom {
+            padding: 20px;
+            text-align: center;
+            font-weight: 900;
+            background: white;
+        }
+
+        @media (max-width: 768px) {
+            .input-grid { grid-template-columns: 1fr; }
+            .footer-widget { border-right: none; border-bottom: 4px solid var(--black); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">My Budget</a>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="#app" class="btn" style="background: var(--green); font-size: 0.8rem; padding: 10px 20px;">Download App</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1 class="hero-title">MORTGAGE<br>CALCULATOR</h1>
+        <div class="calculator-box brutal-border">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label>HOME PRICE ($)</label>
+                    <input type="number" id="home-price" placeholder="400000">
+                </div>
+                <div class="input-group">
+                    <label>DOWN PAYMENT ($)</label>
+                    <input type="number" id="down-payment" placeholder="80000">
+                </div>
+                <div class="input-group">
+                    <label>LOAN TERM (YEARS)</label>
+                    <input type="number" id="loan-term" value="30">
+                </div>
+                <div class="input-group">
+                    <label>INTEREST RATE (%)</label>
+                    <input type="number" id="interest-rate" step="0.01" placeholder="6.5">
+                </div>
+                <div class="input-group">
+                    <label>ANNUAL TAX ($)</label>
+                    <input type="number" id="property-tax" placeholder="4800">
+                </div>
+                <div class="input-group">
+                    <label>HOME INSURANCE ($/YR)</label>
+                    <input type="number" id="insurance" placeholder="1200">
+                </div>
+            </div>
+            
+            <button class="btn" style="width: 100%; background: var(--blue); color: white; margin-top: 10px;" onclick="calculateMortgage()">Estimate Payment</button>
+            
+            <div id="result" class="result-display brutal-border">
+                <div style="font-size: 1rem; text-transform: uppercase;">Est. Total Monthly Payment:</div>
+                <div id="monthly-total" style="font-size: 2.5rem; margin-bottom: 10px;">$0</div>
+                <div style="font-size: 0.9rem; border-top: 2px solid black; padding-top: 10px;">
+                    PRINCIPAL & INT: <span id="pi-payment">$0</span><br>
+                    TAXES & INS: <span id="ti-payment">$0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="article-container">
+        <div class="article-block brutal-border">
+            <h2>Know Before You Buy</h2>
+            <p>Buying a home is the biggest financial decision of your life. Don't rely on the "estimated payment" on listing sites—they often leave out critical costs like taxes and insurance. Our <strong>advanced mortgage calculator</strong> gives you the full picture.</p>
+            <p>Pairing this with a <strong>monthly budget planner</strong> is essential. Your house payment shouldn't just fit your bank's criteria; it needs to fit your actual life.</p>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--yellow);">
+            <h2>How to Use This Mortgage Tool</h2>
+            <p>Accuracy matters when thousands of dollars are on the line. Here is how to use this <strong>online mortgage planner</strong>:</p>
+            <ul>
+                <li><strong>Down Payment:</strong> Aim for 20% to avoid Private Mortgage Insurance (PMI), but many loans allow as little as 3%.</li>
+                <li><strong>Interest Rate:</strong> Check current market averages for your credit score to get an accurate estimate.</li>
+                <li><strong>Property Tax:</strong> Look up the local tax rate for the area you are shopping in.</li>
+                <li><strong>Home Insurance:</strong> Get a quote or use the national average of around $1,500/year as a placeholder.</li>
+            </ul>
+        </div>
+
+        <div class="article-block brutal-border" style="background: var(--blue); color: white;">
+            <h3>Fitting a Home into Your Budget</h3>
+            <p>A common rule is that your "PITI" (Principal, Interest, Taxes, and Insurance) should not exceed 28% of your gross income. If you use our <strong>50 30 20 rule calculator</strong>, your mortgage falls into the 50% "Needs" category.</p>
+            <p>By using this tool alongside an <strong>income tax calculator</strong>, you can determine exactly how much house you can afford based on your actual take-home pay, not just your salary.</p>
+        </div>
+
+        <div class="article-block brutal-border">
+            <h3>The Impact of Extra Payments</h3>
+            <p>Just like our <strong>debt payoff calculator</strong> shows, small extra payments on your mortgage principal can save you tens of thousands in interest over 30 years. Even an extra $100 a month can shave years off your loan term.</p>
+        </div>
+    </main>
+
+    <section id="app" class="app-promo">
+        <h2 style="font-size: 3.5rem; margin-bottom: 20px;">HOME BUYER APP</h2>
+        <p style="margin-bottom: 30px;">Calculate payments on the go and track your home equity in real-time.</p>
+        <a href="#" class="btn" style="background: var(--black); color: white;">Download HomeApp</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-widget">
+                <h4>ABOUT</h4>
+                <p>My Budget is a minimalist tool built for people who hate complicated spreadsheets. Simple. Raw. Effective.</p>
+            </div>
+            <div class="footer-widget">
+                <h4>PAGES</h4>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-widget">
+                <h4>MORE CALCULATORS</h4>
+                <ul>
+                    <li><a href="/tax-calculator">Tax Calculator</a></li>
+                    <li><a href="/investment-roi">Investment ROI</a></li>
+                    <li><a href="/debt-payoff">Debt Payoff</a></li>
+                    <li><a href="/retirement-planner">Retirement Planner</a></li>
+                    <li><a href="/mortgage-calculator">Mortgage Calculator</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BUDGET CALCULATOR.
+        </div>
+    </footer>
+
+    <script>
+        function calculateMortgage() {
+            const price = parseFloat(document.getElementById('home-price').value) || 0;
+            const down = parseFloat(document.getElementById('down-payment').value) || 0;
+            const term = parseFloat(document.getElementById('loan-term').value) || 30;
+            const rate = (parseFloat(document.getElementById('interest-rate').value) || 0) / 100 / 12;
+            const tax = (parseFloat(document.getElementById('property-tax').value) || 0) / 12;
+            const ins = (parseFloat(document.getElementById('insurance').value) || 0) / 12;
+
+            const principal = price - down;
+            const months = term * 12;
+
+            let pi = 0;
+            if (rate === 0) {
+                pi = principal / months;
+            } else {
+                pi = principal * (rate * Math.pow(1 + rate, months)) / (Math.pow(1 + rate, months) - 1);
+            }
+
+            const totalMonthly = pi + tax + ins;
+
+            document.getElementById('monthly-total').innerText = '$' + Math.round(totalMonthly).toLocaleString();
+            document.getElementById('pi-payment').innerText = '$' + Math.round(pi).toLocaleString();
+            document.getElementById('ti-payment').innerText = '$' + Math.round(tax + ins).toLocaleString();
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Advanced Mortgage Calculator",
+  "url": "https://budgetcalculator.github.io/mortgage-calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "FinanceApplication",
+  "description": "Calculate monthly mortgage payments, including P&I, taxes, and insurance. Estimate the impact of extra payments and down payment size on long-term interest.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Monthly payment estimation",
+    "Amortization breakdown",
+    "PMI and tax inclusion",
+    "Extra payment impact analysis"
+  ]
+}
+  </script>
+</body>
+</html>
