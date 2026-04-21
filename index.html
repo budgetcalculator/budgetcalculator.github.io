@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Budget Calculator — Online Budget Planner & Money Tool | BudgetCalc</title>
+  <meta name="description" content="Use our free online budget calculator and budget planner to take control of your money. Create a personal budget, track income and expenses, and plan your financial future — completely free.">
+  <meta name="keywords" content="budget calculator, free online budget planner uk, budget planner, budget helper free, online budget calculator, free budget maker, monthly budget calculator, personal budget calculator, freelance budget calculator, budget your money calculator">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="BudgetCalc">
+  <link rel="canonical" href="https://budgetcalculator.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Free Budget Calculator & Online Budget Planner | BudgetCalc">
+  <meta property="og:description" content="Free online budget calculator and planner. Track income, manage expenses, and plan your savings — no sign-up needed.">
+  <meta property="og:url" content="https://budgetcalculator.github.io/">
+  <meta property="og:site_name" content="BudgetCalc">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Budget Calculator & Online Budget Planner | BudgetCalc">
+  <meta name="twitter:description" content="Free online budget calculator. Plan your monthly budget, track expenses, and hit your savings goals.">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://budgetcalculator.github.io/#website",
+        "url": "https://budgetcalculator.github.io/",
+        "name": "BudgetCalc — Free Budget Calculator",
+        "description": "Free online budget calculator and personal finance planner",
+        "inLanguage": "en-GB"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://budgetcalculator.github.io/#app",
+        "name": "BudgetCalc — Free Online Budget Calculator",
+        "url": "https://budgetcalculator.github.io/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        },
+        "description": "A free interactive budget calculator and online budget planner that helps you manage your personal finances, track expenses, and plan your savings goals.",
+        "featureList": [
+          "Monthly budget calculator",
+          "Personal budget planner",
+          "Freelance budget calculator",
+          "Expense tracker",
+          "Savings goal planner",
+          "CSV export",
+          "Multi-currency support"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this budget calculator free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, BudgetCalc is completely free to use. There is no sign-up, no subscription, and no hidden fees. Simply enter your income and expenses to get an instant budget breakdown."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the online budget calculator work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Enter your monthly income sources, then add your expenses across housing, living costs, savings, and any custom categories. The calculator instantly produces a visual breakdown showing your spending, surplus or deficit, and savings rate."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this as a freelance budget calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. You can add multiple income streams including freelance income, salary, rental income, and other sources. This makes it ideal for self-employed individuals and freelancers with variable income."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://budgetcalculator.github.io/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicon inline -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><path d='M8 10h16M8 16h10M8 22h13' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+</head>
+<body>
+
+  <!-- ===== HEADER (JS Component) ===== -->
+  <div id="site-header"></div>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         SECTION 1: HERO
+         ============================================================ -->
+    <section class="hero" aria-label="Hero section">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v3.5l2 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Free Online Budget Calculator
+          </div>
+          <h1 class="hero-title">
+            Plan your money,<br>
+            <span class="accent">budget smarter</span>
+          </h1>
+          <p class="hero-desc">
+            Our free budget calculator and online budget planner helps you take control of your finances. Track income, manage expenses, and hit your savings goals — no sign-up needed.
+          </p>
+          <div class="hero-ctas">
+            <a href="#calculator" class="btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 8h3M8 12h3M8 16h3M14 8h2M14 12h2M14 16h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Open Budget Planner
+            </a>
+            <a href="#how-it-works" class="btn-secondary">How It Works</a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-dots" aria-hidden="true">
+              <div class="trust-dot">J</div>
+              <div class="trust-dot">S</div>
+              <div class="trust-dot">M</div>
+              <div class="trust-dot">R</div>
+            </div>
+            <p class="trust-text"><strong>Thousands</strong> of budgets created every month</p>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card-stack">
+            <!-- Floating chips -->
+            <div class="floating-chip chip1">
+              <div class="chip-icon" style="background:#F0FDF4">💰</div>
+              <span style="color:#16A34A">+£320 saved</span>
+            </div>
+            <div class="floating-chip chip2">
+              <div class="chip-icon" style="background:#EFF6FF">📈</div>
+              <span style="color:#2563EB">Budget on track</span>
+            </div>
+
+            <!-- Main preview card -->
+            <div class="hero-main-card">
+              <div class="card-header-row">
+                <div class="card-title-sm">Monthly Budget</div>
+                <div class="card-badge">On Track ✓</div>
+              </div>
+              <div class="budget-summary">
+                <div class="budget-big">£3,200</div>
+                <div class="budget-label">Monthly income</div>
+              </div>
+              <div class="budget-bar-wrap">
+                <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--gray-400);margin-bottom:6px">
+                  <span>Spent: £2,180</span><span>68%</span>
+                </div>
+                <div class="budget-bar-bg">
+                  <div class="budget-bar-fill" style="--w:68%"></div>
+                </div>
+              </div>
+              <div class="budget-breakdown">
+                <div class="breakdown-item">
+                  <div class="breakdown-dot" style="background:#2563EB"></div>
+                  <span class="breakdown-name">Housing</span>
+                  <span class="breakdown-amount">£950</span>
+                  <span class="breakdown-pct">30%</span>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-dot" style="background:#F59E0B"></div>
+                  <span class="breakdown-name">Living</span>
+                  <span class="breakdown-amount">£760</span>
+                  <span class="breakdown-pct">24%</span>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-dot" style="background:#22C55E"></div>
+                  <span class="breakdown-name">Savings</span>
+                  <span class="breakdown-amount">£470</span>
+                  <span class="breakdown-pct">15%</span>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-dot" style="background:#EC4899"></div>
+                  <span class="breakdown-name">Other</span>
+                  <span class="breakdown-amount">£320</span>
+                  <span class="breakdown-pct">10%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2: STATS STRIP
+         ============================================================ -->
+    <section class="stats-strip" aria-label="Statistics">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num" data-count="50000" data-suffix="+">0+</div>
+          <div class="stat-label">Budgets Created Monthly</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="100" data-suffix="% Free">0% Free</div>
+          <div class="stat-label">No Sign-Up Required</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="6" data-prefix="" data-suffix=" Currencies">0 Currencies</div>
+          <div class="stat-label">Including GBP, USD, EUR</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="30" data-suffix="s Setup">0s Setup</div>
+          <div class="stat-label">No Account Needed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3: BUDGET CALCULATOR (Main Tool)
+         ============================================================ -->
+    <section class="calculator-section" id="calculator" aria-labelledby="calc-heading">
+      <div class="section-header">
+        <span class="section-eyebrow">Free Budget Tool</span>
+        <h2 class="section-title" id="calc-heading">Your Free Online Budget Calculator</h2>
+        <p class="section-desc">Enter your income and expenses below to instantly generate your personalised budget plan and spending breakdown.</p>
+      </div>
+
+      <div class="calc-layout">
+        <!-- Input Panel -->
+        <div class="calc-panel" role="main" aria-label="Budget input form">
+          <div class="calc-tabs" role="tablist">
+            <button class="calc-tab active" data-tab="income" role="tab" aria-selected="true" aria-controls="incomeSection">Income & Expenses</button>
+            <button class="calc-tab" data-tab="savings" role="tab" aria-selected="false" aria-controls="savingsSection">Savings Goals</button>
+            <button class="calc-tab" data-tab="settings" role="tab" aria-selected="false" aria-controls="settingsSection">Settings</button>
+          </div>
+
+          <div class="calc-body">
+            <!-- INCOME & EXPENSES -->
+            <div class="calc-section-wrap" data-section="income">
+              <div class="form-section-title">Income Sources</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="incomeSalary">Salary / Wages</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="incomeSalary" placeholder="2000.00" min="0" step="0.01" value="2800" aria-label="Monthly salary">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="incomeFreelance">Freelance / Self-Employed</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="incomeFreelance" placeholder="0.00" min="0" step="0.01" value="400" aria-label="Freelance income">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="incomeRental">Rental Income</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="incomeRental" placeholder="0.00" min="0" step="0.01" aria-label="Rental income">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="incomeOther">Other Income</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="incomeOther" placeholder="0.00" min="0" step="0.01" aria-label="Other income">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-title">Housing Costs</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="expenseRent">Rent</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseRent" placeholder="0.00" min="0" step="0.01" value="900" aria-label="Monthly rent">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="expenseMortgage">Mortgage</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseMortgage" placeholder="0.00" min="0" step="0.01" aria-label="Monthly mortgage">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="expenseInsurance">Home Insurance</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseInsurance" placeholder="0.00" min="0" step="0.01" value="40" aria-label="Home insurance">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-title">Living Costs</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="expenseFood">Food &amp; Groceries</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseFood" placeholder="0.00" min="0" step="0.01" value="350" aria-label="Food and groceries">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="expenseTransport">Transport</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseTransport" placeholder="0.00" min="0" step="0.01" value="120" aria-label="Transport costs">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="expenseHealth">Health &amp; Wellbeing</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseHealth" placeholder="0.00" min="0" step="0.01" value="50" aria-label="Health expenses">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="expenseClothing">Clothing</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="expenseClothing" placeholder="0.00" min="0" step="0.01" value="60" aria-label="Clothing">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section-title">Additional Expenses</div>
+              <div class="expense-rows" id="expenseRows"></div>
+              <button class="btn-add-expense" id="addExpenseBtn" type="button" aria-label="Add custom expense">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Add Custom Expense
+              </button>
+            </div>
+
+            <!-- SAVINGS GOALS -->
+            <div class="calc-section-wrap" data-section="savings" style="display:none">
+              <div class="form-section-title">Monthly Savings Allocations</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="savingsEmergency">Emergency Fund</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="savingsEmergency" placeholder="0.00" min="0" step="0.01" value="150" aria-label="Emergency fund savings">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="savingsRetirement">Pension / Retirement</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="savingsRetirement" placeholder="0.00" min="0" step="0.01" value="100" aria-label="Retirement savings">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="savingsGoals">Other Goals (house, travel)</label>
+                  <div class="input-wrap">
+                    <span class="input-prefix">£</span>
+                    <input class="form-input has-prefix" type="number" id="savingsGoals" placeholder="0.00" min="0" step="0.01" value="200" aria-label="Savings goals">
+                  </div>
+                </div>
+              </div>
+              <div style="padding:16px;background:var(--blue-50);border-radius:var(--radius-sm);margin-top:16px;font-size:.875rem;color:var(--blue-700);">
+                <strong>💡 Tip:</strong> Financial experts recommend saving at least 20% of your income. Use the <strong>50/30/20 rule</strong>: 50% needs, 30% wants, 20% savings.
+              </div>
+            </div>
+
+            <!-- SETTINGS -->
+            <div class="calc-section-wrap" data-section="settings" style="display:none">
+              <div class="form-section-title">Budget Settings</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="currencySelect">Currency</label>
+                  <select class="form-select" id="currencySelect" aria-label="Select currency">
+                    <option value="GBP">🇬🇧 British Pound (£)</option>
+                    <option value="USD">🇺🇸 US Dollar ($)</option>
+                    <option value="EUR">🇪🇺 Euro (€)</option>
+                    <option value="CAD">🇨🇦 Canadian Dollar (CA$)</option>
+                    <option value="AUD">🇦🇺 Australian Dollar (A$)</option>
+                    <option value="INR">🇮🇳 Indian Rupee (₹)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="periodSelect">Income Period</label>
+                  <select class="form-select" id="periodSelect" aria-label="Select income period">
+                    <option value="monthly">Monthly</option>
+                    <option value="annual">Annual (will convert to monthly)</option>
+                    <option value="weekly">Weekly (×4.33 for monthly)</option>
+                  </select>
+                </div>
+              </div>
+              <div style="padding:16px;background:var(--amber-50);border-radius:var(--radius-sm);margin-top:16px;font-size:.875rem;color:#92400E;">
+                <strong>📝 Note:</strong> All figures are calculated on a monthly basis for consistency. Annual figures are divided by 12 and weekly figures are multiplied by 4.33.
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-footer-row">
+            <button class="btn-calculate" id="calcBtn" type="button" aria-label="Calculate budget">
+              📊 Calculate My Budget
+            </button>
+            <button class="btn-reset" id="resetBtn" type="button" aria-label="Reset form">Reset</button>
+          </div>
+        </div>
+
+        <!-- Results Panel -->
+        <aside id="resultsPanel" class="results-panel" aria-live="polite" aria-label="Budget results"></aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4: HOW IT WORKS
+         ============================================================ -->
+    <section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Simple Process</span>
+          <h2 class="section-title" id="how-heading">How the Budget Calculator Works</h2>
+          <p class="section-desc">Create your personalised budget plan in three simple steps. No financial expertise required.</p>
+        </div>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-in fade-in-delay-1">
+          <div class="step-num" aria-hidden="true">01</div>
+          <div class="step-icon" aria-hidden="true">💵</div>
+          <h3 class="step-title">Enter Your Income</h3>
+          <p class="step-desc">Add all your income sources — salary, freelance earnings, rental income, or any other regular payments. Supports monthly, weekly, or annual figures. Multi-currency ready, including GBP, USD, and EUR.</p>
+        </div>
+        <div class="step-card fade-in fade-in-delay-2">
+          <div class="step-num" aria-hidden="true">02</div>
+          <div class="step-icon" aria-hidden="true">📋</div>
+          <h3 class="step-title">Add Your Expenses</h3>
+          <p class="step-desc">Fill in your housing costs, living expenses, and any custom spending categories. Our budget helper lets you add as many expense lines as needed for a complete picture of your monthly outgoings.</p>
+        </div>
+        <div class="step-card fade-in fade-in-delay-3">
+          <div class="step-num" aria-hidden="true">03</div>
+          <div class="step-icon" aria-hidden="true">📊</div>
+          <h3 class="step-title">Get Your Budget Plan</h3>
+          <p class="step-desc">Instantly see your full budget breakdown with a visual donut chart, surplus or deficit summary, savings rate indicator, and actionable feedback. Download your plan as a CSV for future reference.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5: FEATURES
+         ============================================================ -->
+    <section class="features-section" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Why BudgetCalc</span>
+          <h2 class="section-title" id="features-heading">Everything You Need in a Free Budget Tool</h2>
+          <p class="section-desc">Our online budget planner includes every feature you need to manage your money without the complexity of paid apps.</p>
+        </div>
+      </div>
+      <div class="features-grid container fade-in">
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#EFF6FF">💳</div>
+          <h3 class="feature-title">Multi-Currency Support</h3>
+          <p class="feature-desc">Budget in GBP, USD, EUR, CAD, AUD, or INR. Ideal for UK budget planners as well as international users looking for a free online budget calculator.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#F0FDF4">📈</div>
+          <h3 class="feature-title">Visual Spending Charts</h3>
+          <p class="feature-desc">Interactive donut chart shows exactly where your money goes each month. Colour-coded categories make it easy to spot overspending at a glance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FFFBEB">🎯</div>
+          <h3 class="feature-title">Savings Rate Tracker</h3>
+          <p class="feature-desc">See your savings rate as a percentage of income with colour-coded feedback. Know instantly whether you're on track for financial goals or need to adjust.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#F0FDFA">🔧</div>
+          <h3 class="feature-title">Custom Expense Categories</h3>
+          <p class="feature-desc">Add unlimited custom expense lines for your unique spending. Perfect for freelancers, families, or anyone with a non-standard budget structure.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#FFF1F2">📥</div>
+          <h3 class="feature-title">CSV Export</h3>
+          <p class="feature-desc">Download your complete budget summary as a CSV file to open in Excel, Google Sheets, or any spreadsheet tool. Keep records without creating an account.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background:#F5F3FF">📱</div>
+          <h3 class="feature-title">Mobile Compatible</h3>
+          <p class="feature-desc">Fully responsive design works flawlessly on smartphones, tablets, and desktops. Budget on the go without needing to install any app.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6: BUDGETING TIPS
+         ============================================================ -->
+    <section class="tips-section" id="tips" aria-labelledby="tips-heading">
+      <div class="tips-layout container">
+        <div class="tips-content">
+          <div class="fade-in">
+            <span class="section-eyebrow">Expert Advice</span>
+            <h2 class="section-title" id="tips-heading">Budgeting Tips for Better Financial Health</h2>
+          </div>
+          <p class="tips-intro fade-in">Whether you're using our free budget planner for the first time or refining an existing plan, these evidence-based tips will help you get more from every pound, dollar, or euro you earn.</p>
+
+          <div class="tips-list">
+            <div class="tip-item fade-in fade-in-delay-1">
+              <div class="tip-icon" style="background:#EFF6FF">🏦</div>
+              <div class="tip-text-wrap">
+                <div class="tip-title">Pay Yourself First</div>
+                <div class="tip-desc">Set savings aside before spending on anything else. Treat your savings goal as a non-negotiable fixed expense in your monthly budget calculator. Even starting with 5% builds a powerful habit.</div>
+              </div>
+            </div>
+            <div class="tip-item fade-in fade-in-delay-2">
+              <div class="tip-icon" style="background:#F0FDF4">📊</div>
+              <div class="tip-text-wrap">
+                <div class="tip-title">Review Your Budget Monthly</div>
+                <div class="tip-desc">Your spending changes with the seasons. Use this free online budget planner every month to compare actuals against your plan. Regular reviews prevent small overruns from becoming large deficits.</div>
+              </div>
+            </div>
+            <div class="tip-item fade-in fade-in-delay-3">
+              <div class="tip-icon" style="background:#FFFBEB">⚡</div>
+              <div class="tip-text-wrap">
+                <div class="tip-title">Tackle High-Interest Debt First</div>
+                <div class="tip-desc">After covering essentials and minimum debt payments, direct any surplus from your budget calculator towards your highest-interest debt. This is the fastest path to financial freedom.</div>
+              </div>
+            </div>
+            <div class="tip-item fade-in">
+              <div class="tip-icon" style="background:#F0FDFA">🧩</div>
+              <div class="tip-text-wrap">
+                <div class="tip-title">Include Irregular Expenses</div>
+                <div class="tip-desc">Car maintenance, annual subscriptions, and holidays are real costs. Divide annual irregular expenses by 12 and add them to your monthly budget planner as a "sinking fund" to avoid surprise deficits.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tips-visual">
+          <div class="tip-box fade-in">
+            <div class="tip-box-title">
+              <span>⚖️</span> The 50/30/20 Budget Rule
+            </div>
+            <div class="rule-grid">
+              <div class="rule-item" style="background:var(--blue-600)">
+                <div class="rule-pct">50%</div>
+                <div class="rule-label">Needs (Housing, Food, Transport)</div>
+              </div>
+              <div class="rule-item" style="background:var(--amber-500)">
+                <div class="rule-pct">30%</div>
+                <div class="rule-label">Wants (Entertainment, Dining)</div>
+              </div>
+              <div class="rule-item" style="background:var(--green-500)">
+                <div class="rule-pct">20%</div>
+                <div class="rule-label">Savings &amp; Debt Repayment</div>
+              </div>
+            </div>
+            <p style="font-size:.8rem;color:var(--gray-500);margin-top:14px;">The 50/30/20 rule is the most popular personal budgeting framework. Use our budget calculator to see how your current spending compares.</p>
+          </div>
+
+          <div class="tip-box fade-in">
+            <div class="tip-box-title">
+              <span>💡</span> Emergency Fund Calculator
+            </div>
+            <p style="font-size:.875rem;color:var(--gray-600);margin-bottom:12px;">Financial advisors recommend keeping 3–6 months of essential expenses as an emergency fund. Use your budget results to calculate your target:</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--gray-50);border-radius:8px;font-size:.875rem;">
+                <span style="color:var(--gray-600)">3-month target (minimum)</span>
+                <span id="emergencyMin" style="font-weight:700;color:var(--gray-800)">Calculate →</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--blue-50);border-radius:8px;font-size:.875rem;">
+                <span style="color:var(--blue-700)">6-month target (recommended)</span>
+                <span id="emergencyMax" style="font-weight:700;color:var(--blue-700)">Calculate →</span>
+              </div>
+            </div>
+            <p style="font-size:.75rem;color:var(--gray-400);margin-top:10px;">*Run the budget calculator above to populate these figures automatically.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7: BUDGETING METHODS
+         ============================================================ -->
+    <section class="methods-section" id="methods" aria-labelledby="methods-heading">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Choose Your Approach</span>
+          <h2 class="section-title" id="methods-heading">Popular Budgeting Methods Explained</h2>
+          <p class="section-desc">Every person is different. Find the budgeting style that works best for your lifestyle and financial goals.</p>
+        </div>
+      </div>
+      <div class="methods-grid container">
+        <div class="method-card fade-in" style="border-left-color:#2563EB">
+          <div class="method-header">
+            <div class="method-name">50/30/20 Rule</div>
+            <div class="method-badge" style="background:#EFF6FF;color:#2563EB">Most Popular</div>
+          </div>
+          <p class="method-desc">Split your after-tax income into three buckets: 50% for essential needs, 30% for personal wants, and 20% for savings and debt repayment. Simple, flexible, and easy to maintain with our free budget calculator.</p>
+          <div class="method-pros">
+            <div class="method-pro">Easy to understand and implement</div>
+            <div class="method-pro">Works for most income levels</div>
+            <div class="method-pro">Leaves room for enjoyment</div>
+          </div>
+        </div>
+        <div class="method-card fade-in fade-in-delay-1" style="border-left-color:#F59E0B">
+          <div class="method-header">
+            <div class="method-name">Zero-Based Budgeting</div>
+            <div class="method-badge" style="background:#FFFBEB;color:#B45309">Best for Detail</div>
+          </div>
+          <p class="method-desc">Give every pound a job. Allocate your entire income across expenses, savings, and debt payments so your budget equals zero at month end. Use our budget maker to assign every income unit purposefully.</p>
+          <div class="method-pros">
+            <div class="method-pro">Maximum control over spending</div>
+            <div class="method-pro">Eliminates mindless spending</div>
+            <div class="method-pro">Excellent for debt payoff</div>
+          </div>
+        </div>
+        <div class="method-card fade-in fade-in-delay-2" style="border-left-color:#22C55E">
+          <div class="method-header">
+            <div class="method-name">Pay Yourself First</div>
+            <div class="method-badge" style="background:#F0FDF4;color:#16A34A">Best for Saving</div>
+          </div>
+          <p class="method-desc">Immediately set aside your savings allocation the moment income arrives, then spend what remains freely. Add your savings target in the savings section of our budget planner to see what you'll have left each month.</p>
+          <div class="method-pros">
+            <div class="method-pro">Guarantees savings progress</div>
+            <div class="method-pro">Low day-to-day tracking effort</div>
+            <div class="method-pro">Builds wealth automatically</div>
+          </div>
+        </div>
+        <div class="method-card fade-in fade-in-delay-3" style="border-left-color:#8B5CF6">
+          <div class="method-header">
+            <div class="method-name">Envelope Method</div>
+            <div class="method-badge" style="background:#F5F3FF;color:#7C3AED">Classic Approach</div>
+          </div>
+          <p class="method-desc">Divide cash or digital budget allocations into spending "envelopes" by category. When an envelope is empty, spending in that category stops for the month. Use our budget tool to set category limits.</p>
+          <div class="method-pros">
+            <div class="method-pro">Stops overspending by category</div>
+            <div class="method-pro">Highly visual and tangible</div>
+            <div class="method-pro">Effective for impulse control</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8: SEO CONTENT
+         ============================================================ -->
+    <section class="content-section" aria-labelledby="content-heading">
+      <div class="content-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Learn More</span>
+          <h2 class="section-title" id="content-heading">Your Complete Guide to Budget Planning</h2>
+        </div>
+        <div class="content-grid">
+          <article class="content-body fade-in">
+            <h2>What Is a Budget Calculator?</h2>
+            <p>A budget calculator is a free online tool that helps you organise your personal finances by comparing your total income against your monthly expenses. By entering your earnings and outgoings, you can instantly see whether you're in surplus, deficit, or balanced — and take informed steps to improve your financial health.</p>
+            <p>Our free online budget planner goes further than a basic calculator. It categorises your spending, calculates your savings rate, and provides personalised feedback based on your unique financial situation. Whether you call it a budget helper, a budget generator, or a finance planner, our tool gives you the same result: clarity over your money.</p>
+
+            <h2>Who Should Use a Budget Planner?</h2>
+            <p>Our free budget tool is designed for everyone:</p>
+            <ul>
+              <li>Employees wanting a monthly budget calculator for their salary</li>
+              <li>Freelancers needing a freelance budget calculator for variable income</li>
+              <li>Students managing limited finances for the first time</li>
+              <li>Families planning for children, mortgages, or holidays</li>
+              <li>Anyone wanting a free finance planner without complicated software</li>
+            </ul>
+
+            <h2>Why Use an Online Budget Planner?</h2>
+            <p>Traditional budgeting spreadsheets are powerful but time-consuming to set up. Our interactive budget tool does the maths instantly, letting you focus on the decisions rather than the calculations. It's a genuine budget my money calculator — enter your numbers and see results in seconds.</p>
+          </article>
+
+          <div class="keyword-cards fade-in">
+            <div class="keyword-card">
+              <h3>🇬🇧 Free Online Budget Planner UK</h3>
+              <p>Our budget planner supports GBP by default, making it the ideal free online budget planner for UK users. Switch currencies in settings for international use.</p>
+            </div>
+            <div class="keyword-card">
+              <h3>💼 Freelance Budget Calculator</h3>
+              <p>Add multiple income streams including self-employed and freelance earnings. Perfect for gig economy workers managing irregular monthly income alongside fixed expenses.</p>
+            </div>
+            <div class="keyword-card">
+              <h3>📅 Monthly Budgeting Tool</h3>
+              <p>All calculations are normalised to a monthly view. Enter annual or weekly figures in settings and BudgetCalc automatically converts them for an accurate monthly breakdown.</p>
+            </div>
+            <div class="keyword-card">
+              <h3>💰 Budget Your Money Calculator</h3>
+              <p>From budget plans free to budget money calculators, BudgetCalc combines every function you need in one clean, easy-to-use interface — completely free, with no account required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 9: FAQ
+         ============================================================ -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+      <div class="faq-inner">
+        <div class="section-header fade-in">
+          <span class="section-eyebrow">Common Questions</span>
+          <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+        </div>
+        <div class="faq-list" role="list">
+
+          <div class="faq-item fade-in" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              Is BudgetCalc completely free to use?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              Yes — BudgetCalc is 100% free. There is no account registration, no subscription plan, and no premium upsell. Our free budget calculator and budget planner are available to everyone. You can use the tool as many times as you like, for any number of budgets.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in fade-in-delay-1" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              Does the budget calculator save my data?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              No data is saved to any server. All calculations happen entirely in your browser. Your financial information never leaves your device, which means complete privacy. Use the CSV export button to save your budget summary locally.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in fade-in-delay-2" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              Can I use this as a freelance budget calculator?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              Absolutely. The Income section includes a dedicated Freelance / Self-Employed field alongside salary, rental income, and other income. This makes BudgetCalc ideal for freelancers, contractors, and self-employed individuals who need a budget calculator that handles multiple income streams.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              What currency does the budget planner use?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              The default currency is GBP (£), making it a great free online budget planner for UK users. You can switch to USD ($), EUR (€), CAD (CA$), AUD (A$), or INR (₹) in the Settings tab of the calculator. The currency symbol updates across all inputs instantly.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in fade-in-delay-1" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              How is the savings rate calculated?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              Your savings rate is the total of all savings allocations (emergency fund, retirement, goals) divided by your total monthly income, expressed as a percentage. A savings rate of 20% or above is considered excellent; 10–19% is good; below 10% suggests room for improvement.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in fade-in-delay-2" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              What is the 50/30/20 budgeting rule?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              The 50/30/20 rule is a simple personal budgeting framework: allocate 50% of after-tax income to essential needs (housing, food, transport), 30% to personal wants (entertainment, dining out), and 20% to savings and debt repayment. Use our free budget calculator to see how your current spending compares with this guideline.
+            </div>
+          </div>
+
+          <div class="faq-item fade-in" role="listitem">
+            <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+              Can I add custom expense categories?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </div>
+            <div class="faq-a">
+              Yes. Below the standard expense sections you'll find an "Add Custom Expense" button. Click it to add as many custom lines as you need — for example, pet care, subscriptions, gym membership, or childcare. Each line has a name field and an amount field.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 10: CTA
+         ============================================================ -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+      <div class="cta-inner fade-in">
+        <div class="cta-eyebrow">Start for Free Today</div>
+        <h2 class="cta-title" id="cta-heading">Ready to Take Control of Your Budget?</h2>
+        <p class="cta-desc">Join thousands who use BudgetCalc every month to plan smarter, save more, and stress less about money. Free, instant, and no sign-up needed.</p>
+        <div class="cta-actions">
+          <a href="#calculator" class="btn-cta-white">
+            📊 Open Free Budget Planner
+          </a>
+          <a href="#tips" class="btn-cta-ghost">
+            📚 Read Budgeting Tips
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (JS Component) ===== -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="components/header.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="js/calculator.js"></script>
+
+</body>
+</html>
