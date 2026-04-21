@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free UK Tax Calculator 2024/25 — Income Tax &amp; Take-Home Pay | BudgetCalc</title>
+  <meta name="description" content="Calculate your UK income tax, National Insurance, and take-home pay for 2024/25. Free online tax calculator supporting all UK tax bands, Scottish rates, pension contributions, and student loan deductions.">
+  <meta name="keywords" content="uk tax calculator, income tax calculator, take home pay calculator, salary tax calculator, national insurance calculator, paye calculator, tax calculator 2024 uk, income after tax calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://budgetcalculator.github.io/tax-calculator">
+  <meta property="og:title" content="Free UK Tax Calculator 2024/25 | BudgetCalc">
+  <meta property="og:description" content="Instantly calculate your UK income tax, NI, and take-home pay. Free, accurate, and up to date with 2024/25 tax bands.">
+  <meta property="og:url" content="https://budgetcalculator.github.io/tax-calculator">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "UK Tax Calculator 2024/25",
+        "url": "https://budgetcalculator.github.io/tax-calculator",
+        "applicationCategory": "FinanceApplication",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+        "description": "Free UK income tax and National Insurance calculator for 2024/25. Calculate take-home pay after PAYE, NI, pension, and student loan deductions."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://budgetcalculator.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Tax Calculator", "item": "https://budgetcalculator.github.io/tax-calculator" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What are the UK income tax bands for 2024/25?", "acceptedAnswer": { "@type": "Answer", "text": "For 2024/25: Personal Allowance £12,570 (0%), Basic Rate 20% (£12,571–£50,270), Higher Rate 40% (£50,271–£125,140), Additional Rate 45% (above £125,140). Scottish taxpayers have different rates." } },
+          { "@type": "Question", "name": "How is National Insurance calculated?", "acceptedAnswer": { "@type": "Answer", "text": "For employees, Class 1 NI is 8% on earnings between £12,570 and £50,270, and 2% on earnings above £50,270 for 2024/25." } }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/calc-pages.css">
+  <style>
+    :root {
+      --hero-from: #FEF2F2; --hero-mid: #FFF5F5; --hero-to: #FFFBEB;
+      --hero-glow1: rgba(239,68,68,.06); --hero-glow2: rgba(245,158,11,.06);
+      --page-accent: #DC2626; --page-accent-light: #FEF2F2;
+      --btn-from: #DC2626; --btn-to: #B91C1C; --btn-shadow: rgba(220,38,38,.3);
+      --cta-from: #B91C1C; --cta-to: #7F1D1D;
+    }
+    .page-hero-badge { background: #FEE2E2; color: #991B1B; }
+    .page-hero-title .accent { color: #DC2626; }
+    .results-aside-header { background: linear-gradient(135deg, #DC2626, #B91C1C); }
+    .ras-highlight { background: #FEF2F2; }
+    .ras-highlight-label { color: #991B1B; }
+    .ras-highlight-val { color: #DC2626; }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><path d='M8 10h16M8 16h10M8 22h13' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">›</span>
+      <span class="breadcrumb-current">Tax Calculator</span>
+    </nav>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="page-hero-badge">🧾 2024/25 Tax Year</div>
+        <h1 class="page-hero-title">Free UK <span class="accent">Tax Calculator</span></h1>
+        <p class="page-hero-desc">Calculate your exact take-home pay after income tax, National Insurance, pension, and student loan deductions. Accurate 2024/25 UK tax bands.</p>
+        <div class="page-hero-ctas">
+          <a href="#tax-tool" class="btn-primary" style="background:linear-gradient(135deg,#DC2626,#B91C1C);box-shadow:0 4px 16px rgba(220,38,38,.3)">Calculate Tax Now</a>
+          <a href="#how-tax-works" class="btn-secondary">How Tax Works</a>
+        </div>
+      </div>
+      <div class="page-hero-visual" aria-hidden="true">
+        <div style="background:white;border-radius:24px;padding:28px;box-shadow:0 24px 64px rgba(220,38,38,.12),0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;border:1px solid #fee2e2;">
+          <div style="font-weight:800;font-size:.9rem;color:#374151;margin-bottom:20px;">2024/25 Tax Summary</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">
+            <div style="padding:14px;background:#f8fafc;border-radius:12px;text-align:center;">
+              <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#1e293b;">£2,400</div>
+              <div style="font-size:.72rem;color:#94a3b8;margin-top:3px;">Annual Tax</div>
+            </div>
+            <div style="padding:14px;background:#f8fafc;border-radius:12px;text-align:center;">
+              <div style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#1e293b;">£1,480</div>
+              <div style="font-size:.72rem;color:#94a3b8;margin-top:3px;">Annual NI</div>
+            </div>
+          </div>
+          <div style="padding:14px;background:linear-gradient(135deg,#DC2626,#B91C1C);border-radius:12px;text-align:center;">
+            <div style="font-size:.75rem;color:rgba(255,255,255,.8);margin-bottom:4px;">Monthly Take-Home</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:white;">£1,927</div>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.75rem;color:#94a3b8;margin-top:12px;padding:0 4px;">
+            <span>Gross: £28,000/yr</span><span>Effective rate: 14%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="tool-section" id="tax-tool">
+    <div class="tool-layout">
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <span class="tool-panel-icon">🧾</span>
+          <div>
+            <div class="tool-panel-title">UK Income Tax Calculator 2024/25</div>
+            <div class="tool-panel-sub">Income tax · National Insurance · Pension · Student Loan</div>
+          </div>
+        </div>
+        <div class="tool-panel-body">
+          <div class="form-section-sep">Income Details</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="taxSalary">Gross Annual Salary</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="taxSalary" value="32000" min="0" max="10000000" placeholder="32000"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="taxRegion">Tax Region</label>
+              <select class="fselect" id="taxRegion">
+                <option value="england">England / Wales / NI</option>
+                <option value="scotland">Scotland</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="taxYear">Tax Year</label>
+              <select class="fselect" id="taxYear">
+                <option value="2425">2024/25</option>
+                <option value="2324">2023/24</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="taxAge">Age</label>
+              <input class="finput" type="number" id="taxAge" value="30" min="16" max="100" placeholder="30">
+            </div>
+          </div>
+
+          <div class="form-section-sep">Deductions</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="pensionPct">Pension Contribution <span class="field-hint">(% of gross)</span></label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="pensionPct" value="5" min="0" max="100" step="0.5" placeholder="5"><span class="field-suffix">%</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="studentLoan">Student Loan Plan</label>
+              <select class="fselect" id="studentLoan">
+                <option value="none">No student loan</option>
+                <option value="plan1">Plan 1 (pre-2012)</option>
+                <option value="plan2">Plan 2 (post-2012)</option>
+                <option value="plan4">Plan 4 (Scotland)</option>
+                <option value="plan5">Plan 5 (from 2023)</option>
+                <option value="postgrad">Postgraduate Loan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="blindAllowance">Blind Person's Allowance</label>
+              <select class="fselect" id="blindAllowance">
+                <option value="no">No</option>
+                <option value="yes">Yes (+£3,070)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="taxCodeInput">Tax Code <span class="field-hint">(optional)</span></label>
+              <input class="finput" type="text" id="taxCodeInput" placeholder="e.g. 1257L" style="text-transform:uppercase">
+            </div>
+          </div>
+          <div class="info-callout" style="background:#FEF2F2;color:#991B1B;">
+            <span class="info-callout-icon">ℹ️</span>
+            <span>Based on 2024/25 tax bands. Pension contributions are treated as salary sacrifice (reducing taxable income). This calculator is for guidance only — not financial advice.</span>
+          </div>
+        </div>
+        <div class="tool-panel-footer">
+          <button class="btn-calc-main" id="taxCalcBtn" style="--btn-from:#DC2626;--btn-to:#B91C1C;--btn-shadow:rgba(220,38,38,.3)">🧾 Calculate Take-Home Pay</button>
+          <button class="btn-calc-reset" id="taxResetBtn">Reset</button>
+        </div>
+      </div>
+
+      <aside class="results-aside" id="taxResults">
+        <div class="results-empty-state">
+          <div class="res-empty-icon">🧾</div>
+          <div class="res-empty-title">Your tax breakdown</div>
+          <div class="res-empty-desc">Enter your salary above and click Calculate to see your full tax breakdown and take-home pay.</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- HOW TAX WORKS -->
+  <section class="page-content-section" id="how-tax-works">
+    <div class="content-cols container">
+      <div class="content-prose fade-in">
+        <h2>How UK Income Tax Works in 2024/25</h2>
+        <p>UK income tax is calculated on a progressive band system — you only pay each rate on the portion of income that falls within that band, not on your entire salary. The personal allowance (£12,570) is the amount you can earn tax-free.</p>
+        <h3>2024/25 England Tax Bands</h3>
+        <ul>
+          <li>Personal Allowance: Up to £12,570 — 0% tax</li>
+          <li>Basic Rate: £12,571 to £50,270 — 20% tax</li>
+          <li>Higher Rate: £50,271 to £125,140 — 40% tax</li>
+          <li>Additional Rate: Over £125,140 — 45% tax</li>
+        </ul>
+        <p>Note: The personal allowance is reduced by £1 for every £2 earned over £100,000, meaning it is fully withdrawn at £125,140.</p>
+        <h3>National Insurance (2024/25)</h3>
+        <p>Employees pay Class 1 National Insurance at 8% on earnings between the Primary Threshold (£12,570) and the Upper Earnings Limit (£50,270), and 2% on earnings above this limit.</p>
+        <h3>What Is PAYE?</h3>
+        <p>Pay As You Earn (PAYE) is HMRC's system for collecting income tax and NI directly from your salary before you receive it. Your employer uses your tax code to calculate the correct deductions each pay period.</p>
+      </div>
+      <div class="info-cards fade-in">
+        <div class="info-card">
+          <h3>📊 Scottish Tax Bands</h3>
+          <p>Scotland has its own income tax rates set by the Scottish Parliament. For 2024/25 there are six bands: Starter (19%), Basic (20%), Intermediate (21%), Higher (42%), Advanced (45%), and Top (48%).</p>
+        </div>
+        <div class="info-card">
+          <h3>🎓 Student Loan Repayments</h3>
+          <p>Repayments are automatically deducted via PAYE once earnings exceed the plan threshold. Plan 2 threshold is £27,295; Plan 1 is £24,990. Repayments are 9% of earnings above the threshold.</p>
+        </div>
+        <div class="info-card">
+          <h3>🏦 Pension Tax Relief</h3>
+          <p>Pension contributions attract tax relief at your marginal rate. Salary sacrifice schemes reduce your gross pay before tax and NI are calculated, increasing your effective take-home on contributions.</p>
+        </div>
+        <div class="info-card">
+          <h3>💡 Reduce Your Tax Bill</h3>
+          <p>Maximise pension contributions, use ISA allowances, claim work-related expenses, and check your tax code is correct. Marriage Allowance can transfer £1,260 of unused personal allowance between spouses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-faq-section page-content-section blue" id="tax-faq">
+    <div class="page-faq-inner">
+      <div class="section-header fade-in">
+        <span class="section-eyebrow" style="color:#DC2626">Common Questions</span>
+        <h2 class="section-title">Tax Calculator FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What are the UK income tax bands for 2024/25?<span class="faq-icon">+</span></div><div class="faq-a">For England, Wales, and Northern Ireland in 2024/25: Personal Allowance £0–£12,570 at 0%, Basic Rate £12,571–£50,270 at 20%, Higher Rate £50,271–£125,140 at 40%, and Additional Rate above £125,140 at 45%. Scottish taxpayers have different rates set by the Scottish Parliament.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How much National Insurance do I pay?<span class="faq-icon">+</span></div><div class="faq-a">For employees in 2024/25, Class 1 NI is charged at 8% on weekly earnings between £242 (£12,570 per year) and £967 (£50,270 per year). Earnings above £967 per week attract 2% NI. Employers also pay NI separately, which does not affect your take-home pay.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What does my tax code mean?<span class="faq-icon">+</span></div><div class="faq-a">Your tax code tells your employer how much tax-free income you're entitled to. The most common code is 1257L, representing the £12,570 personal allowance. Emergency codes (W1, M1, X) and adjustment codes (K, BR, D0) indicate special circumstances. Check your code on your payslip or HMRC's online service.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Does this calculator include pension contributions?<span class="faq-icon">+</span></div><div class="faq-a">Yes. Enter your pension contribution as a percentage of gross salary. The calculator treats this as a salary sacrifice, reducing your taxable income before calculating income tax and NI — which is how most workplace pension schemes operate. This understates your actual take-home slightly if your scheme uses relief-at-source instead.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Is this tax calculator accurate for self-employed income?<span class="faq-icon">+</span></div><div class="faq-a">This calculator is designed for employed (PAYE) income. Self-employed individuals pay income tax on profits via Self Assessment and pay Class 4 NI (6% on profits £12,570–£50,270, 2% above). The rates are different from employee NI. A dedicated self-assessment tool would be more appropriate for sole traders.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED CALCULATORS -->
+  <section class="related-section">
+    <div class="container">
+      <div class="section-header fade-in"><span class="section-eyebrow">More Free Tools</span><h2 class="section-title">Related Calculators</h2></div>
+    </div>
+    <div class="related-grid">
+      <a href="index" class="related-card fade-in"><div class="related-card-icon">📊</div><div class="related-card-name">Budget Calculator</div><div class="related-card-desc">Monthly income &amp; expense planner</div></a>
+      <a href="investment-roi" class="related-card fade-in"><div class="related-card-icon">📈</div><div class="related-card-name">Investment ROI</div><div class="related-card-desc">Compound growth calculator</div></a>
+      <a href="debt-payoff" class="related-card fade-in"><div class="related-card-icon">💳</div><div class="related-card-name">Debt Payoff</div><div class="related-card-desc">Avalanche &amp; snowball methods</div></a>
+      <a href="retirement-planner" class="related-card fade-in"><div class="related-card-icon">🏖️</div><div class="related-card-name">Retirement Planner</div><div class="related-card-desc">Pension &amp; nest egg projections</div></a>
+      <a href="mortgage-calculator" class="related-card fade-in"><div class="related-card-icon">🏠</div><div class="related-card-name">Mortgage Calculator</div><div class="related-card-desc">Monthly repayments &amp; interest</div></a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="page-cta" style="--cta-from:#B91C1C;--cta-to:#7F1D1D;">
+    <div class="page-cta-inner fade-in">
+      <h2 class="page-cta-title">Know Your Numbers. Plan Your Future.</h2>
+      <p class="page-cta-desc">Once you know your take-home pay, use our budget planner to make the most of every pound.</p>
+      <div class="page-cta-btns">
+        <a href="index#calculator" class="btn-cta-white">Open Budget Planner →</a>
+        <a href="mortgage-calculator" class="btn-cta-ghost">Mortgage Calculator</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+// ---- UK Tax Calculator Logic ----
+const TAX_DATA = {
+  england: {
+    2425: { bands: [{ from:0,to:12570,rate:0 },{ from:12570,to:50270,rate:0.20 },{ from:50270,to:125140,rate:0.40 },{ from:125140,to:Infinity,rate:0.45 }], ni_primary:12570, ni_uel:50270, ni_lower:0.08, ni_upper:0.02 },
+    2324: { bands: [{ from:0,to:12570,rate:0 },{ from:12570,to:50270,rate:0.20 },{ from:50270,to:125140,rate:0.40 },{ from:125140,to:Infinity,rate:0.45 }], ni_primary:12570, ni_uel:50270, ni_lower:0.12, ni_upper:0.02 }
+  },
+  scotland: {
+    2425: { bands: [{ from:0,to:12570,rate:0 },{ from:12570,to:14876,rate:0.19 },{ from:14876,to:26561,rate:0.20 },{ from:26561,to:43662,rate:0.21 },{ from:43662,to:75000,rate:0.42 },{ from:75000,to:125140,rate:0.45 },{ from:125140,to:Infinity,rate:0.48 }], ni_primary:12570, ni_uel:50270, ni_lower:0.08, ni_upper:0.02 }
+  }
+};
+const STUDENT_THRESHOLDS = { plan1:24990, plan2:27295, plan4:31395, plan5:25000, postgrad:21000 };
+const STUDENT_RATES = { plan1:.09, plan2:.09, plan4:.09, plan5:.09, postgrad:.06 };
+
+function fmt(n, annual=false) {
+  return new Intl.NumberFormat('en-GB',{ style:'currency', currency:'GBP', maximumFractionDigits: annual?0:2 }).format(n);
+}
+function calcTax() {
+  const gross = parseFloat(document.getElementById('taxSalary').value)||0;
+  const region = document.getElementById('taxRegion').value;
+  const year = document.getElementById('taxYear').value;
+  const pensionPct = (parseFloat(document.getElementById('pensionPct').value)||0)/100;
+  const loan = document.getElementById('studentLoan').value;
+  const blind = document.getElementById('blindAllowance').value === 'yes';
+
+  const data = TAX_DATA[region]?.[year] || TAX_DATA.england[2425];
+  const pensionAmt = gross * pensionPct;
+  const taxableIncome = Math.max(0, gross - pensionAmt + (blind ? 3070 : 0));
+
+  // Personal allowance taper
+  let personalAllowance = 12570;
+  if (taxableIncome > 100000) personalAllowance = Math.max(0, 12570 - (taxableIncome - 100000)/2);
+
+  // Income Tax
+  let incomeTax = 0;
+  let remaining = taxableIncome;
+  for (const band of data.bands) {
+    const from = band.from === 0 ? personalAllowance : band.from;
+    if (remaining <= from) break;
+    const taxable = Math.min(remaining, band.to) - from;
+    if (taxable > 0) incomeTax += taxable * band.rate;
+    remaining = Math.min(remaining, band.to);
+  }
+  // Simplified: iterate bands properly
+  incomeTax = 0;
+  const adjBands = data.bands.map((b,i) => i===0 ? {...b,to:Math.max(personalAllowance,b.from),rate:0,from:b.from} : b);
+  let inc = taxableIncome;
+  for (const band of data.bands) {
+    const lower = band.from === 0 ? 0 : band.from;
+    const upper = band.to;
+    const effLower = Math.max(lower, personalAllowance);
+    if (inc <= effLower) continue;
+    const slice = Math.min(inc, upper) - effLower;
+    if (slice > 0) incomeTax += slice * band.rate;
+  }
+
+  // NI
+  let ni = 0;
+  if (gross > data.ni_primary) {
+    ni += Math.min(gross, data.ni_uel) - data.ni_primary;
+    ni *= data.ni_lower;
+    if (gross > data.ni_uel) ni += (gross - data.ni_uel) * data.ni_upper;
+  }
+
+  // Student Loan
+  let studentLoanAmt = 0;
+  if (loan !== 'none' && STUDENT_THRESHOLDS[loan]) {
+    const slTaxable = Math.max(0, gross - STUDENT_THRESHOLDS[loan]);
+    studentLoanAmt = slTaxable * STUDENT_RATES[loan];
+  }
+
+  const totalDeductions = incomeTax + ni + pensionAmt + studentLoanAmt;
+  const netAnnual = gross - totalDeductions;
+  const effectiveRate = gross > 0 ? ((incomeTax + ni) / gross * 100) : 0;
+
+  renderTaxResults({ gross, incomeTax, ni, pensionAmt, studentLoanAmt, netAnnual, totalDeductions, effectiveRate });
+}
+
+function renderTaxResults(r) {
+  const el = document.getElementById('taxResults');
+  const rows = [
+    { label:'Income Tax', val: r.incomeTax, color:'#EF4444' },
+    { label:'National Insurance', val: r.ni, color:'#F97316' },
+    { label:'Pension Contribution', val: r.pensionAmt, color:'#8B5CF6' },
+  ];
+  if (r.studentLoanAmt > 0) rows.push({ label:'Student Loan', val: r.studentLoanAmt, color:'#14B8A6' });
+
+  el.innerHTML = `
+    <div class="results-aside-header">
+      <div class="results-aside-label">Monthly Take-Home Pay</div>
+      <div class="results-aside-big">${fmt(r.netAnnual/12)}</div>
+      <div class="results-aside-sub">${fmt(r.netAnnual, true)} per year</div>
+    </div>
+    <div class="results-aside-body">
+      <div class="results-aside-section">
+        <div class="ras-title">Deductions Breakdown</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Gross Salary</span><span class="ras-row-val">${fmt(r.gross,true)}/yr</span></div>
+          ${rows.map(row => `<div class="ras-row"><span class="ras-row-label" style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:2px;background:${row.color};flex-shrink:0;display:inline-block"></span>${row.label}</span><span class="ras-row-val" style="color:${row.color}">${fmt(row.val,true)}/yr</span></div>`).join('')}
+        </div>
+        <div class="ras-divider"></div>
+        <div class="ras-highlight">
+          <span class="ras-highlight-label">Total Deductions</span>
+          <span class="ras-highlight-val">${fmt(r.totalDeductions,true)}/yr</span>
+        </div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Per Pay Period</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Monthly</span><span class="ras-row-val">${fmt(r.netAnnual/12)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Weekly</span><span class="ras-row-val">${fmt(r.netAnnual/52)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Daily (5-day week)</span><span class="ras-row-val">${fmt(r.netAnnual/260)}</span></div>
+        </div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Effective Tax Rate</div>
+        <div class="ras-bar-wrap">
+          <div class="ras-bar-label"><span>Income Tax + NI</span><span>${r.effectiveRate.toFixed(1)}%</span></div>
+          <div class="ras-bar-bg"><div class="ras-bar-fill" style="width:${Math.min(r.effectiveRate,100)}%;background:#DC2626;"></div></div>
+        </div>
+      </div>
+      <button class="btn-export-sm" onclick="exportTaxCSV(${JSON.stringify(r).replace(/"/g,'&quot;')})">📥 Export Summary (CSV)</button>
+    </div>
+  `;
+}
+
+function exportTaxCSV(r) {
+  const rows=[['BudgetCalc — UK Tax Summary 2024/25',''],['Gross Salary',r.gross],['Income Tax',r.incomeTax.toFixed(2)],['National Insurance',r.ni.toFixed(2)],['Pension',r.pensionAmt.toFixed(2)],['Student Loan',r.studentLoanAmt.toFixed(2)],['Net Annual',r.netAnnual.toFixed(2)],['Net Monthly',(r.netAnnual/12).toFixed(2)],['Effective Rate %',r.effectiveRate.toFixed(1)]];
+  const csv=rows.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='tax-summary.csv'; a.click();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  Header.render(); Footer.render();
+  document.getElementById('taxCalcBtn').addEventListener('click', calcTax);
+  document.getElementById('taxResetBtn').addEventListener('click',()=>{ document.getElementById('taxSalary').value=32000; document.getElementById('pensionPct').value=5; document.getElementById('studentLoan').value='none'; document.getElementById('taxResults').innerHTML='<div class="results-empty-state"><div class="res-empty-icon">🧾</div><div class="res-empty-title">Your tax breakdown</div><div class="res-empty-desc">Enter your salary and click Calculate to see results.</div></div>'; });
+  document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{ const i=q.closest('.faq-item'); const o=i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open')); if(!o)i.classList.add('open'); }));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  calcTax();
+});
+</script>
+</body>
+</html>
