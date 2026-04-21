@@ -1,4 +1,3 @@
-// Header Component
 const Header = {
   render() {
     const nav = document.getElementById('site-header');
@@ -21,15 +20,28 @@ const Header = {
           <nav class="main-nav" role="navigation" aria-label="Main navigation">
             <ul class="nav-list">
               <li><a href="/" class="nav-link">Home</a></li>
-              <li><a href="#calculator" class="nav-link">Calculator</a></li>
-              <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
-              <li><a href="#tips" class="nav-link">Budgeting Tips</a></li>
-              <li><a href="#faq" class="nav-link">FAQ</a></li>
+              <li class="nav-item-dropdown">
+                <button class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  Calculators
+                  <svg class="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                    <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="tax-calculator" class="dropdown-link">Tax Calculator</a></li>
+                  <li><a href="investment-roi" class="dropdown-link">Investment ROI</a></li>
+                  <li><a href="debt-payoff" class="dropdown-link">Debt Payoff</a></li>
+                  <li><a href="retirement-planner" class="dropdown-link">Retirement Planner</a></li>
+                  <li><a href="mortgage-calculator" class="dropdown-link">Mortgage Calculator</a></li>
+                </ul>
+              </li>
+              <li><a href="about" class="mobile-nav-link">About</a></li>
+              <li><a href="contact" class="mobile-nav-link">Contact</a></li>  
             </ul>
           </nav>
 
           <div class="header-actions">
-            <a href="#calculator" class="btn-primary-sm">Start Free</a>
+            <a href="/#calculator" class="btn-primary-sm">Start Free</a>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
               <span></span><span></span><span></span>
             </button>
@@ -38,10 +50,16 @@ const Header = {
 
         <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
           <ul class="mobile-nav-list">
-            <li><a href="#calculator" class="mobile-nav-link">Calculator</a></li>
-            <li><a href="#how-it-works" class="mobile-nav-link">How It Works</a></li>
-            <li><a href="#tips" class="mobile-nav-link">Budgeting Tips</a></li>
-            <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+          <li><a href="/" class="mobile-nav-link">Home</a></li>
+            <li><strong>Calculators</strong></li>
+            <li><a href="tax-calculator" class="dropdown-link">Tax Calculator</a></li>
+                  <li><a href="investment-roi" class="dropdown-link">Investment ROI</a></li>
+                  <li><a href="debt-payoff" class="dropdown-link">Debt Payoff</a></li>
+                  <li><a href="retirement-planner" class="dropdown-link">Retirement Planner</a></li>
+                  <li><a href="mortgage-calculator" class="dropdown-link">Mortgage Calculator</a></li>
+            <hr />
+            <li><a href="about" class="mobile-nav-link">About</a></li>
+            <li><a href="contact" class="mobile-nav-link">Contact</a></li>            
           </ul>
         </div>
       </header>
@@ -54,7 +72,21 @@ const Header = {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const header = document.querySelector('.site-header');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
 
+    // Desktop Dropdown Toggle
+    dropdownToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = dropdownToggle.getAttribute('aria-expanded') === 'true';
+      dropdownToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+      dropdownToggle?.setAttribute('aria-expanded', 'false');
+    });
+
+    // Mobile Hamburger
     hamburger?.addEventListener('click', () => {
       const isOpen = mobileMenu.classList.toggle('open');
       hamburger.classList.toggle('active', isOpen);
