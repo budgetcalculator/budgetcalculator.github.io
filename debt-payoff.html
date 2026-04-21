@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debt Payoff Calculator — Avalanche &amp; Snowball Method | BudgetCalc</title>
+  <meta name="description" content="Calculate your debt payoff timeline with the avalanche and snowball methods. Free debt calculator showing exact months to debt freedom, total interest saved, and month-by-month payoff schedule.">
+  <meta name="keywords" content="debt payoff calculator, debt snowball calculator, debt avalanche calculator, credit card payoff calculator, debt free calculator, loan payoff calculator, debt repayment calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://budgetcalculator.github.io/debt-payoff">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Debt Payoff Calculator","url":"https://budgetcalculator.github.io/debt-payoff","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free debt payoff calculator. Compare avalanche vs snowball strategies to get out of debt faster and save on interest."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://budgetcalculator.github.io/"},{"@type":"ListItem","position":2,"name":"Debt Payoff Calculator","item":"https://budgetcalculator.github.io/debt-payoff"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is the debt avalanche method?","acceptedAnswer":{"@type":"Answer","text":"The debt avalanche method involves paying minimums on all debts and directing any extra money to the highest-interest debt first. This minimises total interest paid and is mathematically the fastest way to become debt-free."}},
+      {"@type":"Question","name":"What is the debt snowball method?","acceptedAnswer":{"@type":"Answer","text":"The debt snowball method involves paying off the smallest balance first while paying minimums on larger debts. This provides quick psychological wins that help maintain motivation throughout the debt payoff journey."}}
+    ]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/calc-pages.css">
+  <style>
+    :root{ --hero-from:#FFF7ED;--hero-mid:#FFFBEB;--hero-to:#FEF2F2;--hero-glow1:rgba(249,115,22,.07);--hero-glow2:rgba(239,68,68,.06);--btn-from:#EA580C;--btn-to:#C2410C;--btn-shadow:rgba(234,88,12,.3);--cta-from:#C2410C;--cta-to:#7C2D12; }
+    .page-hero-badge{background:#FFEDD5;color:#9A3412;}
+    .page-hero-title .accent{color:#EA580C;}
+    .results-aside-header{background:linear-gradient(135deg,#EA580C,#C2410C);}
+    .ras-highlight{background:#FFF7ED;} .ras-highlight-label{color:#9A3412;} .ras-highlight-val{color:#EA580C;}
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><path d='M8 10h16M8 16h10M8 22h13' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="page-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Debt Payoff Calculator</span></nav>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="page-hero-badge">💳 Get Out of Debt Faster</div>
+        <h1 class="page-hero-title">Free <span class="accent">Debt Payoff</span> Calculator</h1>
+        <p class="page-hero-desc">Compare the avalanche and snowball debt payoff strategies. See your exact debt-free date, total interest saved, and a full month-by-month payoff schedule.</p>
+        <div class="page-hero-ctas">
+          <a href="#debt-tool" class="btn-primary" style="background:linear-gradient(135deg,#EA580C,#C2410C);box-shadow:0 4px 16px rgba(234,88,12,.3)">Calculate Payoff Plan</a>
+          <a href="#payoff-strategies" class="btn-secondary">Compare Strategies</a>
+        </div>
+      </div>
+      <div class="page-hero-visual" aria-hidden="true">
+        <div style="background:white;border-radius:24px;padding:28px;box-shadow:0 24px 64px rgba(234,88,12,.12),0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;border:1px solid #ffedd5;">
+          <div style="font-weight:800;font-size:.9rem;color:#374151;margin-bottom:20px;">Debt Freedom Timeline</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+            <div style="padding:12px;background:#fff7ed;border-radius:10px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:.82rem;color:#9a3412;font-weight:600;">Credit Card (22%)</span><div style="flex:1;margin:0 12px;height:6px;background:#fed7aa;border-radius:4px;overflow:hidden;"><div style="width:70%;height:100%;background:#EA580C;border-radius:4px;"></div></div><span style="font-size:.82rem;font-weight:700;color:#ea580c;">£2,400</span></div>
+            <div style="padding:12px;background:#fff7ed;border-radius:10px;display:flex;justify-content:space-between;align-items:center;"><span style="font-size:.82rem;color:#9a3412;font-weight:600;">Personal Loan (8%)</span><div style="flex:1;margin:0 12px;height:6px;background:#fed7aa;border-radius:4px;overflow:hidden;"><div style="width:45%;height:100%;background:#F97316;border-radius:4px;"></div></div><span style="font-size:.82rem;font-weight:700;color:#F97316;">£5,000</span></div>
+          </div>
+          <div style="padding:14px;background:linear-gradient(135deg,#EA580C,#C2410C);border-radius:12px;display:flex;justify-content:space-between;align-items:center;">
+            <div><div style="font-size:.75rem;color:rgba(255,255,255,.8);">Debt-Free In</div><div style="font-family:'DM Serif Display',serif;font-size:2rem;color:white;">34 mo</div></div>
+            <div style="text-align:right;"><div style="font-size:.75rem;color:rgba(255,255,255,.8);">Interest Saved</div><div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fed7aa;">£1,240</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="tool-section" id="debt-tool">
+    <div class="tool-layout">
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <span class="tool-panel-icon">💳</span>
+          <div><div class="tool-panel-title">Debt Payoff Calculator</div><div class="tool-panel-sub">Avalanche · Snowball · Custom strategies</div></div>
+        </div>
+        <div class="tool-panel-body">
+          <div class="form-section-sep">Extra Monthly Payment</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="extraPayment">Extra Monthly Payment <span class="field-hint">(above minimums)</span></label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="extraPayment" value="200" min="0" placeholder="200"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="payoffStrategy">Payoff Strategy</label>
+              <select class="fselect" id="payoffStrategy">
+                <option value="avalanche">Avalanche (highest interest first)</option>
+                <option value="snowball">Snowball (smallest balance first)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-section-sep">Your Debts</div>
+          <div id="debtRows"></div>
+          <button class="btn-add-expense" id="addDebtBtn" type="button" style="margin-top:8px;">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Add Another Debt
+          </button>
+          <div class="info-callout" style="background:#FFF7ED;color:#9A3412;margin-top:16px;">
+            <span class="info-callout-icon">💡</span>
+            <span>Avalanche saves the most money. Snowball provides faster psychological wins. Both beat minimum payments alone — the key is to be consistent.</span>
+          </div>
+        </div>
+        <div class="tool-panel-footer">
+          <button class="btn-calc-main" id="debtCalcBtn" style="--btn-from:#EA580C;--btn-to:#C2410C;--btn-shadow:rgba(234,88,12,.3)">💳 Calculate Debt Payoff Plan</button>
+          <button class="btn-calc-reset" id="debtResetBtn">Reset</button>
+        </div>
+      </div>
+      <aside class="results-aside" id="debtResults">
+        <div class="results-empty-state"><div class="res-empty-icon">💳</div><div class="res-empty-title">Your payoff plan</div><div class="res-empty-desc">Enter your debts above and click Calculate to see your debt-free date and interest savings.</div></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="page-content-section" id="payoff-strategies">
+    <div class="content-cols container">
+      <div class="content-prose fade-in">
+        <h2>Avalanche vs Snowball: Which Strategy is Best?</h2>
+        <p>Both the avalanche and snowball methods accelerate debt payoff compared to making minimum payments. The right choice depends on your psychology and financial situation.</p>
+        <h3>Debt Avalanche Method</h3>
+        <p>Pay minimums on all debts, then direct every extra pound to the debt with the highest interest rate. Once that's paid off, redirect that payment to the next highest-rate debt. This method minimises total interest paid — often by hundreds or thousands of pounds — and gets you debt-free the fastest mathematically.</p>
+        <h3>Debt Snowball Method</h3>
+        <p>Pay minimums on all debts, then put extra money towards the smallest balance first. Each paid-off debt creates a "snowball" of freed-up cash directed at the next debt. Research shows many people are more successful with this method due to the motivational boost of quick wins.</p>
+        <h3>The Minimum Payment Trap</h3>
+        <p>On a £3,000 credit card at 22% APR, paying only the minimum (typically 1–2%) can take over 25 years to pay off and cost more than £5,000 in interest. Even adding £50 per month extra can cut this to under 4 years.</p>
+      </div>
+      <div class="info-cards fade-in">
+        <div class="info-card"><h3>🎯 Hybrid Approach</h3><p>Some people use a hybrid strategy: pay off one or two very small debts quickly for motivation (snowball), then switch to avalanche for the remaining high-interest debts. Our calculator lets you switch strategies to compare outcomes.</p></div>
+        <div class="info-card"><h3>🔄 Balance Transfers</h3><p>Transferring high-interest credit card debt to a 0% balance transfer card can dramatically reduce interest. Enter 0% as the interest rate in our calculator to see how much faster you'd pay off debt without interest accruing.</p></div>
+        <div class="info-card"><h3>📈 Debt-to-Income Ratio</h3><p>Lenders use your debt-to-income (DTI) ratio when assessing mortgage applications. A DTI below 36% is generally considered healthy. Total debt payments should ideally be below 43% of gross monthly income.</p></div>
+        <div class="info-card"><h3>🛑 Stop Adding New Debt</h3><p>The most effective debt payoff strategy only works if you stop accumulating new debt. Consider cutting up credit cards, switching to a debit card, or using our budget calculator to find spending to cut.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-faq-section page-content-section blue">
+    <div class="page-faq-inner">
+      <div class="section-header fade-in"><span class="section-eyebrow" style="color:#EA580C">Common Questions</span><h2 class="section-title">Debt Payoff Calculator FAQ</h2></div>
+      <div class="faq-list">
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is the fastest way to pay off debt?<span class="faq-icon">+</span></div><div class="faq-a">Mathematically, the avalanche method (targeting highest-interest debt first) is the fastest and cheapest way to pay off debt. The key variables are: how much extra you pay each month and whether you can reduce interest rates through balance transfers or debt consolidation. Our calculator shows your exact payoff timeline with different extra payment amounts.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Should I save or pay off debt first?<span class="faq-icon">+</span></div><div class="faq-a">A common rule is: if your debt interest rate is higher than your savings interest rate (usually the case with credit cards), paying off debt gives a better guaranteed return. However, maintaining a small emergency fund (£1,000–£3,000) before aggressively paying debt is wise, to avoid relying on credit cards for unexpected expenses.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Does paying off debt improve my credit score?<span class="faq-icon">+</span></div><div class="faq-a">Yes. Paying off revolving debt (credit cards, overdrafts) typically improves your credit score by reducing your credit utilisation ratio — ideally below 30% of your limit. Paying off installment loans (personal loans, car finance) also builds your credit history positively.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What counts as a debt in this calculator?<span class="faq-icon">+</span></div><div class="faq-a">Enter any debt with an interest rate and a required minimum payment: credit cards, store cards, personal loans, car finance, payday loans, overdrafts, or student loans. For your mortgage, use our dedicated mortgage calculator instead as it involves property equity and different calculations.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section"><div class="container"><div class="section-header fade-in"><span class="section-eyebrow">More Free Tools</span><h2 class="section-title">Related Calculators</h2></div></div>
+    <div class="related-grid">
+      <a href="index" class="related-card fade-in"><div class="related-card-icon">📊</div><div class="related-card-name">Budget Calculator</div><div class="related-card-desc">Find money to pay off debt</div></a>
+      <a href="tax-calculator" class="related-card fade-in"><div class="related-card-icon">🧾</div><div class="related-card-name">Tax Calculator</div><div class="related-card-desc">Take-home pay calculator</div></a>
+      <a href="investment-roi" class="related-card fade-in"><div class="related-card-icon">📈</div><div class="related-card-name">Investment ROI</div><div class="related-card-desc">Compound growth calculator</div></a>
+      <a href="retirement-planner" class="related-card fade-in"><div class="related-card-icon">🏖️</div><div class="related-card-name">Retirement Planner</div><div class="related-card-desc">Pension projections</div></a>
+      <a href="mortgage-calculator" class="related-card fade-in"><div class="related-card-icon">🏠</div><div class="related-card-name">Mortgage Calculator</div><div class="related-card-desc">Repayments &amp; interest</div></a>
+    </div>
+  </section>
+
+  <section class="page-cta" style="--cta-from:#C2410C;--cta-to:#7C2D12;">
+    <div class="page-cta-inner fade-in">
+      <h2 class="page-cta-title">Debt-Free is Within Reach.</h2>
+      <p class="page-cta-desc">Use our budget calculator to find extra money to throw at your debt every month.</p>
+      <div class="page-cta-btns"><a href="index#calculator" class="btn-cta-white">Open Budget Planner →</a><a href="mortgage-calculator" class="btn-cta-ghost">Mortgage Calculator</a></div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+let debtCount = 0;
+const DEBT_DEFAULTS = [
+  { name:'Credit Card', balance:3200, rate:22.9, min:65 },
+  { name:'Personal Loan', balance:8500, rate:8.5, min:180 },
+  { name:'Overdraft', balance:800, rate:39.9, min:25 },
+];
+function fmt(n){ return new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:2}).format(n); }
+
+function addDebt(name='',balance='',rate='',min=''){
+  const id = ++debtCount;
+  const container = document.getElementById('debtRows');
+  const div = document.createElement('div');
+  div.dataset.id = id;
+  div.style.cssText = 'display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;align-items:center;margin-bottom:10px;';
+  div.innerHTML = `
+    <input class="finput debt-name" type="text" placeholder="Debt name" value="${name}" style="font-size:.85rem">
+    <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix debt-balance" type="number" placeholder="Balance" value="${balance}" min="0" step="0.01" style="font-size:.85rem"></div>
+    <div class="field-input-wrap"><input class="finput has-suffix debt-rate" type="number" placeholder="APR" value="${rate}" min="0" max="200" step="0.1" style="font-size:.85rem"><span class="field-suffix">%</span></div>
+    <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix debt-min" type="number" placeholder="Min £" value="${min}" min="0" step="0.01" style="font-size:.85rem"></div>
+    <button class="btn-remove-expense" onclick="this.closest('[data-id]').remove()" aria-label="Remove debt">×</button>
+  `;
+  container.appendChild(div);
+}
+
+function calcDebt(){
+  const extra = parseFloat(document.getElementById('extraPayment').value)||0;
+  const strategy = document.getElementById('payoffStrategy').value;
+  const rows = document.querySelectorAll('#debtRows [data-id]');
+  let debts = [];
+  rows.forEach(row => {
+    const b = parseFloat(row.querySelector('.debt-balance')?.value)||0;
+    const r = parseFloat(row.querySelector('.debt-rate')?.value)||0;
+    const m = parseFloat(row.querySelector('.debt-min')?.value)||0;
+    const n = row.querySelector('.debt-name')?.value||'Debt';
+    if(b>0) debts.push({ name:n, balance:b, rate:r/100/12, minPay:m });
+  });
+  if(!debts.length) return;
+
+  const totalMinimums = debts.reduce((s,d)=>s+d.minPay,0);
+  const totalPayment = totalMinimums + extra;
+
+  // Clone debts
+  let working = debts.map((d,i)=>({...d, remaining:d.balance, idx:i}));
+  let month = 0; let totalInterest = 0; let minInterest = 0;
+
+  // Sort by strategy
+  function sortDebts(arr){
+    if(strategy==='avalanche') return [...arr].sort((a,b)=>b.rate-a.rate);
+    return [...arr].sort((a,b)=>a.remaining-b.remaining);
+  }
+
+  const timeline = [];
+  while(working.some(d=>d.remaining>0) && month < 600){
+    month++;
+    let available = totalPayment;
+    // Pay interest and minimums
+    let monthInterest = 0;
+    working.forEach(d=>{ if(d.remaining>0){ const int=d.remaining*d.rate; d.remaining+=int; monthInterest+=int; } });
+    totalInterest += monthInterest;
+    // Pay minimums
+    const sorted = sortDebts(working.filter(d=>d.remaining>0));
+    sorted.forEach(d=>{ const pay=Math.min(d.minPay, d.remaining); d.remaining=Math.max(0,d.remaining-pay); available-=pay; });
+    // Extra to priority debt
+    if(available>0){
+      const priority = sortDebts(working.filter(d=>d.remaining>0))[0];
+      if(priority){ const pay=Math.min(available,priority.remaining); priority.remaining=Math.max(0,priority.remaining-pay); }
+    }
+    if(month<=60) timeline.push({ month, debts: working.map(d=>({...d})) });
+  }
+
+  // Min-payment-only comparison
+  let minWorking = debts.map(d=>({...d,remaining:d.balance}));
+  let minMonth = 0;
+  while(minWorking.some(d=>d.remaining>0) && minMonth<1200){
+    minMonth++;
+    minWorking.forEach(d=>{ if(d.remaining>0){ const int=d.remaining*d.rate; d.remaining+=int; const pay=Math.max(d.minPay,d.remaining*0.01); d.remaining=Math.max(0,d.remaining-Math.min(pay,d.remaining)); } });
+    minWorking.forEach(d=>{ if(d.remaining>0){ const int=d.remaining*d.rate; minInterest+=int; } });
+  }
+
+  const totalDebt = debts.reduce((s,d)=>s+d.balance,0);
+  renderDebtResults({ debts, totalDebt, months:month, totalInterest, minMonths:minMonth, interestSaved:Math.max(0,minInterest-totalInterest), strategy, totalPayment, timeline });
+}
+
+function renderDebtResults(r){
+  const el = document.getElementById('debtResults');
+  const yrs = Math.floor(r.months/12); const mos = r.months%12;
+  const debtItems = r.debts.map((d,i)=>`
+    <div class="ras-row">
+      <span class="ras-row-label">${d.name}</span>
+      <span class="ras-row-val">${fmt(d.balance)}</span>
+    </div>`).join('');
+
+  el.innerHTML = `
+    <div class="results-aside-header">
+      <div class="results-aside-label">Debt-Free In</div>
+      <div class="results-aside-big">${yrs>0?yrs+'y ':''} ${mos}mo</div>
+      <div class="results-aside-sub">${r.strategy==='avalanche'?'Avalanche':'Snowball'} strategy · £${r.totalPayment.toFixed(0)}/mo total</div>
+    </div>
+    <div class="results-aside-body">
+      <div class="results-aside-section">
+        <div class="ras-title">Overview</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Total Debt</span><span class="ras-row-val">${fmt(r.totalDebt)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Total Interest</span><span class="ras-row-val" style="color:#EA580C">${fmt(r.totalInterest)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">vs Min Payments Only</span><span class="ras-row-val">${Math.floor(r.minMonths/12)}y ${r.minMonths%12}mo</span></div>
+        </div>
+        <div class="ras-divider"></div>
+        <div class="ras-highlight">
+          <span class="ras-highlight-label">Interest Saved</span>
+          <span class="ras-highlight-val">${fmt(r.interestSaved)}</span>
+        </div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Your Debts</div>
+        <div class="ras-rows">${debtItems}</div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Payoff Progress</div>
+        <div class="ras-bar-wrap">
+          <div class="ras-bar-label"><span>Months elapsed</span><span>${r.months} of ${r.minMonths}</span></div>
+          <div class="ras-bar-bg"><div class="ras-bar-fill" style="width:${Math.min(r.months/r.minMonths*100,100).toFixed(0)}%;background:#EA580C;"></div></div>
+        </div>
+        <p style="font-size:.75rem;color:var(--gray-400);margin-top:8px;">Your strategy pays off debt ${r.minMonths-r.months} months earlier than minimum payments.</p>
+      </div>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  Header.render(); Footer.render();
+  DEBT_DEFAULTS.forEach(d=>addDebt(d.name,d.balance,d.rate,d.min));
+  document.getElementById('addDebtBtn').addEventListener('click',()=>addDebt());
+  document.getElementById('debtCalcBtn').addEventListener('click',calcDebt);
+  document.getElementById('debtResetBtn').addEventListener('click',()=>{ document.getElementById('debtRows').innerHTML=''; debtCount=0; DEBT_DEFAULTS.forEach(d=>addDebt(d.name,d.balance,d.rate,d.min)); document.getElementById('debtResults').innerHTML='<div class="results-empty-state"><div class="res-empty-icon">💳</div><div class="res-empty-title">Your payoff plan</div><div class="res-empty-desc">Enter your debts and click Calculate.</div></div>'; });
+  document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{ const i=q.closest('.faq-item'); const o=i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open')); if(!o)i.classList.add('open'); }));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1}); document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>
