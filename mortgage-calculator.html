@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mortgage Calculator UK — Monthly Repayments &amp; Amortisation | BudgetCalc</title>
+  <meta name="description" content="Calculate your UK mortgage monthly repayments, total interest, and full amortisation schedule. Free mortgage calculator supporting repayment and interest-only mortgages, with overpayment and stamp duty tools.">
+  <meta name="keywords" content="mortgage calculator, mortgage repayment calculator uk, monthly mortgage calculator, mortgage interest calculator, how much can i borrow calculator, mortgage affordability calculator, stamp duty calculator, overpayment calculator, amortisation calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://budgetcalculator.github.io/mortgage-calculator">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Mortgage Calculator","url":"https://budgetcalculator.github.io/mortgage-calculator","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free UK mortgage calculator. Calculate monthly repayments, total interest, affordability, stamp duty, and view full amortisation schedule."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://budgetcalculator.github.io/"},{"@type":"ListItem","position":2,"name":"Mortgage Calculator","item":"https://budgetcalculator.github.io/mortgage-calculator"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How is a mortgage repayment calculated?","acceptedAnswer":{"@type":"Answer","text":"Monthly repayments use the formula: M = P[r(1+r)^n]/[(1+r)^n-1], where P is the loan amount, r is the monthly interest rate, and n is the number of monthly payments. Each payment covers interest first, then reduces the principal."}},
+      {"@type":"Question","name":"How much can I borrow for a mortgage?","acceptedAnswer":{"@type":"Answer","text":"Most UK lenders offer 4–4.5× your gross annual income. For two applicants, they typically use 3–4× joint income. Lenders also assess your affordability, credit score, deposit size, and existing debts. Our calculator includes a borrowing estimate tool."}}
+    ]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/calc-pages.css">
+  <style>
+    :root{ --hero-from:#F0FDFA;--hero-mid:#ECFDF5;--hero-to:#EFF6FF;--hero-glow1:rgba(20,184,166,.07);--hero-glow2:rgba(37,99,235,.06);--btn-from:#0D9488;--btn-to:#0F766E;--btn-shadow:rgba(13,148,136,.3);--cta-from:#0F766E;--cta-to:#134E4A; }
+    .page-hero-badge{background:#CCFBF1;color:#115E59;}
+    .page-hero-title .accent{color:#0D9488;}
+    .results-aside-header{background:linear-gradient(135deg,#0D9488,#0F766E);}
+    .ras-highlight{background:#F0FDFA;} .ras-highlight-label{color:#115E59;} .ras-highlight-val{color:#0D9488;}
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232563EB'/><path d='M8 10h16M8 16h10M8 22h13' stroke='white' stroke-width='2.5' stroke-linecap='round'/></svg>">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="page-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Mortgage Calculator</span></nav>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="page-hero-badge">🏠 UK Mortgage Tool</div>
+        <h1 class="page-hero-title">Free UK <span class="accent">Mortgage Calculator</span></h1>
+        <p class="page-hero-desc">Calculate monthly repayments, total interest, and stamp duty. View your full amortisation schedule and see how overpayments could save you thousands.</p>
+        <div class="page-hero-ctas">
+          <a href="#mortgage-tool" class="btn-primary" style="background:linear-gradient(135deg,#0D9488,#0F766E);box-shadow:0 4px 16px rgba(13,148,136,.3)">Calculate Mortgage</a>
+          <a href="#mortgage-basics" class="btn-secondary">How It Works</a>
+        </div>
+      </div>
+      <div class="page-hero-visual" aria-hidden="true">
+        <div style="background:white;border-radius:24px;padding:28px;box-shadow:0 24px 64px rgba(13,148,136,.12),0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;border:1px solid #ccfbf1;">
+          <div style="font-weight:800;font-size:.9rem;color:#374151;margin-bottom:16px;">Mortgage Summary</div>
+          <div style="padding:14px;background:linear-gradient(135deg,#0D9488,#0F766E);border-radius:12px;margin-bottom:14px;">
+            <div style="font-size:.75rem;color:rgba(255,255,255,.8);">Monthly Repayment</div>
+            <div style="font-family:'DM Serif Display',serif;font-size:2.2rem;color:white;margin-top:4px;">£1,247</div>
+            <div style="font-size:.75rem;color:rgba(255,255,255,.7);">£250,000 · 25yr · 5.0%</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;">
+            <div style="padding:10px;background:#f0fdfa;border-radius:8px;text-align:center;"><div style="font-size:.7rem;color:#0d9488;font-weight:700;">Total Interest</div><div style="font-size:1rem;font-weight:800;color:#0f766e;">£124,100</div></div>
+            <div style="padding:10px;background:#f0fdfa;border-radius:8px;text-align:center;"><div style="font-size:.7rem;color:#0d9488;font-weight:700;">Total Cost</div><div style="font-size:1rem;font-weight:800;color:#0f766e;">£374,100</div></div>
+          </div>
+          <div style="height:8px;background:#e2e8f0;border-radius:100px;overflow:hidden;"><div style="width:33%;height:100%;background:linear-gradient(90deg,#0D9488,#14B8A6);border-radius:100px;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:.72rem;color:#94a3b8;margin-top:5px;"><span>Loan: £250K (66.7%)</span><span>Interest: 33.3%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS: Repayment Calculator / Affordability / Stamp Duty -->
+  <section class="tool-section" id="mortgage-tool">
+    <div class="container" style="margin-bottom:20px;">
+      <div class="pill-tabs" id="mortgageTabs">
+        <button class="pill-tab active" data-tab="repayment">Repayment Calculator</button>
+        <button class="pill-tab" data-tab="affordability">Affordability Check</button>
+        <button class="pill-tab" data-tab="stamp">Stamp Duty Calculator</button>
+      </div>
+    </div>
+
+    <!-- REPAYMENT CALCULATOR -->
+    <div class="tool-layout" id="tabRepayment">
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <span class="tool-panel-icon">🏠</span>
+          <div><div class="tool-panel-title">Mortgage Repayment Calculator</div><div class="tool-panel-sub">Repayment &amp; interest-only · Amortisation schedule</div></div>
+        </div>
+        <div class="tool-panel-body">
+          <div class="form-section-sep">Loan Details</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="mortgageLoan">Loan Amount (mortgage size)</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="mortgageLoan" value="250000" min="1000" placeholder="250000"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="mortgageRate">Annual Interest Rate</label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="mortgageRate" value="5.0" min="0.1" max="20" step="0.05"><span class="field-suffix">%</span></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="mortgageTerm">Mortgage Term</label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="mortgageTerm" value="25" min="1" max="40"><span class="field-suffix">years</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="mortgageType">Mortgage Type</label>
+              <select class="fselect" id="mortgageType">
+                <option value="repayment">Repayment (capital + interest)</option>
+                <option value="io">Interest-Only</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-section-sep">Overpayments (Optional)</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="mortgageOverpay">Monthly Overpayment</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="mortgageOverpay" value="0" min="0" placeholder="0"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="mortgagePropValue">Property Value <span class="field-hint">(for LTV)</span></label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="mortgagePropValue" value="320000" min="1000" placeholder="320000"></div>
+            </div>
+          </div>
+          <div class="info-callout" style="background:#F0FDFA;color:#115E59;">
+            <span class="info-callout-icon">💡</span>
+            <span>Most fixed-rate mortgages allow up to 10% of the outstanding balance as overpayments per year without early repayment charges. Check your mortgage terms before overpaying.</span>
+          </div>
+        </div>
+        <div class="tool-panel-footer">
+          <button class="btn-calc-main" id="mortgageCalcBtn" style="--btn-from:#0D9488;--btn-to:#0F766E;--btn-shadow:rgba(13,148,136,.3)">🏠 Calculate Mortgage</button>
+          <button class="btn-calc-reset" id="mortgageResetBtn">Reset</button>
+        </div>
+      </div>
+      <aside class="results-aside" id="mortgageResults">
+        <div class="results-empty-state"><div class="res-empty-icon">🏠</div><div class="res-empty-title">Your mortgage breakdown</div><div class="res-empty-desc">Enter your mortgage details and click Calculate to see repayments, interest, and amortisation schedule.</div></div>
+      </aside>
+    </div>
+
+    <!-- AFFORDABILITY -->
+    <div id="tabAffordability" style="display:none;">
+      <div class="tool-layout">
+        <div class="tool-panel">
+          <div class="tool-panel-header"><span class="tool-panel-icon">💰</span><div><div class="tool-panel-title">Mortgage Affordability Calculator</div><div class="tool-panel-sub">How much can I borrow?</div></div></div>
+          <div class="tool-panel-body">
+            <div class="form-section-sep">Your Income</div>
+            <div class="form-row">
+              <div class="field"><label class="field-label" for="affIncome1">Your Annual Salary</label><div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="affIncome1" value="45000" min="0" placeholder="45000"></div></div>
+              <div class="field"><label class="field-label" for="affIncome2">Partner's Annual Salary <span class="field-hint">(if applicable)</span></label><div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="affIncome2" value="0" min="0" placeholder="0"></div></div>
+            </div>
+            <div class="form-section-sep">Deposit &amp; Property</div>
+            <div class="form-row">
+              <div class="field"><label class="field-label" for="affDeposit">Deposit Available</label><div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="affDeposit" value="40000" min="0"></div></div>
+              <div class="field"><label class="field-label" for="affMultiplier">Income Multiplier</label><select class="fselect" id="affMultiplier"><option value="4.5">4.5× (most lenders)</option><option value="5">5× (some lenders)</option><option value="4">4× (conservative)</option></select></div>
+            </div>
+            <div class="info-callout" style="background:#F0FDFA;color:#115E59;"><span class="info-callout-icon">ℹ️</span><span>This is a rough estimate. Actual borrowing depends on your credit score, debts, spending, and lender's affordability assessment. Speak to a mortgage broker for a precise figure.</span></div>
+          </div>
+          <div class="tool-panel-footer"><button class="btn-calc-main" id="affCalcBtn" style="--btn-from:#0D9488;--btn-to:#0F766E;--btn-shadow:rgba(13,148,136,.3)">💰 Check Affordability</button></div>
+        </div>
+        <aside class="results-aside" id="affResults"><div class="results-empty-state"><div class="res-empty-icon">💰</div><div class="res-empty-title">Borrowing estimate</div><div class="res-empty-desc">Enter your income and deposit to see how much you might be able to borrow.</div></div></aside>
+      </div>
+    </div>
+
+    <!-- STAMP DUTY -->
+    <div id="tabStamp" style="display:none;">
+      <div class="tool-layout">
+        <div class="tool-panel">
+          <div class="tool-panel-header"><span class="tool-panel-icon">🧾</span><div><div class="tool-panel-title">Stamp Duty Calculator</div><div class="tool-panel-sub">England &amp; Northern Ireland · 2024</div></div></div>
+          <div class="tool-panel-body">
+            <div class="form-section-sep">Property Details</div>
+            <div class="form-row">
+              <div class="field"><label class="field-label" for="stampPrice">Purchase Price</label><div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="stampPrice" value="320000" min="0" placeholder="320000"></div></div>
+              <div class="field"><label class="field-label" for="stampType">Buyer Type</label><select class="fselect" id="stampType"><option value="firsttime">First-time buyer</option><option value="movinghome">Moving home</option><option value="additional">Additional property / buy-to-let</option></select></div>
+            </div>
+            <div class="form-row single"><div class="field"><label class="field-label" for="stampRegion">Region</label><select class="fselect" id="stampRegion"><option value="england">England / Northern Ireland</option><option value="scotland">Scotland (LBTT)</option><option value="wales">Wales (LTT)</option></select></div></div>
+          </div>
+          <div class="tool-panel-footer"><button class="btn-calc-main" id="stampCalcBtn" style="--btn-from:#0D9488;--btn-to:#0F766E;--btn-shadow:rgba(13,148,136,.3)">🧾 Calculate Stamp Duty</button></div>
+        </div>
+        <aside class="results-aside" id="stampResults"><div class="results-empty-state"><div class="res-empty-icon">🧾</div><div class="res-empty-title">Stamp duty estimate</div><div class="res-empty-desc">Enter the property price and select your buyer type to calculate stamp duty.</div></div></aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- AMORTISATION TABLE -->
+  <section class="page-content-section alt" id="amortisation" style="display:none;">
+    <div class="container">
+      <div class="section-header"><span class="section-eyebrow" style="color:#0D9488">Full Schedule</span><h2 class="section-title">Amortisation Schedule</h2></div>
+      <div class="table-wrap" id="amortTable" style="margin-top:24px;"></div>
+      <p class="table-note">Showing first 60 months. <button id="showAllBtn" style="color:#0D9488;font-weight:700;background:none;border:none;cursor:pointer;text-decoration:underline;">Show all months</button></p>
+    </div>
+  </section>
+
+  <!-- HOW MORTGAGES WORK -->
+  <section class="page-content-section" id="mortgage-basics">
+    <div class="content-cols container">
+      <div class="content-prose fade-in">
+        <h2>How UK Mortgages Work</h2>
+        <p>A mortgage is a secured loan where the property acts as collateral. Monthly repayments cover both interest charged on the outstanding balance and principal repayment (on a repayment mortgage). Over time, your monthly interest reduces as the balance falls, while the principal portion increases.</p>
+        <h3>Types of Mortgage</h3>
+        <ul>
+          <li>Fixed Rate: Interest rate locked for an initial period (2, 5 or 10 years)</li>
+          <li>Tracker/Variable: Rate follows Bank of England base rate</li>
+          <li>Repayment: Guaranteed to clear the loan at end of term</li>
+          <li>Interest-Only: Monthly payments cover interest only; capital repaid at end</li>
+        </ul>
+        <h3>Loan-to-Value (LTV) Ratio</h3>
+        <p>LTV is the mortgage amount as a percentage of the property value. A £200,000 mortgage on a £250,000 property is 80% LTV. Lower LTV typically means better interest rates. Many lenders offer their best rates at 60% and 75% LTV.</p>
+        <h3>The Power of Overpayments</h3>
+        <p>Making regular overpayments can save thousands in interest and years off your mortgage. An extra £200/month on a £250,000 25-year mortgage at 5% saves approximately £28,000 in interest and reduces the term by 4+ years. Use the overpayment field to calculate your own savings.</p>
+      </div>
+      <div class="info-cards fade-in">
+        <div class="info-card"><h3>📋 Stamp Duty (2024)</h3><p>In England, Stamp Duty Land Tax is 0% up to £250,000 (£425,000 for first-time buyers), 5% on £250,001–£925,000, 10% on £925,001–£1.5m, and 12% above £1.5m. Additional properties attract a 3% surcharge. Use our stamp duty calculator tab above.</p></div>
+        <div class="info-card"><h3>🔑 First-Time Buyer Schemes</h3><p>Available schemes include the Mortgage Guarantee Scheme (5% deposits), Shared Ownership (buy 10–75% share), and First Homes (30–50% discount for key workers). Help to Buy ISA and Lifetime ISA can also boost first-time buyer deposits.</p></div>
+        <div class="info-card"><h3>📊 Mortgage Affordability Stress Testing</h3><p>UK lenders stress-test affordability at rates 3% above the revert rate (typically 8–9%), to ensure you could afford payments if rates rise. This is more conservative than just checking current rates — it's why your borrowing capacity may be lower than expected.</p></div>
+        <div class="info-card"><h3>💡 Remortgaging Tips</h3><p>Start remortgaging 3–6 months before your fixed rate ends. Rate changes become effective immediately but you can lock a rate early. Compare whole-of-market brokers — they can often find deals not available direct from lenders.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-faq-section page-content-section blue">
+    <div class="page-faq-inner">
+      <div class="section-header fade-in"><span class="section-eyebrow" style="color:#0D9488">Common Questions</span><h2 class="section-title">Mortgage Calculator FAQ</h2></div>
+      <div class="faq-list">
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How much deposit do I need for a mortgage?<span class="faq-icon">+</span></div><div class="faq-a">Most lenders require a minimum 5% deposit (95% LTV mortgage), though 10% is more common for competitive rates. A 15–20% deposit typically gives access to significantly better interest rates, saving thousands over the mortgage term. The sweet spot for best rates is often 25–40% deposit (60–75% LTV).</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How is monthly mortgage calculated?<span class="faq-icon">+</span></div><div class="faq-a">Monthly repayments use the formula: M = P[r(1+r)^n] ÷ [(1+r)^n - 1], where P is the loan principal, r is the monthly interest rate (annual rate ÷ 12), and n is the total number of monthly payments. At the start, most of your payment goes towards interest; over time, more goes to capital repayment.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Should I get a 25 or 30-year mortgage?<span class="faq-icon">+</span></div><div class="faq-a">A longer term reduces monthly payments but significantly increases total interest paid. A £250,000 mortgage at 5%: over 25 years costs £437,000 total (£187,000 interest), over 30 years costs £482,000 total (£232,000 interest). Use our calculator to compare terms. Many borrowers take a longer term for lower payments, then overpay when affordable.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is an amortisation schedule?<span class="faq-icon">+</span></div><div class="faq-a">An amortisation schedule shows every monthly payment broken down into principal and interest components throughout the mortgage term. Early payments are mostly interest; later payments are mostly principal. Our calculator generates the full amortisation schedule which you can download as a CSV.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What mortgage rate should I use in the calculator?<span class="faq-icon">+</span></div><div class="faq-a">For current affordability, use today's rates — check comparison sites for current deals. For long-term planning, consider a higher "stress test" rate (e.g. 7–8%) to ensure you could afford repayments if rates rise. Many financial planners recommend running calculations at both your current rate and at a higher scenario rate.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section"><div class="container"><div class="section-header fade-in"><span class="section-eyebrow">More Free Tools</span><h2 class="section-title">Related Calculators</h2></div></div>
+    <div class="related-grid">
+      <a href="index" class="related-card fade-in"><div class="related-card-icon">📊</div><div class="related-card-name">Budget Calculator</div><div class="related-card-desc">Monthly expense planner</div></a>
+      <a href="tax-calculator" class="related-card fade-in"><div class="related-card-icon">🧾</div><div class="related-card-name">Tax Calculator</div><div class="related-card-desc">Income tax &amp; take-home</div></a>
+      <a href="investment-roi" class="related-card fade-in"><div class="related-card-icon">📈</div><div class="related-card-name">Investment ROI</div><div class="related-card-desc">Compound growth</div></a>
+      <a href="debt-payoff" class="related-card fade-in"><div class="related-card-icon">💳</div><div class="related-card-name">Debt Payoff</div><div class="related-card-desc">Avalanche &amp; snowball</div></a>
+      <a href="retirement-planner" class="related-card fade-in"><div class="related-card-icon">🏖️</div><div class="related-card-name">Retirement Planner</div><div class="related-card-desc">Pension projections</div></a>
+    </div>
+  </section>
+
+  <section class="page-cta" style="--cta-from:#0F766E;--cta-to:#134E4A;">
+    <div class="page-cta-inner fade-in">
+      <h2 class="page-cta-title">Know Your Numbers Before You Buy.</h2>
+      <p class="page-cta-desc">Use our budget planner to make sure your full monthly housing costs fit comfortably in your budget.</p>
+      <div class="page-cta-btns"><a href="index#calculator" class="btn-cta-white">Open Budget Planner →</a><a href="tax-calculator" class="btn-cta-ghost">Tax Calculator</a></div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+function fmt(n,dec=0){ return new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',minimumFractionDigits:dec,maximumFractionDigits:dec}).format(n); }
+let _amortData = [];
+
+// ---- Tab Switching ----
+document.querySelectorAll('.pill-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.pill-tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    ['tabRepayment','tabAffordability','tabStamp'].forEach(id=>{ const el=document.getElementById(id); if(el) el.style.display='none'; });
+    const map={repayment:'tabRepayment',affordability:'tabAffordability',stamp:'tabStamp'};
+    const target=document.getElementById(map[btn.dataset.tab]);
+    if(target) target.style.display='';
+    document.getElementById('amortisation').style.display='none';
+  });
+});
+
+// ---- Mortgage Repayment Calc ----
+function calcMortgage(){
+  const P = parseFloat(document.getElementById('mortgageLoan').value)||0;
+  const annualRate = parseFloat(document.getElementById('mortgageRate').value)||0;
+  const years = parseInt(document.getElementById('mortgageTerm').value)||25;
+  const type = document.getElementById('mortgageType').value;
+  const overpay = parseFloat(document.getElementById('mortgageOverpay').value)||0;
+  const propValue = parseFloat(document.getElementById('mortgagePropValue').value)||P/0.8;
+
+  const r = annualRate/100/12;
+  const n = years * 12;
+  let monthlyBase;
+  if(type==='io'){ monthlyBase = P * r; }
+  else { monthlyBase = r===0 ? P/n : P * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1); }
+
+  const monthlyTotal = monthlyBase + overpay;
+
+  // Amortise
+  let bal = P; let totalInterest = 0; let months = 0;
+  const schedule = [];
+  while(bal > 0.01 && months < n+1){
+    months++;
+    const interest = bal * r;
+    const principal = type==='io' ? overpay : Math.min(monthlyTotal - interest, bal);
+    totalInterest += interest;
+    bal = Math.max(0, bal - (type==='io' ? overpay : monthlyTotal - interest));
+    schedule.push({ month:months, payment:monthlyTotal, principal: type==='io'?overpay:monthlyTotal-interest, interest, balance:bal });
+    if(bal <= 0) break;
+  }
+  _amortData = schedule;
+  const actualMonths = months;
+  const totalCost = type==='io' ? P + totalInterest : monthlyBase*n + overpay*actualMonths;
+  const ltv = P/propValue*100;
+  const overpayInterestSaved = type!=='io' ? (monthlyBase*n - P) - totalInterest : 0;
+  const timeSaved = n - actualMonths;
+
+  renderMortgageResults({monthlyBase,monthlyTotal,totalInterest,totalCost,P,ltv,propValue,actualMonths,overpayInterestSaved,timeSaved,overpay,type,r,n});
+  renderAmortTable(schedule, false);
+}
+
+function renderMortgageResults(r){
+  const el=document.getElementById('mortgageResults');
+  const yrs=Math.floor(r.actualMonths/12); const mos=r.actualMonths%12;
+  el.innerHTML=`
+    <div class="results-aside-header">
+      <div class="results-aside-label">Monthly Repayment</div>
+      <div class="results-aside-big">${fmt(r.monthlyBase,2)}</div>
+      <div class="results-aside-sub">${r.overpay>0?`+${fmt(r.overpay,2)} overpayment = ${fmt(r.monthlyTotal,2)}/mo total`:''}</div>
+    </div>
+    <div class="results-aside-body">
+      <div class="results-aside-section">
+        <div class="ras-title">Cost Summary</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Loan Amount</span><span class="ras-row-val">${fmt(r.P)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Total Interest</span><span class="ras-row-val" style="color:#EA580C">${fmt(r.totalInterest)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Total Cost</span><span class="ras-row-val">${fmt(r.totalCost)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Loan-to-Value</span><span class="ras-row-val">${r.ltv.toFixed(1)}%</span></div>
+        </div>
+        <div class="ras-divider"></div>
+        <div class="ras-highlight"><span class="ras-highlight-label">Term</span><span class="ras-highlight-val">${yrs}yr ${mos}mo</span></div>
+      </div>
+      ${r.overpay>0&&r.type!=='io'?`
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Overpayment Savings</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Interest Saved</span><span class="ras-row-val" style="color:#16A34A">${fmt(r.overpayInterestSaved)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Time Saved</span><span class="ras-row-val" style="color:#16A34A">${Math.floor(r.timeSaved/12)}yr ${r.timeSaved%12}mo</span></div>
+        </div>
+      </div>`:''}
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">LTV Ratio</div>
+        <div class="ras-bar-wrap">
+          <div class="ras-bar-label"><span>Mortgage: ${r.ltv.toFixed(0)}%</span><span>Equity: ${(100-r.ltv).toFixed(0)}%</span></div>
+          <div class="ras-bar-bg"><div class="ras-bar-fill" style="width:${Math.min(r.ltv,100)}%;background:#0D9488;"></div></div>
+        </div>
+      </div>
+      <button class="btn-export-sm" onclick="exportAmort()">📥 Export Amortisation (CSV)</button>
+    </div>
+  `;
+  document.getElementById('amortisation').style.display='';
+}
+
+function renderAmortTable(schedule, showAll){
+  const rows = showAll ? schedule : schedule.slice(0,60);
+  document.getElementById('amortTable').innerHTML=`<table class="data-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.month}</td><td>${fmt(r.payment,2)}</td><td class="positive">${fmt(r.principal,2)}</td><td class="negative">${fmt(r.interest,2)}</td><td>${fmt(r.balance,2)}</td></tr>`).join('')}</tbody></table>`;
+}
+
+function exportAmort(){
+  const rows=[['Month','Payment','Principal','Interest','Balance'],..._amortData.map(r=>[r.month,r.payment.toFixed(2),r.principal.toFixed(2),r.interest.toFixed(2),r.balance.toFixed(2)])];
+  const csv=rows.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='mortgage-amortisation.csv'; a.click();
+}
+
+// ---- Affordability ----
+function calcAffordability(){
+  const i1=parseFloat(document.getElementById('affIncome1').value)||0;
+  const i2=parseFloat(document.getElementById('affIncome2').value)||0;
+  const dep=parseFloat(document.getElementById('affDeposit').value)||0;
+  const mult=parseFloat(document.getElementById('affMultiplier').value)||4.5;
+  const totalIncome=i1+i2;
+  const borrowing=totalIncome*mult;
+  const maxProperty=borrowing+dep;
+  const ltv=maxProperty>0?(borrowing/maxProperty*100):0;
+  const el=document.getElementById('affResults');
+  el.innerHTML=`<div class="results-aside-header"><div class="results-aside-label">Max Borrowing</div><div class="results-aside-big">${fmt(borrowing)}</div><div class="results-aside-sub">${mult}× joint income of ${fmt(totalIncome)}/yr</div></div><div class="results-aside-body"><div class="results-aside-section"><div class="ras-title">Property Budget</div><div class="ras-rows"><div class="ras-row"><span class="ras-row-label">Max Mortgage</span><span class="ras-row-val">${fmt(borrowing)}</span></div><div class="ras-row"><span class="ras-row-label">Your Deposit</span><span class="ras-row-val">${fmt(dep)}</span></div></div><div class="ras-divider"></div><div class="ras-highlight"><span class="ras-highlight-label">Max Property Value</span><span class="ras-highlight-val">${fmt(maxProperty)}</span></div></div><div class="ras-divider"></div><div class="results-aside-section"><div class="ras-title">LTV</div><div class="ras-bar-wrap"><div class="ras-bar-label"><span>Mortgage ${ltv.toFixed(0)}%</span><span>Deposit ${(100-ltv).toFixed(0)}%</span></div><div class="ras-bar-bg"><div class="ras-bar-fill" style="width:${Math.min(ltv,100)}%;background:#0D9488;"></div></div></div></div></div>`;
+}
+
+// ---- Stamp Duty ----
+const SDLT_ENGLAND = { firsttime:[[0,425000,0],[425000,625000,.05],[625000,925000,.05],[925000,1500000,.1],[1500000,Infinity,.12]], movinghome:[[0,250000,0],[250000,925000,.05],[925000,1500000,.1],[1500000,Infinity,.12]], additional:[[0,250000,.03],[250000,925000,.08],[925000,1500000,.13],[1500000,Infinity,.15]] };
+function calcSDLT(price, bands){ let tax=0, rem=price; for(const [from,to,rate] of bands){ if(rem<=0)break; const slice=Math.min(rem,to)-Math.max(0,from); if(slice>0){tax+=slice*rate;} rem=Math.max(0,price-to); } return tax; }
+function calcStamp(){
+  const price=parseFloat(document.getElementById('stampPrice').value)||0;
+  const type=document.getElementById('stampType').value;
+  const region=document.getElementById('stampRegion').value;
+  let tax=0;
+  if(region==='england'){ const bands=SDLT_ENGLAND[type]||SDLT_ENGLAND.movinghome; tax=calcSDLT(price,bands); if(type==='firsttime'&&price>625000) tax=calcSDLT(price,SDLT_ENGLAND.movinghome); }
+  else if(region==='scotland'){ const bands=[[0,145000,0],[145000,250000,.02],[250000,325000,.05],[325000,750000,.1],[750000,Infinity,.12]]; tax=calcSDLT(price,bands); if(type==='additional') tax+=price*.06; }
+  else { const bands=[[0,225000,0],[225000,400000,.06],[400000,750000,.075],[750000,1500000,.1],[1500000,Infinity,.12]]; tax=calcSDLT(price,bands); if(type==='additional') tax+=price*.04; }
+  const pct=price>0?(tax/price*100):0;
+  const el=document.getElementById('stampResults');
+  el.innerHTML=`<div class="results-aside-header"><div class="results-aside-label">Stamp Duty / Land Tax</div><div class="results-aside-big">${fmt(tax)}</div><div class="results-aside-sub">${pct.toFixed(2)}% of purchase price</div></div><div class="results-aside-body"><div class="results-aside-section"><div class="ras-title">Summary</div><div class="ras-rows"><div class="ras-row"><span class="ras-row-label">Purchase Price</span><span class="ras-row-val">${fmt(price)}</span></div><div class="ras-row"><span class="ras-row-label">Tax Due</span><span class="ras-row-val" style="color:#EA580C">${fmt(tax)}</span></div><div class="ras-row"><span class="ras-row-label">Total Buyer Cost</span><span class="ras-row-val">${fmt(price+tax)}</span></div></div></div><div class="ras-divider"></div><p style="font-size:.75rem;color:var(--gray-400);padding:0 2px;">Stamp duty is typically paid within 14 days of completion. These are estimates only — consult a solicitor for exact figures.</p></div>`;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  Header.render(); Footer.render();
+  document.getElementById('mortgageCalcBtn').addEventListener('click',calcMortgage);
+  document.getElementById('mortgageResetBtn').addEventListener('click',()=>{ ['mortgageLoan','mortgageRate','mortgageTerm','mortgageOverpay','mortgagePropValue'].forEach(id=>{ const defs={mortgageLoan:250000,mortgageRate:5,mortgageTerm:25,mortgageOverpay:0,mortgagePropValue:320000}; document.getElementById(id).value=defs[id]; }); document.getElementById('mortgageResults').innerHTML='<div class="results-empty-state"><div class="res-empty-icon">🏠</div><div class="res-empty-title">Your mortgage breakdown</div><div class="res-empty-desc">Enter details and click Calculate.</div></div>'; document.getElementById('amortisation').style.display='none'; });
+  document.getElementById('affCalcBtn')?.addEventListener('click',calcAffordability);
+  document.getElementById('stampCalcBtn')?.addEventListener('click',calcStamp);
+  document.getElementById('showAllBtn')?.addEventListener('click',()=>{ renderAmortTable(_amortData,true); document.getElementById('showAllBtn').parentElement.style.display='none'; });
+  document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{ const i=q.closest('.faq-item'); const o=i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open')); if(!o)i.classList.add('open'); }));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1}); document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  calcMortgage();
+});
+</script>
+</body>
+</html>
