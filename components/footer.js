@@ -29,12 +29,11 @@ const Footer = {
             </div>
 
             <div class="footer-col">
-              <h3 class="footer-heading">Tools</h3>
+              <h3 class="footer-heading">Pages</h3>
               <ul class="footer-links">
-                <li><a href="#calculator">Monthly Budget Calculator</a></li>
-                <li><a href="#calculator">Personal Budget Planner</a></li>
-                <li><a href="#calculator">Freelance Budget Calculator</a></li>
-                <li><a href="#calculator">Budget Generator</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="disclaimer">Disclaimer</a></li>                
               </ul>
             </div>
 
@@ -49,12 +48,13 @@ const Footer = {
             </div>
 
             <div class="footer-col">
-              <h3 class="footer-heading">Popular Searches</h3>
+              <h3 class="footer-heading">More Calculators</h3>
               <ul class="footer-links">
-                <li><a href="#calculator">Free Budget Planner UK</a></li>
-                <li><a href="#calculator">Online Budget Tool</a></li>
-                <li><a href="#calculator">Budget My Money</a></li>
-                <li><a href="#calculator">Free Finance Planner</a></li>
+                <li><a href="tax-calculator">Tax Calculator</a></li>
+                <li><a href="investment-roi">Investment ROI</a></li>
+                <li><a href="debt-payoff">Debt Payoff</a></li>
+                <li><a href="retirement-planner">Retirement Planner</a></li>
+                <li><a href="mortgage-calculator">Mortgage Calculator</a></li>                
               </ul>
             </div>
           </div>
@@ -62,8 +62,8 @@ const Footer = {
           <div class="footer-bottom">
             <p class="footer-copy">&copy; ${year} BudgetCalc — budgetcalculator.github.io. Free online budget calculator &amp; planner. For educational purposes.</p>
             <div class="footer-legal">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Use</a>
+              <a href="privacy">Privacy Policy</a>
+              <a href="terms">Terms of Use</a>
             </div>
           </div>
         </div>
