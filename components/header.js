@@ -20,6 +20,7 @@ const Header = {
 
           <nav class="main-nav" role="navigation" aria-label="Main navigation">
             <ul class="nav-list">
+              <li><a href="/" class="nav-link">Home</a></li>
               <li><a href="#calculator" class="nav-link">Calculator</a></li>
               <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
               <li><a href="#tips" class="nav-link">Budgeting Tips</a></li>
