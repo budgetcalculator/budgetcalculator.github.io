@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investment ROI Calculator — Compound Interest &amp; Returns | BudgetCalc</title>
+  <meta name="description" content="Calculate your investment returns, compound interest growth, and ROI with our free investment calculator. See how your money grows with lump sum, regular contributions, and different annual return rates.">
+  <meta name="keywords" content="investment calculator, roi calculator, compound interest calculator, investment return calculator, stock market calculator, investment growth calculator, compound growth calculator, monthly investment calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://budgetcalculator.github.io/investment-roi">
+  <meta property="og:title" content="Free Investment ROI &amp; Compound Interest Calculator | BudgetCalc">
+  <meta property="og:description" content="See how your investments grow with compound interest. Free ROI calculator with lump sum, monthly contributions, and year-by-year breakdown.">
+  <script type="application/ld+json">
+  { "@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Investment ROI Calculator","url":"https://budgetcalculator.github.io/investment-roi","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free investment ROI and compound interest calculator. Project investment growth with lump sum and monthly contributions over any time horizon."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://budgetcalculator.github.io/"},{"@type":"ListItem","position":2,"name":"Investment ROI Calculator","item":"https://budgetcalculator.github.io/investment-roi"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is compound interest?","acceptedAnswer":{"@type":"Answer","text":"Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods. Over time, this creates exponential growth — often called 'the eighth wonder of the world'."}},
+      {"@type":"Question","name":"What is a good ROI for investments?","acceptedAnswer":{"@type":"Answer","text":"The S&P 500 has historically averaged around 10% annually before inflation. A 7% real return (adjusted for inflation) is commonly used as a planning benchmark for diversified equity portfolios."}}
+    ]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/calc-pages.css">
+  <style>
+    :root{ --hero-from:#F0FDF4;--hero-mid:#ECFDF5;--hero-to:#EFF6FF;--hero-glow1:rgba(34,197,94,.07);--hero-glow2:rgba(37,99,235,.07);--btn-from:#16A34A;--btn-to:#15803D;--btn-shadow:rgba(22,163,74,.3);--cta-from:#15803D;--cta-to:#14532D; }
+    .page-hero-badge{background:#DCFCE7;color:#166534;}
+    .page-hero-title .accent{color:#16A34A;}
+    .results-aside-header{background:linear-gradient(135deg,#16A34A,#15803D);}
+    .ras-highlight{background:#F0FDF4;} .ras-highlight-label{color:#166534;} .ras-highlight-val{color:#16A34A;}
+  </style>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png"></head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="page-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Investment ROI Calculator</span></nav>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="page-hero-badge">📈 Compound Growth Tool</div>
+        <h1 class="page-hero-title">Free <span class="accent">Investment ROI</span> Calculator</h1>
+        <p class="page-hero-desc">Project how your investments grow with compound interest. Calculate returns on lump sum investments and regular contributions with year-by-year breakdowns.</p>
+        <div class="page-hero-ctas">
+          <a href="#roi-tool" class="btn-primary" style="background:linear-gradient(135deg,#16A34A,#15803D);box-shadow:0 4px 16px rgba(22,163,74,.3)">Calculate Returns</a>
+          <a href="#compound-explained" class="btn-secondary">How It Works</a>
+        </div>
+      </div>
+      <div class="page-hero-visual" aria-hidden="true">
+        <div style="background:white;border-radius:24px;padding:28px;box-shadow:0 24px 64px rgba(22,163,74,.12),0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;border:1px solid #dcfce7;">
+          <div style="font-weight:800;font-size:.9rem;color:#374151;margin-bottom:16px;">£10,000 invested over 20 years</div>
+          <div style="height:80px;display:flex;align-items:flex-end;gap:4px;margin-bottom:12px;">
+            ${[15,18,21,25,30,36,43,52,62,74,88,105,125,149,178,212,252,300,357,425].map((h,i)=>`<div style="flex:1;height:${h/4.25}%;background:linear-gradient(180deg,#16A34A,#22C55E);border-radius:3px 3px 0 0;opacity:${.5+i*.025};min-height:4px;"></div>`).join('')}
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="padding:12px;background:#f0fdf4;border-radius:10px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#15803d;">£67,275</div><div style="font-size:.7rem;color:#86efac;margin-top:2px;">Final Value</div></div>
+            <div style="padding:12px;background:#f0fdf4;border-radius:10px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:1.3rem;color:#15803d;">573%</div><div style="font-size:.7rem;color:#86efac;margin-top:2px;">Total Return</div></div>
+          </div>
+          <div style="font-size:.72rem;color:#94a3b8;text-align:center;margin-top:10px;">At 10% annual return (illustrative)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="tool-section" id="roi-tool">
+    <div class="tool-layout">
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <span class="tool-panel-icon">📈</span>
+          <div><div class="tool-panel-title">Investment ROI &amp; Compound Interest Calculator</div><div class="tool-panel-sub">Lump sum · Regular contributions · Year-by-year growth</div></div>
+        </div>
+        <div class="tool-panel-body">
+          <div class="form-section-sep">Investment Details</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="roiInitial">Initial Investment</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="roiInitial" value="10000" min="0" placeholder="10000"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="roiMonthly">Monthly Contribution</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="roiMonthly" value="200" min="0" placeholder="200"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="roiReturn">Annual Return Rate <span class="field-hint">(before tax)</span></label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="roiReturn" value="8" min="0" max="50" step="0.5"><span class="field-suffix">%</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="roiYears">Investment Period</label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="roiYears" value="20" min="1" max="50"><span class="field-suffix">yrs</span></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="roiInflation">Inflation Rate <span class="field-hint">(optional)</span></label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="roiInflation" value="2.5" min="0" max="20" step="0.5"><span class="field-suffix">%</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="roiCompound">Compounding Frequency</label>
+              <select class="fselect" id="roiCompound">
+                <option value="12">Monthly</option>
+                <option value="4">Quarterly</option>
+                <option value="1">Annually</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-section-sep">Tax Settings</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="roiTaxRate">Capital Gains Tax Rate</label>
+              <select class="fselect" id="roiTaxRate">
+                <option value="0">ISA / Tax-Free (0%)</option>
+                <option value="10">Basic Rate CGT (10%)</option>
+                <option value="20" selected>Higher Rate CGT (20%)</option>
+                <option value="18">Residential Property BR (18%)</option>
+                <option value="28">Residential Property HR (28%)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="roiCurrency">Currency</label>
+              <select class="fselect" id="roiCurrency">
+                <option value="GBP">£ GBP</option>
+                <option value="USD">$ USD</option>
+                <option value="EUR">€ EUR</option>
+              </select>
+            </div>
+          </div>
+          <div class="info-callout" style="background:#F0FDF4;color:#166534;">
+            <span class="info-callout-icon">💡</span>
+            <span>Past investment returns are not a guarantee of future results. This calculator is for educational purposes and does not constitute financial advice. Always consult a qualified financial adviser.</span>
+          </div>
+        </div>
+        <div class="tool-panel-footer">
+          <button class="btn-calc-main" id="roiCalcBtn" style="--btn-from:#16A34A;--btn-to:#15803D;--btn-shadow:rgba(22,163,74,.3)">📈 Calculate Investment Returns</button>
+          <button class="btn-calc-reset" id="roiResetBtn">Reset</button>
+        </div>
+      </div>
+      <aside class="results-aside" id="roiResults">
+        <div class="results-empty-state"><div class="res-empty-icon">📈</div><div class="res-empty-title">Your investment projection</div><div class="res-empty-desc">Enter your investment details and click Calculate to see projected growth and year-by-year breakdown.</div></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="page-content-section" id="compound-explained">
+    <div class="content-cols container">
+      <div class="content-prose fade-in">
+        <h2>How Compound Interest Works</h2>
+        <p>Compound interest is often called the eighth wonder of the world. Unlike simple interest — which only earns returns on your original principal — compound interest earns returns on your returns. This creates exponential, snowball-like growth over time.</p>
+        <h3>The Compound Interest Formula</h3>
+        <p>The formula is: A = P(1 + r/n)^(nt), where P = principal, r = annual rate, n = compounding periods per year, and t = years. Our calculator handles this automatically for both lump sum and regular contribution scenarios.</p>
+        <h3>Why Regular Contributions Matter</h3>
+        <p>Monthly contributions supercharge compound growth. Even small, consistent investments of £100–£200 per month, maintained over 20–30 years, can grow into substantial wealth thanks to the compounding effect. Starting early is more powerful than investing larger amounts later.</p>
+        <h3>The Rule of 72</h3>
+        <p>A quick mental shortcut: divide 72 by your annual return rate to estimate how many years it takes to double your investment. At 8% annual returns, money doubles approximately every 9 years (72 ÷ 8 = 9).</p>
+        <h3>ISAs and Tax-Free Investing</h3>
+        <p>UK investors can shelter up to £20,000 per year in a Stocks and Shares ISA (2024/25), meaning all growth and income is completely tax-free. Select "ISA / Tax-Free (0%)" in our investment calculator to project tax-free growth.</p>
+      </div>
+      <div class="info-cards fade-in">
+        <div class="info-card"><h3>📊 S&amp;P 500 Historical Returns</h3><p>The S&amp;P 500 has averaged around 10% annual returns before inflation since 1957. Adjusted for inflation, real returns average approximately 7%. Our calculator's default 8% is a commonly used planning benchmark.</p></div>
+        <div class="info-card"><h3>🌍 Diversification Matters</h3><p>Spreading investments across asset classes (equities, bonds, property, cash) and geographies reduces volatility without necessarily reducing long-term returns. Low-cost index funds provide instant diversification.</p></div>
+        <div class="info-card"><h3>💸 Pound-Cost Averaging</h3><p>Regular monthly contributions automatically buy more shares when prices are low and fewer when prices are high — this is called pound-cost averaging. It removes the pressure of trying to "time the market".</p></div>
+        <div class="info-card"><h3>⚠️ Inflation Erosion</h3><p>At 2.5% inflation, £100 today is worth only £78 in 10 years. Our calculator shows both nominal (unadjusted) and real (inflation-adjusted) values so you can plan for genuine purchasing power growth.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="page-faq-section page-content-section blue">
+    <div class="page-faq-inner">
+      <div class="section-header fade-in"><span class="section-eyebrow" style="color:#16A34A">Common Questions</span><h2 class="section-title">Investment ROI FAQ</h2></div>
+      <div class="faq-list">
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is a realistic investment return rate?<span class="faq-icon">+</span></div><div class="faq-a">Global equities have historically returned around 7–10% per year before inflation over long periods. After inflation (typically 2–3%), real returns are often 5–7%. Cash savings and bonds typically return less. A 5–8% long-term assumption is conservative but reasonable for a diversified equity portfolio. This is not a guarantee of future results.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How is ROI calculated?<span class="faq-icon">+</span></div><div class="faq-a">Return on Investment (ROI) is calculated as: (Final Value − Total Invested) ÷ Total Invested × 100%. For example, if you invest £10,000 and it grows to £30,000, your ROI is 200%. Our calculator shows both absolute return and percentage ROI, as well as annualised return (CAGR).</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is the UK capital gains tax on investments?<span class="faq-icon">+</span></div><div class="faq-a">For 2024/25, basic rate taxpayers pay 10% CGT on investment gains (18% on residential property). Higher rate taxpayers pay 20% (28% on residential property). The annual CGT exemption was reduced to £3,000 for 2024/25. Gains within ISAs are completely tax-free.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is the difference between nominal and real returns?<span class="faq-icon">+</span></div><div class="faq-a">Nominal returns are the headline return percentage without adjusting for inflation. Real returns subtract the inflation rate, showing your actual gain in purchasing power. If your investment returns 8% but inflation is 3%, your real return is approximately 5%. This calculator shows both when you enter an inflation rate.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How much should I invest each month?<span class="faq-icon">+</span></div><div class="faq-a">A common guideline is to invest at least 10–15% of your income. However, even £50 per month invested consistently from age 25 can grow to over £150,000 by retirement at 8% returns. The most important factor is starting early and being consistent — use our calculator to model different scenarios.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section"><div class="container"><div class="section-header fade-in"><span class="section-eyebrow">More Free Tools</span><h2 class="section-title">Related Calculators</h2></div></div>
+    <div class="related-grid">
+      <a href="index" class="related-card fade-in"><div class="related-card-icon">📊</div><div class="related-card-name">Budget Calculator</div><div class="related-card-desc">Monthly expense planner</div></a>
+      <a href="tax-calculator" class="related-card fade-in"><div class="related-card-icon">🧾</div><div class="related-card-name">Tax Calculator</div><div class="related-card-desc">Income tax &amp; take-home pay</div></a>
+      <a href="debt-payoff" class="related-card fade-in"><div class="related-card-icon">💳</div><div class="related-card-name">Debt Payoff</div><div class="related-card-desc">Avalanche &amp; snowball methods</div></a>
+      <a href="retirement-planner" class="related-card fade-in"><div class="related-card-icon">🏖️</div><div class="related-card-name">Retirement Planner</div><div class="related-card-desc">Pension projections</div></a>
+      <a href="mortgage-calculator" class="related-card fade-in"><div class="related-card-icon">🏠</div><div class="related-card-name">Mortgage Calculator</div><div class="related-card-desc">Repayments &amp; interest</div></a>
+    </div>
+  </section>
+
+  <section class="page-cta" style="--cta-from:#15803D;--cta-to:#14532D;">
+    <div class="page-cta-inner fade-in">
+      <h2 class="page-cta-title">Ready to Build Wealth?</h2>
+      <p class="page-cta-desc">Now you know how your investments can grow. Use our budget planner to find the money to invest every month.</p>
+      <div class="page-cta-btns"><a href="index#calculator" class="btn-cta-white">Open Budget Planner →</a><a href="retirement-planner" class="btn-cta-ghost">Retirement Planner</a></div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+const CURRENCIES = { GBP:'£', USD:'$', EUR:'€' };
+function fmtC(n, cur){ return new Intl.NumberFormat('en-GB',{style:'currency',currency:cur||'GBP',maximumFractionDigits:0}).format(n); }
+
+function calcROI(){
+  const P = parseFloat(document.getElementById('roiInitial').value)||0;
+  const m = parseFloat(document.getElementById('roiMonthly').value)||0;
+  const r = (parseFloat(document.getElementById('roiReturn').value)||0)/100;
+  const years = parseInt(document.getElementById('roiYears').value)||1;
+  const inf = (parseFloat(document.getElementById('roiInflation').value)||0)/100;
+  const n = parseInt(document.getElementById('roiCompound').value)||12;
+  const taxRate = (parseFloat(document.getElementById('roiTaxRate').value)||0)/100;
+  const cur = document.getElementById('roiCurrency').value||'GBP';
+
+  const ratePerPeriod = r / n;
+  const periods = years * n;
+  const monthlyPeriods = years * 12;
+
+  // Lump sum growth
+  const lumpFV = P * Math.pow(1 + ratePerPeriod, periods);
+  // Monthly contributions FV (monthly compounding)
+  const contribFV = m > 0 ? m * ((Math.pow(1+r/12, monthlyPeriods)-1) / (r/12)) : 0;
+  const totalFV = lumpFV + contribFV;
+  const totalInvested = P + (m * 12 * years);
+  const gain = totalFV - totalInvested;
+  const cgtBill = gain > 3000 ? (gain - 3000) * taxRate : 0;
+  const afterTaxFV = totalFV - cgtBill;
+  const roi = totalInvested > 0 ? (gain / totalInvested * 100) : 0;
+  const realFV = totalFV / Math.pow(1+inf, years);
+
+  // Year-by-year
+  const yearData = [];
+  let runningVal = P;
+  for(let y=1;y<=Math.min(years,50);y++){
+    const yearContrib = m * 12;
+    runningVal = (runningVal + yearContrib) * (1+r);
+    const invested = P + yearContrib * y;
+    yearData.push({ year:y, value:runningVal, invested, gain:runningVal-invested });
+  }
+
+  renderROIResults({P,m,r,years,totalFV,totalInvested,gain,cgtBill,afterTaxFV,roi,realFV,yearData,taxRate,cur});
+}
+
+function renderROIResults(r){
+  const el = document.getElementById('roiResults');
+  const maxVal = Math.max(...r.yearData.map(d=>d.value));
+  const barHTML = r.yearData.slice(-Math.min(r.yearData.length,20)).map(d=>{
+    const h = (d.value/maxVal*100).toFixed(1);
+    return `<div class="chart-bar" style="height:${h}%;background:linear-gradient(180deg,#16A34A,#22C55E);title='Year ${d.year}: ${fmtC(d.value,r.cur)}'"></div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="results-aside-header">
+      <div class="results-aside-label">Projected Final Value</div>
+      <div class="results-aside-big">${fmtC(r.totalFV,r.cur)}</div>
+      <div class="results-aside-sub">After ${r.years} years · ${r.taxRate>0?'Before CGT':' Tax-Free ISA'}</div>
+    </div>
+    <div class="results-aside-body">
+      <div class="results-aside-section">
+        <div class="ras-title">Growth Chart</div>
+        <div class="chart-container"><div class="chart-bars">${barHTML}</div></div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Summary</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Total Invested</span><span class="ras-row-val">${fmtC(r.totalInvested,r.cur)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Investment Gain</span><span class="ras-row-val" style="color:#16A34A">${fmtC(r.gain,r.cur)}</span></div>
+          ${r.cgtBill>0?`<div class="ras-row"><span class="ras-row-label">Est. CGT (${(r.taxRate*100).toFixed(0)}%)</span><span class="ras-row-val" style="color:#EF4444">-${fmtC(r.cgtBill,r.cur)}</span></div>`:''}
+          <div class="ras-row"><span class="ras-row-label">After-Tax Value</span><span class="ras-row-val">${fmtC(r.afterTaxFV,r.cur)}</span></div>
+          <div class="ras-row"><span class="ras-row-label">Real Value (vs inflation)</span><span class="ras-row-val">${fmtC(r.realFV,r.cur)}</span></div>
+        </div>
+        <div class="ras-divider"></div>
+        <div class="ras-highlight">
+          <span class="ras-highlight-label">Total ROI</span>
+          <span class="ras-highlight-val">${r.roi.toFixed(1)}%</span>
+        </div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Milestone Years</div>
+        <div class="ras-rows">
+          ${[5,10,20].filter(y=>y<=r.years).map(y=>{ const d=r.yearData[y-1]; return d?`<div class="ras-row"><span class="ras-row-label">Year ${y}</span><span class="ras-row-val">${fmtC(d.value,r.cur)}</span></div>`:''}).join('')}
+        </div>
+      </div>
+      <button class="btn-export-sm" onclick="exportROI()">📥 Export Year-by-Year (CSV)</button>
+    </div>
+  `;
+  window._roiData = r;
+}
+
+function exportROI(){
+  if(!window._roiData)return;
+  const {yearData,cur}=window._roiData;
+  const rows=[['Year','Portfolio Value','Total Invested','Total Gain'],...yearData.map(d=>[d.year,d.value.toFixed(2),d.invested.toFixed(2),d.gain.toFixed(2)])];
+  const csv=rows.map(r=>r.map(v=>`"${v}"`).join(',')).join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='investment-projection.csv'; a.click();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  Header.render(); Footer.render();
+  document.getElementById('roiCalcBtn').addEventListener('click',calcROI);
+  document.getElementById('roiResetBtn').addEventListener('click',()=>{ ['roiInitial','roiMonthly','roiReturn','roiYears','roiInflation'].forEach(id=>{ const defaults={roiInitial:10000,roiMonthly:200,roiReturn:8,roiYears:20,roiInflation:2.5}; document.getElementById(id).value=defaults[id]; }); document.getElementById('roiResults').innerHTML='<div class="results-empty-state"><div class="res-empty-icon">📈</div><div class="res-empty-title">Your investment projection</div><div class="res-empty-desc">Enter your details and click Calculate.</div></div>'; });
+  document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{ const i=q.closest('.faq-item'); const o=i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open')); if(!o)i.classList.add('open'); }));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1}); document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  calcROI();
+});
+</script>
+</body>
+</html>
