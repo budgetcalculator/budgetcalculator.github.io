@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retirement Planner Calculator — Pension &amp; Nest Egg | BudgetCalc</title>
+  <meta name="description" content="Plan your retirement with our free retirement calculator. Project your pension pot, state pension, and retirement income. See how much you need to save for a comfortable retirement.">
+  <meta name="keywords" content="retirement calculator, pension calculator, retirement planner, pension planner, how much to retire, retirement savings calculator, nest egg calculator, pension pot calculator uk, fire calculator, retirement income calculator">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://budgetcalculator.github.io/retirement-planner">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Retirement Planner Calculator","url":"https://budgetcalculator.github.io/retirement-planner","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"GBP"},"description":"Free retirement planning calculator. Project pension pot size, state pension income, and whether your savings will last through retirement."},
+    {"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://budgetcalculator.github.io/"},{"@type":"ListItem","position":2,"name":"Retirement Planner","item":"https://budgetcalculator.github.io/retirement-planner"}]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How much do I need to retire in the UK?","acceptedAnswer":{"@type":"Answer","text":"The PLSA (Pensions and Lifetime Savings Association) suggests £14,400/yr for a minimum retirement, £31,300/yr for moderate, and £43,100/yr for a comfortable retirement as a single person (2024 figures). To generate £31,300/yr at a 4% withdrawal rate, you need approximately £782,500 in savings."}},
+      {"@type":"Question","name":"What is the UK state pension amount?","acceptedAnswer":{"@type":"Answer","text":"The full new State Pension is £221.20 per week (£11,502/year) for 2024/25. You need 35 qualifying NI years for the full amount, and at least 10 qualifying years for any State Pension."}}
+    ]}
+  ]}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/calc-pages.css">
+  <style>
+    :root{ --hero-from:#F5F3FF;--hero-mid:#EDE9FE;--hero-to:#EFF6FF;--hero-glow1:rgba(139,92,246,.07);--hero-glow2:rgba(37,99,235,.06);--btn-from:#7C3AED;--btn-to:#6D28D9;--btn-shadow:rgba(124,58,237,.3);--cta-from:#6D28D9;--cta-to:#3B0764; }
+    .page-hero-badge{background:#EDE9FE;color:#5B21B6;}
+    .page-hero-title .accent{color:#7C3AED;}
+    .results-aside-header{background:linear-gradient(135deg,#7C3AED,#6D28D9);}
+    .ras-highlight{background:#F5F3FF;} .ras-highlight-label{color:#5B21B6;} .ras-highlight-val{color:#7C3AED;}
+  </style>
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <section class="page-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index">Home</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Retirement Planner</span></nav>
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <div class="page-hero-badge">🏖️ Plan Your Future</div>
+        <h1 class="page-hero-title">Free <span class="accent">Retirement Planner</span></h1>
+        <p class="page-hero-desc">Project your pension pot, state pension income, and whether your retirement savings will last. Includes FIRE (Financial Independence) calculator mode.</p>
+        <div class="page-hero-ctas">
+          <a href="#retirement-tool" class="btn-primary" style="background:linear-gradient(135deg,#7C3AED,#6D28D9);box-shadow:0 4px 16px rgba(124,58,237,.3)">Plan My Retirement</a>
+          <a href="#retirement-basics" class="btn-secondary">Retirement Basics</a>
+        </div>
+      </div>
+      <div class="page-hero-visual" aria-hidden="true">
+        <div style="background:white;border-radius:24px;padding:28px;box-shadow:0 24px 64px rgba(124,58,237,.12),0 4px 16px rgba(0,0,0,.06);max-width:360px;margin:0 auto;border:1px solid #ede9fe;">
+          <div style="font-weight:800;font-size:.9rem;color:#374151;margin-bottom:16px;">Retirement Projection</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+            <div style="padding:12px;background:#f5f3ff;border-radius:10px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:#6d28d9;">£420K</div><div style="font-size:.7rem;color:#a78bfa;margin-top:2px;">Pension Pot</div></div>
+            <div style="padding:12px;background:#f5f3ff;border-radius:10px;text-align:center;"><div style="font-family:'DM Serif Display',serif;font-size:1.4rem;color:#6d28d9;">£27.3K</div><div style="font-size:.7rem;color:#a78bfa;margin-top:2px;">Annual Income</div></div>
+          </div>
+          <div style="padding:14px;background:linear-gradient(135deg,#7C3AED,#6D28D9);border-radius:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <div><div style="font-size:.75rem;color:rgba(255,255,255,.8);">Retirement Age</div><div style="font-family:'DM Serif Display',serif;font-size:2rem;color:white;">67</div></div>
+              <div style="text-align:right;"><div style="font-size:.75rem;color:rgba(255,255,255,.8);">Pot Lasts</div><div style="font-family:'DM Serif Display',serif;font-size:1.5rem;color:#c4b5fd;">28 years</div></div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <div style="flex:1;padding:8px;background:#f0fdf4;border-radius:8px;text-align:center;"><div style="font-size:.7rem;color:#16a34a;font-weight:700;">State Pension</div><div style="font-size:.85rem;font-weight:800;color:#15803d;">£11,502/yr</div></div>
+            <div style="flex:1;padding:8px;background:#eff6ff;border-radius:8px;text-align:center;"><div style="font-size:.7rem;color:#2563eb;font-weight:700;">Private Pension</div><div style="font-size:.85rem;font-weight:800;color:#1d4ed8;">£15,800/yr</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="tool-section" id="retirement-tool">
+    <div class="tool-layout">
+      <div class="tool-panel">
+        <div class="tool-panel-header">
+          <span class="tool-panel-icon">🏖️</span>
+          <div><div class="tool-panel-title">Retirement Planner</div><div class="tool-panel-sub">Pension pot · State pension · FIRE · Drawdown</div></div>
+        </div>
+        <div class="tool-panel-body">
+          <div class="form-section-sep">Your Details</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="retCurrentAge">Current Age</label>
+              <input class="finput" type="number" id="retCurrentAge" value="35" min="16" max="75" placeholder="35">
+            </div>
+            <div class="field">
+              <label class="field-label" for="retRetireAge">Target Retirement Age</label>
+              <input class="finput" type="number" id="retRetireAge" value="67" min="40" max="80" placeholder="67">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="retLifeExpect">Life Expectancy</label>
+              <input class="finput" type="number" id="retLifeExpect" value="90" min="65" max="110" placeholder="90">
+            </div>
+            <div class="field">
+              <label class="field-label" for="retInflation">Inflation Rate</label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="retInflation" value="2.5" min="0" max="15" step="0.5"><span class="field-suffix">%</span></div>
+            </div>
+          </div>
+
+          <div class="form-section-sep">Current Pension &amp; Savings</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="retCurrentPot">Existing Pension Pot</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="retCurrentPot" value="45000" min="0" placeholder="45000"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="retMonthlyContrib">Monthly Contributions (you + employer)</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="retMonthlyContrib" value="600" min="0" placeholder="600"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="retGrowthRate">Expected Annual Growth Rate</label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="retGrowthRate" value="7" min="0" max="20" step="0.5"><span class="field-suffix">%</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="retOtherSavings">Other Savings / ISAs</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="retOtherSavings" value="20000" min="0" placeholder="0"></div>
+            </div>
+          </div>
+
+          <div class="form-section-sep">Retirement Income Needs</div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field-label" for="retIncomeNeeded">Desired Annual Retirement Income</label>
+              <div class="field-input-wrap"><span class="field-prefix">£</span><input class="finput has-prefix" type="number" id="retIncomeNeeded" value="30000" min="0" placeholder="30000"></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="retStatePension">Include State Pension?</label>
+              <select class="fselect" id="retStatePension">
+                <option value="full">Full (£11,502/yr)</option>
+                <option value="partial">Partial (£8,000/yr)</option>
+                <option value="none">No State Pension</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row single">
+            <div class="field">
+              <label class="field-label" for="retWithdrawalRate">Safe Withdrawal Rate <span class="field-hint">(4% rule)</span></label>
+              <div class="field-input-wrap"><input class="finput has-suffix" type="number" id="retWithdrawalRate" value="4" min="1" max="10" step="0.5"><span class="field-suffix">%</span></div>
+            </div>
+          </div>
+          <div class="info-callout" style="background:#F5F3FF;color:#5B21B6;">
+            <span class="info-callout-icon">ℹ️</span>
+            <span>The 4% rule suggests you can withdraw 4% of your pot annually with a low risk of running out over 30 years. This is a guideline, not a guarantee. Projections assume consistent returns which is unlikely in practice.</span>
+          </div>
+        </div>
+        <div class="tool-panel-footer">
+          <button class="btn-calc-main" id="retCalcBtn" style="--btn-from:#7C3AED;--btn-to:#6D28D9;--btn-shadow:rgba(124,58,237,.3)">🏖️ Project My Retirement</button>
+          <button class="btn-calc-reset" id="retResetBtn">Reset</button>
+        </div>
+      </div>
+      <aside class="results-aside" id="retResults">
+        <div class="results-empty-state"><div class="res-empty-icon">🏖️</div><div class="res-empty-title">Your retirement projection</div><div class="res-empty-desc">Enter your details and click Calculate to see your projected pension pot and retirement income.</div></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="page-content-section" id="retirement-basics">
+    <div class="content-cols container">
+      <div class="content-prose fade-in">
+        <h2>How Much Do You Need to Retire?</h2>
+        <p>The PLSA (Pensions and Lifetime Savings Association) sets three retirement living standard benchmarks for 2024: a minimum standard at £14,400/year (just basic needs), a moderate standard at £31,300/year, and a comfortable standard at £43,100/year for a single person.</p>
+        <h3>The UK State Pension (2024/25)</h3>
+        <p>The full new State Pension is £221.20 per week (£11,502/year) for 2024/25. You qualify if you have at least 10 qualifying NI years, and the full amount requires 35 qualifying years. State Pension age is currently 66 for both men and women, rising to 67 between 2026–2028.</p>
+        <h3>The 4% Withdrawal Rule</h3>
+        <p>The "4% rule" originated from the Trinity Study and suggests that retirees can safely withdraw 4% of their portfolio annually (adjusted for inflation) with a high probability of the money lasting 30 years. To generate £25,000/year under the 4% rule, you'd need a £625,000 pot.</p>
+        <h3>Auto-Enrolment Minimum Contributions</h3>
+        <p>Under UK auto-enrolment, employers must contribute at least 3% of qualifying earnings, and employees must contribute at least 5% (including tax relief). However, these minimum rates are often insufficient for a comfortable retirement — many advisers recommend 12–15% of salary total.</p>
+      </div>
+      <div class="info-cards fade-in">
+        <div class="info-card"><h3>🔥 FIRE Movement</h3><p>Financial Independence, Retire Early (FIRE) targets a portfolio of 25× your annual expenses (equivalent to a 4% withdrawal rate). If you spend £24,000/year, you'd need £600,000 to achieve FIRE. Variants include Lean FIRE (frugal), Fat FIRE (comfortable), and Coast FIRE (growth without new contributions).</p></div>
+        <div class="info-card"><h3>🏦 Lifetime Allowance Changes</h3><p>The pension Lifetime Allowance was abolished from April 2024. However, the Lump Sum Allowance (£268,275) now caps the tax-free cash you can take. Contributions receive tax relief up to 100% of earnings (max £60,000 per year from April 2023).</p></div>
+        <div class="info-card"><h3>🏠 Property in Retirement</h3><p>Many UK retirees rely heavily on property wealth. Downsizing, equity release, or rental income can supplement pension income. However, property is illiquid and should be part of a diversified retirement strategy rather than the entire plan.</p></div>
+        <div class="info-card"><h3>📊 Defined Benefit vs DC Pensions</h3><p>Defined Benefit (final salary) pensions provide a guaranteed income. Defined Contribution (DC) pensions depend on investment performance. Most UK workers now have DC pensions — our calculator models DC pension growth and drawdown.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-faq-section page-content-section blue">
+    <div class="page-faq-inner">
+      <div class="section-header fade-in"><span class="section-eyebrow" style="color:#7C3AED">Common Questions</span><h2 class="section-title">Retirement Planner FAQ</h2></div>
+      <div class="faq-list">
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">How much should I have saved for retirement by my age?<span class="faq-icon">+</span></div><div class="faq-a">A common guideline: by age 30, aim for 1× your annual salary; by 40, 3×; by 50, 6×; by 60, 8×; by retirement, 10–12×. These are rough benchmarks, not prescriptions. Your actual target depends on your retirement lifestyle goals, expected State Pension, and retirement age. Use our calculator to model your specific situation.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is the pension annual allowance for 2024/25?<span class="faq-icon">+</span></div><div class="faq-a">The Annual Allowance (the amount you can contribute to pensions with tax relief) is £60,000 per year for 2024/25, or 100% of your earnings if lower. High earners above £260,000 (threshold income + pension contributions) face a Tapered Annual Allowance which reduces from £60,000 down to a minimum of £10,000.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">When can I access my pension?<span class="faq-icon">+</span></div><div class="faq-a">The minimum pension access age is currently 55, rising to 57 in 2028. The State Pension is paid from age 66 (rising to 67 by 2028). You can take up to 25% of your pension as a tax-free lump sum (subject to the Lump Sum Allowance of £268,275 from April 2024).</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">Is it too late to start saving for retirement at 50?<span class="faq-icon">+</span></div><div class="faq-a">It's never too late. At 50 with 17 years until State Pension age, significant pension savings are still achievable — especially with tax relief making contributions effectively cheaper. The key levers are: increasing contributions significantly, potentially reducing retirement spending expectations, or adjusting retirement age. Use our calculator to model what's possible.</div></div>
+        <div class="faq-item fade-in"><div class="faq-q" tabindex="0">What is the State Pension for 2024/25?<span class="faq-icon">+</span></div><div class="faq-a">The full new State Pension is £221.20 per week (£11,502.40 per year) for 2024/25 following the triple lock increase. You need 35 qualifying NI years for the full amount. Check your State Pension forecast on the government's Check your State Pension website using your Government Gateway account.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section"><div class="container"><div class="section-header fade-in"><span class="section-eyebrow">More Free Tools</span><h2 class="section-title">Related Calculators</h2></div></div>
+    <div class="related-grid">
+      <a href="index" class="related-card fade-in"><div class="related-card-icon">📊</div><div class="related-card-name">Budget Calculator</div><div class="related-card-desc">Monthly expense planner</div></a>
+      <a href="tax-calculator" class="related-card fade-in"><div class="related-card-icon">🧾</div><div class="related-card-name">Tax Calculator</div><div class="related-card-desc">Income tax &amp; take-home</div></a>
+      <a href="investment-roi" class="related-card fade-in"><div class="related-card-icon">📈</div><div class="related-card-name">Investment ROI</div><div class="related-card-desc">Compound growth</div></a>
+      <a href="debt-payoff" class="related-card fade-in"><div class="related-card-icon">💳</div><div class="related-card-name">Debt Payoff</div><div class="related-card-desc">Get debt-free faster</div></a>
+      <a href="mortgage-calculator" class="related-card fade-in"><div class="related-card-icon">🏠</div><div class="related-card-name">Mortgage Calculator</div><div class="related-card-desc">Repayments &amp; interest</div></a>
+    </div>
+  </section>
+
+  <section class="page-cta" style="--cta-from:#6D28D9;--cta-to:#3B0764;">
+    <div class="page-cta-inner fade-in">
+      <h2 class="page-cta-title">Your Retirement Starts Today.</h2>
+      <p class="page-cta-desc">Every month you delay costs compound growth. Use our budget planner to find money to put towards your pension right now.</p>
+      <div class="page-cta-btns"><a href="index#calculator" class="btn-cta-white">Open Budget Planner →</a><a href="investment-roi" class="btn-cta-ghost">Investment ROI Calculator</a></div>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="components/header.js"></script>
+<script src="components/footer.js"></script>
+<script>
+function fmt(n){ return new Intl.NumberFormat('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:0}).format(n); }
+
+function calcRetirement(){
+  const currentAge = parseInt(document.getElementById('retCurrentAge').value)||35;
+  const retireAge  = parseInt(document.getElementById('retRetireAge').value)||67;
+  const lifeExpect = parseInt(document.getElementById('retLifeExpect').value)||90;
+  const inflation  = (parseFloat(document.getElementById('retInflation').value)||2.5)/100;
+  const currentPot = parseFloat(document.getElementById('retCurrentPot').value)||0;
+  const monthlyC   = parseFloat(document.getElementById('retMonthlyContrib').value)||0;
+  const growth     = (parseFloat(document.getElementById('retGrowthRate').value)||7)/100;
+  const otherSav   = parseFloat(document.getElementById('retOtherSavings').value)||0;
+  const incNeeded  = parseFloat(document.getElementById('retIncomeNeeded').value)||30000;
+  const spVal      = document.getElementById('retStatePension').value;
+  const withdrawRate = (parseFloat(document.getElementById('retWithdrawalRate').value)||4)/100;
+
+  const statePension = spVal==='full'?11502:spVal==='partial'?8000:0;
+  const yearsToRetire = Math.max(1, retireAge - currentAge);
+  const yearsInRetire = Math.max(1, lifeExpect - retireAge);
+  const r = growth/12;
+  const n = yearsToRetire * 12;
+
+  // Future value of current pot
+  const potFV = currentPot * Math.pow(1+growth, yearsToRetire);
+  // Future value of monthly contributions
+  const contribFV = monthlyC > 0 ? monthlyC * ((Math.pow(1+r,n)-1)/r) : 0;
+  // Other savings (no growth assumed for simplicity unless stocks)
+  const otherFV = otherSav * Math.pow(1+growth, yearsToRetire);
+  const totalPot = potFV + contribFV + otherFV;
+
+  // Real (inflation-adjusted) pot
+  const realPot = totalPot / Math.pow(1+inflation, yearsToRetire);
+
+  // Private pension income from pot (annuity-style estimate)
+  const privatePensionAnnual = totalPot * withdrawRate;
+  const totalAnnual = privatePensionAnnual + statePension;
+
+  // How long pot lasts (drawdown)
+  const annualWithdrawal = Math.max(0, incNeeded - statePension);
+  let drawdownYears = 0;
+  let pot = totalPot;
+  while(pot > 0 && drawdownYears < 60){
+    pot = pot * (1 + growth) - annualWithdrawal;
+    drawdownYears++;
+  }
+
+  // Needed pot to meet income goal
+  const neededPot = annualWithdrawal / withdrawRate;
+  const onTrack = totalPot >= neededPot;
+  const shortfall = Math.max(0, neededPot - totalPot);
+  const extraMonthly = shortfall > 0 ? (shortfall / ((Math.pow(1+r,n)-1)/r)) : 0;
+
+  // Milestones
+  const milestones = [];
+  [10,20,30].forEach(y=>{
+    if(y<=yearsToRetire){
+      const pFV = currentPot*Math.pow(1+growth,y) + (monthlyC>0?monthlyC*((Math.pow(1+growth/12,y*12)-1)/(growth/12)):0);
+      milestones.push({year:y, age:currentAge+y, val:pFV});
+    }
+  });
+
+  renderRetResults({totalPot,realPot,privatePensionAnnual,totalAnnual,incNeeded,statePension,drawdownYears,onTrack,shortfall,extraMonthly,neededPot,milestones,retireAge,yearsToRetire});
+}
+
+function renderRetResults(r){
+  const el = document.getElementById('retResults');
+  const pctOfGoal = Math.min((r.totalPot/r.neededPot)*100,100);
+  el.innerHTML = `
+    <div class="results-aside-header">
+      <div class="results-aside-label">Projected Pension Pot</div>
+      <div class="results-aside-big">${fmt(r.totalPot)}</div>
+      <div class="results-aside-sub">At age ${r.retireAge} · Real value: ${fmt(r.realPot)}</div>
+    </div>
+    <div class="results-aside-body">
+      <div class="results-aside-section">
+        <div class="ras-title">Retirement Income</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Private Pension (${(parseFloat(document.getElementById('retWithdrawalRate').value)||4)}% drawdown)</span><span class="ras-row-val">${fmt(r.privatePensionAnnual)}/yr</span></div>
+          <div class="ras-row"><span class="ras-row-label">State Pension</span><span class="ras-row-val" style="color:#16A34A">${fmt(r.statePension)}/yr</span></div>
+        </div>
+        <div class="ras-divider"></div>
+        <div class="ras-highlight">
+          <span class="ras-highlight-label">Total Annual Income</span>
+          <span class="ras-highlight-val">${fmt(r.totalAnnual)}/yr</span>
+        </div>
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Goal Progress</div>
+        <div class="ras-bar-wrap">
+          <div class="ras-bar-label"><span>${r.onTrack?'✅ On Track':'⚠️ Shortfall: '+fmt(r.shortfall)}</span><span>${pctOfGoal.toFixed(0)}%</span></div>
+          <div class="ras-bar-bg"><div class="ras-bar-fill" style="width:${pctOfGoal}%;background:${r.onTrack?'#7C3AED':'#EF4444'};"></div></div>
+        </div>
+        ${!r.onTrack?`<p style="font-size:.75rem;color:#EA580C;margin-top:6px;">To hit your goal, consider contributing an extra ${fmt(r.extraMonthly)}/month.</p>`:''}
+      </div>
+      <div class="ras-divider"></div>
+      <div class="results-aside-section">
+        <div class="ras-title">Pot Duration</div>
+        <div class="ras-rows">
+          <div class="ras-row"><span class="ras-row-label">Years pot lasts</span><span class="ras-row-val">${r.drawdownYears >= 60?'60+ yrs':r.drawdownYears+' years'}</span></div>
+          ${r.milestones.map(m=>`<div class="ras-row"><span class="ras-row-label">Age ${m.age} (in ${m.year}yr)</span><span class="ras-row-val">${fmt(m.val)}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  Header.render(); Footer.render();
+  document.getElementById('retCalcBtn').addEventListener('click',calcRetirement);
+  document.getElementById('retResetBtn').addEventListener('click',()=>{ ['retCurrentAge','retRetireAge','retLifeExpect','retInflation','retCurrentPot','retMonthlyContrib','retGrowthRate','retOtherSavings','retIncomeNeeded','retWithdrawalRate'].forEach(id=>{ const defs={retCurrentAge:35,retRetireAge:67,retLifeExpect:90,retInflation:2.5,retCurrentPot:45000,retMonthlyContrib:600,retGrowthRate:7,retOtherSavings:20000,retIncomeNeeded:30000,retWithdrawalRate:4}; document.getElementById(id).value=defs[id]; }); document.getElementById('retResults').innerHTML='<div class="results-empty-state"><div class="res-empty-icon">🏖️</div><div class="res-empty-title">Your retirement projection</div><div class="res-empty-desc">Enter your details and click Calculate.</div></div>'; });
+  document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>{ const i=q.closest('.faq-item'); const o=i.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open')); if(!o)i.classList.add('open'); }));
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1}); document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+  calcRetirement();
+});
+</script>
+</body>
+</html>
